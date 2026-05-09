@@ -15,76 +15,89 @@ const STRIPE_LINKS = {
 };
 export { STRIPE_LINKS };
 
-const tiers = [
-  {
-    name: "Brief",
-    note: "Intelligence only. Bring your own creative team.",
-    price: "$99",
-    cadence: "one-time",
-    recurring: false,
-    bullets: [
-      "16 intelligence squads",
-      "Audience + pain point library",
-      "Competitor analysis (10 deep dives)",
-      "Final strategy + market opportunity score",
-      "30-day campaign plan with kill rules",
-      "SHA-256 audit hash",
-    ],
-    cta: "Get my brief · $99",
-    href: STRIPE_LINKS.brief,
-  },
-  {
-    name: "Enhanced",
-    note: "Add depth when the vertical is competitive.",
-    price: "$149",
-    cadence: "one-time",
-    recurring: false,
-    bullets: [
-      "Everything in Brief",
-      "Deep research module",
-      "Extended competitor deep dive",
-      "Cross-brand pattern detection",
-      "Priority queue (faster turnaround)",
-    ],
-    cta: "Get Enhanced · $149",
-    href: STRIPE_LINKS.enhanced,
-  },
-  {
-    name: "Full Creative",
-    note: "Everything in Enhanced, plus production-ready assets.",
-    price: "$299",
-    cadence: "one-time",
-    recurring: false,
-    popular: true,
-    bullets: [
-      "Everything in Enhanced",
-      "46 creative assets across Meta, TikTok, Google",
-      "Image generation auto-included",
-      "3 video credits (Higgsfield AI)",
-      "Direct-import files for ad managers",
-      "Compliance review",
-    ],
-    cta: "Get Full Creative · $299",
-    href: STRIPE_LINKS.full_creative,
-  },
-  {
-    name: "Agency",
-    note: "For shops running 5+ clients. One subscription, unlimited briefs.",
-    price: "$499",
-    cadence: "per month",
-    recurring: true,
-    bullets: [
-      "Unlimited briefs across clients",
-      "White-label reports with your branding",
-      "Multi-client command center",
-      "Team seats + role permissions",
-      "10 video credits per month",
-      "Slack, Notion, Drive, Canva integrations",
-    ],
-    cta: "Subscribe · $499/mo",
-    href: STRIPE_LINKS.agency,
-  },
-];
+interface Tier {
+  name: string;
+  note: string;
+  price: string;
+  cadence: string;
+  recurring: boolean;
+  bullets: string[];
+  cta: string;
+  href: string;
+  popular?: boolean;
+}
+
+const briefTier: Tier = {
+  name: "Brief",
+  note: "Intelligence only. Bring your own creative team.",
+  price: "$99",
+  cadence: "one-time",
+  recurring: false,
+  bullets: [
+    "16 intelligence squads",
+    "5 audience segments with intent scores",
+    "Competitor analysis (10 deep dives)",
+    "Final strategy + market opportunity score",
+    "30-day campaign plan with kill rules",
+    "SHA-256 audit hash",
+  ],
+  cta: "Get my brief · $99",
+  href: STRIPE_LINKS.brief,
+};
+
+const enhancedTier: Tier = {
+  name: "Enhanced",
+  note: "Add depth when the vertical is competitive.",
+  price: "$149",
+  cadence: "one-time",
+  recurring: false,
+  bullets: [
+    "Everything in Brief",
+    "Deep research module",
+    "Extended competitor deep dive",
+    "Cross-brand pattern detection",
+    "Priority queue (faster turnaround)",
+  ],
+  cta: "Get Enhanced · $149",
+  href: STRIPE_LINKS.enhanced,
+};
+
+const fullTier: Tier = {
+  name: "Full Creative",
+  note: "Everything in Enhanced, plus production-ready assets.",
+  price: "$299",
+  cadence: "one-time",
+  recurring: false,
+  popular: true,
+  bullets: [
+    "Everything in Enhanced",
+    "46 creative assets across Meta, TikTok, Google",
+    "Image generation auto-included",
+    "3 video credits (Higgsfield AI)",
+    "Direct-import files for ad managers",
+    "Compliance review",
+  ],
+  cta: "Get Full Creative · $299",
+  href: STRIPE_LINKS.full_creative,
+};
+
+const agencyTier: Tier = {
+  name: "Agency",
+  note: "For shops running 5+ clients. One subscription, unlimited briefs.",
+  price: "$499",
+  cadence: "per month",
+  recurring: true,
+  bullets: [
+    "Unlimited briefs across clients",
+    "White-label reports with your branding",
+    "Multi-client command center",
+    "Team seats + role permissions",
+    "10 video credits per month",
+    "Slack, Notion, Drive, Canva integrations",
+  ],
+  cta: "Subscribe · $499 / mo",
+  href: STRIPE_LINKS.agency,
+};
 
 export function Pricing() {
   return (
@@ -111,83 +124,220 @@ export function Pricing() {
         </p>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px hairline">
-        {tiers.map((t) => (
-          <div
-            key={t.name}
-            className="relative p-7 flex flex-col hover-lift"
+      {/* Three one-time tiers — Full Creative dominates */}
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+        <SmallCard tier={briefTier} />
+        <SmallCard tier={enhancedTier} />
+        <BigCard tier={fullTier} />
+      </div>
+
+      {/* Agency — horizontal full-width below */}
+      <AgencyCard tier={agencyTier} />
+    </Section>
+  );
+}
+
+/** Standard (Brief, Enhanced) — slightly muted next to Full Creative. */
+function SmallCard({ tier }: { tier: Tier }) {
+  return (
+    <div
+      className="relative p-6 flex flex-col hover-lift rounded-md"
+      style={{
+        background: "var(--surface)",
+        border: "0.5px solid var(--border)",
+        opacity: 0.96,
+      }}
+    >
+      <div className="text-[13px] tracking-tight" style={{ color: "var(--text-2)" }}>
+        {tier.name}
+      </div>
+      <div
+        className="mt-1.5 text-[11.5px] leading-snug min-h-[2.4em]"
+        style={{ color: "var(--text-3)" }}
+      >
+        {tier.note}
+      </div>
+      <div className="mt-3 flex items-baseline gap-2 flex-wrap">
+        <span
+          className="num text-[32px] tracking-[-0.02em]"
+          style={{ color: "var(--text)" }}
+        >
+          {tier.price}
+        </span>
+        <span
+          className="num text-[11px] uppercase tracking-[0.06em]"
+          style={{ color: "var(--text-2)" }}
+        >
+          {tier.cadence}
+        </span>
+        <span
+          className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
+          style={{
+            color: "var(--accent)",
+            border: "0.5px solid var(--accent)",
+            background: "rgba(29, 158, 117, 0.08)",
+          }}
+        >
+          BETA PRICE
+        </span>
+      </div>
+      <ul className="mt-5 space-y-2.5 flex-1">
+        {tier.bullets.map((b) => (
+          <li
+            key={b}
+            className="text-[13px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+            style={{ color: "var(--text-2)" }}
+          >
+            <Tick />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+      <a href={tier.href} className="btn-secondary mt-7 justify-center">
+        {tier.cta}
+      </a>
+    </div>
+  );
+}
+
+/** Most popular (Full Creative) — taller, bolder, MOST POPULAR badge floats above. */
+function BigCard({ tier }: { tier: Tier }) {
+  return (
+    <div className="relative" style={{ marginTop: -32, marginBottom: -16 }}>
+      {/* Floating MOST POPULAR badge */}
+      <span
+        className="absolute left-1/2 -translate-x-1/2 num text-[10px] tracking-[0.14em] px-3 py-1.5 rounded whitespace-nowrap z-10"
+        style={{
+          top: 12,
+          background: "var(--accent)",
+          color: "#051410",
+          fontWeight: 700,
+          boxShadow: "0 0 24px rgba(29, 158, 117, 0.5)",
+        }}
+      >
+        MOST POPULAR
+      </span>
+
+      <div
+        className="relative p-7 pt-12 flex flex-col rounded-md h-full"
+        style={{
+          background: "var(--accent-glow)",
+          border: "1.5px solid var(--accent)",
+        }}
+      >
+        <div className="text-[14px] tracking-tight font-semibold" style={{ color: "var(--accent-light)" }}>
+          {tier.name}
+        </div>
+        <div
+          className="mt-1.5 text-[12.5px] leading-snug min-h-[2.4em]"
+          style={{ color: "var(--text-2)" }}
+        >
+          {tier.note}
+        </div>
+        <div className="mt-3 flex items-baseline gap-2 flex-wrap">
+          <span
+            className="num text-[44px] tracking-[-0.02em] leading-none"
+            style={{ color: "var(--text)" }}
+          >
+            {tier.price}
+          </span>
+          <span
+            className="num text-[11px] uppercase tracking-[0.06em]"
+            style={{ color: "var(--text-2)" }}
+          >
+            {tier.cadence}
+          </span>
+          <span
+            className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
             style={{
-              background: t.popular ? "var(--accent-glow)" : "var(--surface)",
-              border: t.popular ? "1px solid var(--accent)" : "none",
+              color: "var(--accent)",
+              border: "0.5px solid var(--accent)",
+              background: "rgba(29, 158, 117, 0.12)",
             }}
           >
-            {t.popular && (
-              <span
-                className="absolute top-4 right-4 num text-[9.5px] tracking-[0.12em] px-2 py-1 rounded"
-                style={{
-                  background: "var(--accent)",
-                  color: "#051410",
-                  fontWeight: 700,
-                }}
-              >
-                MOST POPULAR
-              </span>
-            )}
-            <div className="text-[13px] tracking-tight" style={{ color: "var(--text-2)" }}>
-              {t.name}
-            </div>
-            <div
-              className="mt-1.5 text-[11.5px] leading-snug min-h-[2.4em]"
-              style={{ color: "var(--text-3)" }}
+            BETA PRICE
+          </span>
+        </div>
+        <ul className="mt-6 space-y-3 flex-1">
+          {tier.bullets.map((b) => (
+            <li
+              key={b}
+              className="text-[14px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+              style={{ color: "var(--text)" }}
             >
-              {t.note}
-            </div>
-            <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-              <span
-                className="num text-[36px] tracking-[-0.02em]"
-                style={{ color: "var(--text)" }}
-              >
-                {t.price}
-              </span>
-              <span
-                className="num text-[11px] uppercase tracking-[0.06em]"
-                style={{ color: t.recurring ? "var(--score-mid)" : "var(--text-2)" }}
-              >
-                {t.cadence}
-              </span>
-              <span
-                className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
-                style={{
-                  color: "var(--accent)",
-                  border: "0.5px solid var(--accent)",
-                  background: "rgba(29, 158, 117, 0.08)",
-                }}
-              >
-                BETA PRICE
-              </span>
-            </div>
-            <ul className="mt-5 space-y-2.5 flex-1">
-              {t.bullets.map((b) => (
-                <li
-                  key={b}
-                  className="text-[13px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
-                  style={{ color: "var(--text-2)" }}
-                >
-                  <Tick />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-            <a
-              href={t.href}
-              className={t.popular ? "btn-primary mt-7 justify-center" : "btn-secondary mt-7 justify-center"}
-            >
-              {t.cta}
-            </a>
-          </div>
-        ))}
+              <Tick />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <a href={tier.href} className="btn-primary mt-8 justify-center">
+          {tier.cta}
+        </a>
       </div>
-    </Section>
+    </div>
+  );
+}
+
+/** Agency — horizontal full-width card below the three. Different treatment. */
+function AgencyCard({ tier }: { tier: Tier }) {
+  return (
+    <div
+      className="relative mt-10 p-7 md:p-9 rounded-md hover-lift"
+      style={{
+        background: "var(--surface-2)",
+        border: "0.5px solid var(--border-2)",
+      }}
+    >
+      <div className="grid md:grid-cols-[1fr_1.4fr_auto] gap-8 md:gap-12 items-start">
+        {/* Left: identity + price */}
+        <div>
+          <div className="num text-[11px] tracking-[0.14em]" style={{ color: "var(--accent)" }}>
+            FOR TEAMS
+          </div>
+          <div className="mt-2 text-[20px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
+            {tier.name}
+          </div>
+          <div className="mt-3 flex items-baseline gap-2 flex-wrap">
+            <span
+              className="num text-[36px] tracking-[-0.02em] leading-none"
+              style={{ color: "var(--text)" }}
+            >
+              {tier.price}
+            </span>
+            <span
+              className="num text-[11px] uppercase tracking-[0.06em]"
+              style={{ color: "var(--score-mid)" }}
+            >
+              {tier.cadence}
+            </span>
+          </div>
+          <p className="mt-3 text-[13px] leading-relaxed max-w-[36ch]" style={{ color: "var(--text-2)" }}>
+            {tier.note}
+          </p>
+        </div>
+
+        {/* Middle: bullets */}
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
+          {tier.bullets.map((b) => (
+            <li
+              key={b}
+              className="text-[13px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+              style={{ color: "var(--text-2)" }}
+            >
+              <Tick />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Right: CTA */}
+        <div className="md:self-center">
+          <a href={tier.href} className="btn-primary">
+            {tier.cta}
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 

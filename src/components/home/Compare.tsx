@@ -100,7 +100,7 @@ export function Compare() {
         {TOOLS.map((t) => (
           <div
             key={t.name}
-            className={`grid md:grid-cols-[1.4fr_1.6fr_1fr_2fr] hairline-b last:border-b-0 relative ${
+            className={`grid md:grid-cols-[1.4fr_1.6fr_1fr_2fr] hairline-b last:border-b-0 relative items-center ${
               t.you ? "" : "hover-lift"
             }`}
             style={{
@@ -108,9 +108,12 @@ export function Compare() {
               borderLeft: t.you ? "2px solid var(--accent)" : undefined,
             }}
           >
-            <div className="px-5 py-4 flex items-center gap-2.5">
+            <div
+              className="flex items-center gap-2.5"
+              style={{ padding: t.you ? "20px 20px" : "14px 20px" }}
+            >
               <span
-                className="text-[15px] font-semibold tracking-tight"
+                className={`tracking-tight ${t.you ? "text-[20px] font-bold" : "text-[15px] font-semibold"}`}
                 style={{ color: t.you ? "var(--accent-light)" : "var(--text)" }}
               >
                 {t.name}
@@ -128,15 +131,33 @@ export function Compare() {
                 </span>
               )}
             </div>
-            <div className="px-5 pb-4 md:py-4 text-[13.5px]" style={{ color: "var(--text-2)" }}>
+            <div
+              className={`text-[13.5px] ${t.you ? "font-medium" : ""}`}
+              style={{
+                color: t.you ? "var(--text)" : "var(--text-2)",
+                padding: t.you ? "20px 20px" : "0 20px 14px 20px",
+              }}
+            >
               {t.what}
             </div>
-            <div className="px-5 pb-4 md:py-4 text-[13px] num" style={{ color: "var(--text)" }}>
+            <div
+              className="num"
+              style={{
+                color: "var(--text)",
+                fontSize: t.you ? 15 : 13,
+                fontWeight: t.you ? 600 : 400,
+                padding: t.you ? "20px 20px" : "0 20px 14px 20px",
+              }}
+            >
               {t.price}
             </div>
             <div
-              className="px-5 pb-4 md:py-4 text-[13.5px]"
-              style={{ color: t.you ? "var(--text)" : "var(--text-2)" }}
+              className={t.you ? "text-[14.5px] font-medium" : "text-[13.5px]"}
+              style={{
+                color: t.you ? "var(--text)" : "var(--text-2)",
+                padding: t.you ? "20px 20px" : "0 20px 14px 20px",
+                lineHeight: t.you ? 1.55 : 1.5,
+              }}
             >
               {t.limitation}
             </div>

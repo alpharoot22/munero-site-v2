@@ -1,50 +1,72 @@
 import Link from "next/link";
 import { Octopus } from "../Octopus";
 import { SourceMarquee } from "./SourceMarquee";
+import { TypewriterHeadline } from "../TypewriterHeadline";
 
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export function Hero() {
   return (
-    <section className="relative">
-      <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-14 md:pb-20 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
+    <section className="relative overflow-hidden">
+      {/* Committed teal radial — washes the left half */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 120% 80% at 10% 50%, rgba(29,158,117,0.12) 0%, transparent 60%)",
+        }}
+      />
+      {/* Massive ghost numeral behind the headline */}
+      <div
+        aria-hidden="true"
+        className="absolute pointer-events-none num select-none hidden md:block"
+        style={{
+          fontSize: "30vw",
+          lineHeight: 0.85,
+          fontWeight: 700,
+          letterSpacing: "-0.06em",
+          color: "var(--text-3)",
+          opacity: 0.04,
+          left: "-2vw",
+          top: "8vw",
+          zIndex: 0,
+        }}
+      >
+        99
+      </div>
+
+      <div className="relative mx-auto max-w-6xl px-6 pt-[140px] pb-[120px] grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
         {/* Left 55% */}
-        <div>
-          <div className="eyebrow mb-3">
+        <div className="relative z-10">
+          <div className="eyebrow mb-7">
             <span
               className="block w-1.5 h-1.5 rounded-full"
               style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
             />
-            INTELLIGENCE ENGINE
+            PRE-CAMPAIGN INTELLIGENCE
           </div>
-          <p
-            className="num text-[11px] uppercase tracking-[0.12em] mb-6"
-            style={{ color: "var(--text-3)" }}
-          >
-            For DTC · Agencies · In-house teams · $5K+ mo ad spend
-          </p>
 
-          <h1
-            className="text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] font-bold"
-            style={{ color: "var(--text)" }}
-          >
-            Your market.
-          </h1>
-          <h1
-            className="text-[36px] md:text-[52px] leading-[1.02] tracking-[-0.03em] font-bold mt-1"
-            style={{ color: "var(--text)" }}
-          >
-            Gathered.
-          </h1>
+          <TypewriterHeadline
+            text="Know what message will work before you spend a dollar."
+            durationMs={1200}
+            className="font-bold tracking-[-0.04em] leading-[1.0]"
+            style={{
+              color: "var(--text)",
+              fontSize: "clamp(40px, 7vw, 88px)",
+              fontWeight: 800,
+            }}
+          />
 
           <p
-            className="mt-6 text-[18px] leading-relaxed max-w-[480px]"
+            className="mt-7 text-[17px] md:text-[18px] leading-relaxed max-w-[520px]"
             style={{ color: "var(--text-2)" }}
           >
-            16 intelligence squads. One campaign brief. In 35 minutes.
+            Munero scans your market, maps your competitors, and builds your complete campaign
+            brief. Before a dollar moves.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
             <a href={STRIPE_BRIEF} className="btn-primary">
               Get my brief · $99
               <Arrow />
@@ -67,8 +89,8 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Right 45% — Octopus */}
-        <div className="relative">
+        {/* Right 45% — Octopus, scales in on mount */}
+        <div className="relative z-10 octo-mount">
           <Octopus />
         </div>
       </div>

@@ -8,7 +8,7 @@ export function Footer() {
         <div className="col-span-2 md:col-span-1">
           <Logo />
           <p className="mt-3 max-w-[28ch] text-[12.5px]" style={{ color: "var(--text-3)" }}>
-            AI marketing intelligence. 16 squads. Know before you spend.
+            Know what message will work before you spend a dollar.
           </p>
         </div>
         <FooterCol

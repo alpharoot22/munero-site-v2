@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 export function Section({
   id,
@@ -11,9 +13,41 @@ export function Section({
   className?: string;
   bordered?: boolean;
 }) {
+  const innerRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setVisible(true);
+      return;
+    }
+    const el = innerRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section id={id} className={`${bordered ? "hairline-t" : ""} ${className}`}>
-      <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">{children}</div>
+      <div
+        ref={innerRef}
+        className={`mx-auto max-w-6xl px-6 py-20 md:py-24 fade-up ${visible ? "is-visible" : ""}`}
+      >
+        {children}
+      </div>
     </section>
   );
 }
@@ -37,7 +71,9 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <h2 className={`text-[34px] md:text-[46px] tracking-[-0.025em] leading-[1.05] font-bold ${className}`}>
+    <h2
+      className={`text-[40px] md:text-[48px] tracking-[-0.025em] leading-[1.05] font-bold ${className}`}
+    >
       {children}
     </h2>
   );

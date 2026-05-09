@@ -43,7 +43,7 @@ export function FinalCTA() {
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36 relative">
         <div className="max-w-[28ch] mx-auto text-center">
           <h2 className="text-[40px] md:text-[64px] tracking-[-0.03em] leading-[1.02] font-bold">
-            Stop shipping ads built on guesses.
+            Your competitors are already testing. You should know what will win first.
           </h2>
           <p
             className="mt-6 text-[17px] leading-relaxed max-w-[48ch] mx-auto"
