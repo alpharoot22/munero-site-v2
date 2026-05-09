@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Octopus } from "../Octopus";
 import { CountUp } from "../CountUp";
+import { SourceMarquee } from "./SourceMarquee";
 
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
@@ -74,6 +75,7 @@ export function Hero() {
       </div>
 
       <ProofStrip />
+      <SourceMarquee />
     </section>
   );
 }
