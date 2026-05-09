@@ -88,7 +88,7 @@ export function Workspace() {
   }, []);
 
   return (
-    <Section bordered id="workspace" className="workspace-section">
+    <Section bordered id="workspace" className="workspace-section scroll-mt-24">
       <Eyebrow>YOUR WORKSPACE · LIVE AT APP.MUNERO.AI</Eyebrow>
       <H2 className="max-w-[24ch]">
         The brief is the starting point. The workspace runs forever.
