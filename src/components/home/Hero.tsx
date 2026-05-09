@@ -80,7 +80,11 @@ function ProofStrip() {
         </Stat>
         <Stat>
           <CountUp to={46} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>creative assets</span>
+          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>assets</span>
+        </Stat>
+        <Stat>
+          <CountUp to={9} className="num text-[16px]" />
+          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>AI assistants</span>
         </Stat>
         <Stat>
           <span className="num text-[16px]">~</span>
@@ -90,16 +94,6 @@ function ProofStrip() {
         <Stat>
           <CountUp to={99} prefix="$" className="num text-[16px]" />
           <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>one-time</span>
-        </Stat>
-        <Stat>
-          <CountUp to={96} suffix="%" className="num text-[16px]" />
-          <span
-            className="text-[12.5px] num"
-            style={{ color: "var(--text-3)" }}
-            title="96% of briefs complete all 16 squads without a failed node"
-          >
-            complete error-free
-          </span>
         </Stat>
       </div>
     </div>

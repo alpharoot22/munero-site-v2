@@ -62,6 +62,26 @@ export function WhatYouGet() {
         Audit-ready by default.
       </Lede>
 
+      {/* SHA-256 trust line */}
+      <div
+        className="mt-5 inline-flex items-center gap-2 num text-[11px] tracking-[0.04em]"
+        style={{ color: "var(--text-3)" }}
+      >
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <rect x="3.5" y="7" width="9" height="6.5" rx="1" stroke="var(--accent)" strokeWidth="1.25" />
+          <path
+            d="M5.5 7V5a2.5 2.5 0 015 0v2"
+            stroke="var(--accent)"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+          />
+        </svg>
+        <span>
+          Every brief includes a SHA-256 integrity hash. Proof your intelligence hasn't been
+          altered. Audit-ready.
+        </span>
+      </div>
+
       <div className="mt-12 hairline rounded-md overflow-hidden" style={{ background: "var(--surface)" }}>
         <div className="flex hairline-b overflow-x-auto">
           {tabs.map((t) => (
