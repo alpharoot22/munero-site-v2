@@ -153,25 +153,27 @@ export function Octopus() {
         >
           <circle cx={cx} cy={cy} r="50" fill="var(--bg)" stroke="var(--accent)" strokeWidth="2" />
           <circle cx={cx} cy={cy} r="42" fill="url(#coreGrad)" opacity="0.95" />
-          {/* Crosshair */}
-          <line x1={cx - 30} y1={cy} x2={cx + 30} y2={cy} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
-          <line x1={cx} y1={cy - 30} x2={cx} y2={cy + 30} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
-          <circle cx={cx} cy={cy} r="3" fill="var(--bg)" stroke="var(--accent-light)" strokeWidth="1" />
+          {/* Crosshair — recessed so the CORE label reads cleanly */}
+          <line x1={cx - 30} y1={cy} x2={cx - 18} y2={cy} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
+          <line x1={cx + 18} y1={cy} x2={cx + 30} y2={cy} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
+          <line x1={cx} y1={cy - 30} x2={cx} y2={cy - 14} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
+          <line x1={cx} y1={cy + 14} x2={cx} y2={cy + 30} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
+          {/* Center label — inside the circle */}
+          <text
+            x={cx}
+            y={cy}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontFamily="var(--font-jetbrains), monospace"
+            fontSize="13"
+            letterSpacing="0.22em"
+            fill="var(--text)"
+            fontWeight="600"
+            style={{ textTransform: "uppercase" }}
+          >
+            CORE
+          </text>
         </g>
-
-        {/* Center label */}
-        <text
-          x={cx}
-          y={cy + 75}
-          textAnchor="middle"
-          fontFamily="var(--font-jetbrains), monospace"
-          fontSize="10"
-          letterSpacing="0.18em"
-          fill="var(--accent)"
-          style={{ textTransform: "uppercase" }}
-        >
-          BRIEF
-        </text>
       </svg>
     </div>
   );
