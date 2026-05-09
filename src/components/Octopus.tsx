@@ -6,15 +6,17 @@
  * Each tentacle: bezier path with stroke-dasharray draw, plus a "data dot"
  * that travels along the path via offset-path/offset-distance.
  */
+// 8 source clusters that span the 16 underlying intelligence squads.
+// Each cluster groups 1-2 squads thematically.
 const SOURCES = [
-  { id: "pain", label: "Pain Points",     angle: -90,  dist: 240 },
-  { id: "meta", label: "Meta Ads",        angle: -45,  dist: 230 },
-  { id: "ggl",  label: "Google Ads",      angle: 0,    dist: 240 },
-  { id: "ttk",  label: "TikTok",          angle: 45,   dist: 230 },
-  { id: "yt",   label: "YouTube",         angle: 90,   dist: 220 },
-  { id: "comp", label: "Competitors",     angle: 135,  dist: 230 },
-  { id: "mkt",  label: "Market Signals",  angle: 180,  dist: 240 },
-  { id: "srch", label: "Search Intent",   angle: -135, dist: 230 },
+  { id: "pain",  label: "Pain + Reviews",    angle: -90,  dist: 240 },
+  { id: "meta",  label: "Meta + TikTok",     angle: -45,  dist: 230 },
+  { id: "ggl",   label: "Google + LinkedIn", angle: 0,    dist: 250 },
+  { id: "comm",  label: "E-com + Creative",  angle: 45,   dist: 230 },
+  { id: "video", label: "Video",             angle: 90,   dist: 220 },
+  { id: "comp",  label: "Competitors",       angle: 135,  dist: 230 },
+  { id: "mkt",   label: "Market + Research", angle: 180,  dist: 250 },
+  { id: "srch",  label: "Search + Trends",   angle: -135, dist: 230 },
 ];
 
 // Returns {x,y} for a tentacle tip given angle/distance from center
@@ -171,6 +173,17 @@ export function Octopus() {
           style={{ textTransform: "uppercase" }}
         >
           BRIEF
+        </text>
+        <text
+          x={cx}
+          y={cy + 92}
+          textAnchor="middle"
+          fontFamily="var(--font-jetbrains), monospace"
+          fontSize="9"
+          letterSpacing="0.1em"
+          fill="var(--text-3)"
+        >
+          8 clusters · 16 squads
         </text>
       </svg>
     </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Section, Eyebrow, H2, Lede } from "../../components/Section";
 import { WhatYouGet } from "../../components/home/WhatYouGet";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export const metadata: Metadata = {
   title: "Sample brief",
@@ -19,14 +19,14 @@ export default function SamplePage() {
           A real brief. Real numbers. <span className="italic-accent">Read before you buy</span>.
         </H2>
         <Lede>
-          This is the actual output for a Dubai-based peptide therapy DTC brand running $10K /
-          month. Names changed, structure preserved.
+          This is the actual output for a peptide therapy DTC brand running $10K / month.
+          Names changed, structure preserved.
         </Lede>
 
         <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px hairline">
           {[
             ["Vertical", "Health / Wellness"],
-            ["Geo", "Dubai / UAE"],
+            ["Stage", "DTC e-commerce"],
             ["Budget", "$10,000 / mo"],
             ["Sections", "21 · 85+ data points"],
           ].map(([k, v]) => (

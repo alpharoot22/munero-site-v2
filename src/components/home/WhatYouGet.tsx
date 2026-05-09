@@ -35,8 +35,8 @@ export function WhatYouGet() {
         A brief built to be argued with, not <span className="italic-accent">skimmed</span>.
       </H2>
       <Lede>
-        Every section below is from a real Peptide Therapy brief shipped to a Dubai-based DTC
-        client. Names changed, structure preserved.
+        Every section below is from a real Peptide Therapy brief: DTC health brand, $10K /
+        month ad spend. Names changed, structure preserved.
       </Lede>
 
       <div
@@ -51,7 +51,7 @@ export function WhatYouGet() {
               style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
             />
             <span style={{ color: "var(--text-2)" }}>
-              Strategy Brief · Peptide Therapy · Dubai
+              Strategy Brief · Peptide Therapy · DTC Health
             </span>
           </div>
           <span
@@ -210,6 +210,37 @@ function Creative() {
         style={{ color: "var(--text-3)" }}
       >
         + 5 more hooks · 46 total creative assets across Meta, TikTok, Google
+      </div>
+
+      {/* Credits explainer */}
+      <div
+        className="hairline rounded-md mt-4 grid grid-cols-1 md:grid-cols-2 gap-px"
+        style={{ background: "var(--surface-2)" }}
+      >
+        <div className="p-5">
+          <div className="num text-[10.5px]" style={{ color: "var(--accent)" }}>
+            IMAGE GENERATION
+          </div>
+          <div className="mt-1.5 text-[14px] font-medium tracking-tight">
+            Auto-included with every brief
+          </div>
+          <p className="mt-1.5 text-[12.5px] leading-relaxed" style={{ color: "var(--text-2)" }}>
+            Headline, body, and image creatives generated automatically across Meta, TikTok,
+            and Google formats. No credit draw.
+          </p>
+        </div>
+        <div className="p-5">
+          <div className="num text-[10.5px]" style={{ color: "var(--accent)" }}>
+            VIDEO GENERATION
+          </div>
+          <div className="mt-1.5 text-[14px] font-medium tracking-tight">
+            Higgsfield AI · credit-based
+          </div>
+          <p className="mt-1.5 text-[12.5px] leading-relaxed" style={{ color: "var(--text-2)" }}>
+            3 video credits on Full Creative. 10 video credits per month on Agency. Production
+            quality, ready to upload.
+          </p>
+        </div>
       </div>
     </div>
   );

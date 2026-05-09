@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Octopus } from "../Octopus";
 import { CountUp } from "../CountUp";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export function Hero() {
   return (
@@ -10,12 +10,18 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-16 md:pb-24 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
         {/* Left */}
         <div>
-          <div className="eyebrow flex items-center gap-2.5 mb-5">
+          <div className="eyebrow flex items-center gap-2.5 mb-3">
             <span
               className="block w-1.5 h-1.5 rounded-full"
               style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
             />
             INTELLIGENCE ENGINE
+          </div>
+          <div
+            className="num text-[10.5px] tracking-[0.16em] mb-5"
+            style={{ color: "var(--text-3)", textTransform: "uppercase" }}
+          >
+            FOR DTC · AGENCIES · IN-HOUSE TEAMS · $5K+ MO AD SPEND
           </div>
           <h1
             className="text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] font-bold"
@@ -48,7 +54,7 @@ export function Hero() {
             className="mt-6 text-[12.5px] num"
             style={{ color: "var(--text-3)" }}
           >
-            One-time payment · No subscription · 28 briefs run · 96% success rate
+            One-time payment · No subscription · 28 briefs run · 96% complete error-free
           </div>
         </div>
 
@@ -86,7 +92,13 @@ function ProofStrip() {
         </Stat>
         <Stat>
           <CountUp to={96} suffix="%" className="num text-[18px]" />{" "}
-          <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>success rate</span>
+          <span
+            className="text-[12.5px]"
+            style={{ color: "var(--text-3)" }}
+            title="Defined as: brief completes all 16 squads with no failed nodes"
+          >
+            briefs complete error-free
+          </span>
         </Stat>
       </div>
     </div>

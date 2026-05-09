@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 const links = [
   { href: "/#how", label: "How it works" },
@@ -33,7 +33,7 @@ export function Nav() {
             </Link>
           ))}
         </nav>
-        <a href={STRIPE_BRIEF} className="btn-primary !h-9 !px-3.5 !text-[13px]">
+        <a href={STRIPE_BRIEF} className="btn-primary !h-11 !px-3.5 !text-[13px]">
           Get my brief · $99
         </a>
       </div>

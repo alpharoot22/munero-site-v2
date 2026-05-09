@@ -7,7 +7,7 @@ const steps = [
   { t: "Tell us your niche", d: "Niche, country, monthly budget. 90 seconds.", time: "90s" },
   { t: "16 squads scan your market simultaneously", d: "Reddit, Trustpilot, Meta Ad Library, TikTok, YouTube, search intent, competitor PPC, and more.", time: "20m" },
   { t: "Intelligence validated and ranked", d: "Pain points scored by frequency and emotion. Hooks ranked by predicted performance. Competitor gaps scored by attack viability.", time: "5m" },
-  { t: "Brief assembled with 46 creative assets", d: "5 audience segments, 10 ad hooks, competitor angles, image and video prompts, headlines, body copy.", time: "8m" },
+  { t: "Brief assembled with 46 creative assets", d: "5 audience segments, 10 ad hooks, competitor angles. 46 creative assets auto-generated. Images included, video via credits.", time: "8m" },
   { t: "Campaign plan delivered", d: "30-day launch sequence, KPI targets, kill rules, scale rules, direct-import to Meta, Google, TikTok.", time: "Done" },
 ];
 

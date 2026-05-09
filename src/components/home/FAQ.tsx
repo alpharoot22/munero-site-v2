@@ -33,6 +33,10 @@ const faqs = [
     q: "What verticals does Munero work for?",
     a: "Briefs have shipped across DTC e-commerce, health and wellness, B2B SaaS, fashion, real estate, financial services, and creator brands. The 16 squads adapt by vertical: irrelevant sources skip and the others compensate. You see exactly which sources contributed to your brief.",
   },
+  {
+    q: "How does image and video generation work?",
+    a: "Every brief automatically generates images for your creative assets (no credit draw). Video generation uses credits: Full Creative includes 3 video credits, Agency includes 10 per month. Videos are produced via Higgsfield AI at production quality and ready to upload directly into Meta, TikTok, or YouTube ad managers.",
+  },
 ];
 
 export function FAQ() {

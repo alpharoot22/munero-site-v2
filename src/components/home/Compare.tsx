@@ -5,7 +5,7 @@ const tools = [
     n: "Munero",
     d: "AI marketing intelligence platform",
     p: "$99 per brief / $499 unlimited",
-    w: "Strategy + creative + plan in 35 minutes",
+    w: "Replaces 4 tools at 1/40th the annual cost. Brief + creative + plan in 35 minutes.",
     a: true,
   },
   {

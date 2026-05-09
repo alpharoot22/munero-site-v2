@@ -1,12 +1,21 @@
 import { Section, Eyebrow, H2 } from "../Section";
 
-// Single confirmed Stripe link from old codebase. All paid tiers point to the same
-// Stripe checkout for now. Per-tier links can be wired in when SKUs ship.
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+// Per-tier Stripe payment links. Until per-SKU links are created, the same
+// checkout link is used with a `?tier=` query param so Stripe / analytics can
+// distinguish which CTA was clicked. Replace with separate Stripe links when
+// SKUs are provisioned.
+const STRIPE_BASE = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+export const STRIPE_LINKS = {
+  brief:         `${STRIPE_BASE}?tier=brief`,
+  enhanced:      `${STRIPE_BASE}?tier=enhanced`,
+  full_creative: `${STRIPE_BASE}?tier=full_creative`,
+  agency:        `${STRIPE_BASE}?tier=agency`,
+};
 
 const tiers = [
   {
     name: "Brief",
+    note: "Intelligence only. Bring your own creative team.",
     price: "$99",
     cadence: "one-time",
     blurb: "Intelligence and strategy. No creative production.",
@@ -18,10 +27,11 @@ const tiers = [
       "30-day campaign plan with kill rules",
     ],
     cta: "Get my brief · $99",
-    href: STRIPE_BRIEF,
+    href: STRIPE_LINKS.brief,
   },
   {
     name: "Enhanced",
+    note: "Add depth when the vertical is competitive.",
     price: "$149",
     cadence: "one-time",
     blurb: "Brief plus deeper research and competitor work.",
@@ -32,27 +42,29 @@ const tiers = [
       "Cross-brand pattern detection",
       "Priority queue (faster turnaround)",
     ],
-    cta: "Choose Enhanced",
-    href: STRIPE_BRIEF,
+    cta: "Get Enhanced · $149",
+    href: STRIPE_LINKS.enhanced,
   },
   {
     name: "Full Creative",
+    note: "Everything in Enhanced, plus production-ready assets.",
     price: "$299",
     cadence: "one-time",
-    blurb: "Brief plus 46 creative assets and video credits.",
+    blurb: "Brief plus 46 creative assets, auto-images, and video credits.",
     popular: true,
     bullets: [
       "Everything in Enhanced",
       "46 creative assets across Meta, TikTok, Google",
-      "Video generation credits (Higgsfield)",
-      "Image generation included",
+      "Image generation auto-included for every brief",
+      "3 video credits (Higgsfield AI, production quality)",
       "Direct-import files for ad managers",
     ],
-    cta: "Get Full Creative",
-    href: STRIPE_BRIEF,
+    cta: "Get Full Creative · $299",
+    href: STRIPE_LINKS.full_creative,
   },
   {
     name: "Agency",
+    note: "For shops running 5+ clients. One subscription, unlimited briefs.",
     price: "$499",
     cadence: "per month",
     blurb: "Unlimited briefs, white-label, multi-seat.",
@@ -61,10 +73,11 @@ const tiers = [
       "White-label reports with your branding",
       "Multi-client command center",
       "Team seats + role permissions",
+      "10 video credits per month included",
       "Slack, Notion, Drive, Canva integrations",
     ],
-    cta: "Subscribe to Agency",
-    href: STRIPE_BRIEF,
+    cta: "Subscribe · $499/mo",
+    href: STRIPE_LINKS.agency,
   },
 ];
 
@@ -109,6 +122,12 @@ export function Pricing() {
             )}
             <div className="text-[13px] tracking-tight" style={{ color: "var(--text-2)" }}>
               {t.name}
+            </div>
+            <div
+              className="mt-1.5 text-[11.5px] leading-snug min-h-[2.4em]"
+              style={{ color: "var(--text-3)" }}
+            >
+              {t.note}
             </div>
             <div className="mt-3 flex items-baseline gap-1.5">
               <span className="num text-[36px] tracking-[-0.02em]" style={{ color: "var(--text)" }}>

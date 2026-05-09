@@ -29,20 +29,20 @@ export function Footer() {
           ]}
         />
         <FooterCol
-          title="Contact"
+          title="Legal"
           links={[
+            { href: "https://munero.ai/privacy", label: "Privacy Policy" },
+            { href: "https://munero.ai/terms", label: "Terms of Service" },
             { href: "mailto:hello@munero.ai", label: "hello@munero.ai" },
-            { href: "https://munero.ai", label: "Sign in" },
           ]}
         />
       </div>
       <div className="hairline-t">
         <div
-          className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between text-[11.5px] num"
+          className="mx-auto max-w-6xl px-6 py-5 text-[11.5px] num"
           style={{ color: "var(--text-3)" }}
         >
-          <span>© {new Date().getFullYear()} Munero · hello@munero.ai</span>
-          <span>v2.1 · bioluminescent</span>
+          © {new Date().getFullYear()} Munero · hello@munero.ai
         </div>
       </div>
     </footer>

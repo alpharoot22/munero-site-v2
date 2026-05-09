@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Section, Eyebrow, H2, Lede } from "../../components/Section";
 import { Octopus } from "../../components/Octopus";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency";
 
 export const metadata: Metadata = {
   title: "Agency",

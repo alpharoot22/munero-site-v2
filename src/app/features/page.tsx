@@ -75,6 +75,33 @@ export default function FeaturesPage() {
       <WhatYouGet />
 
       <Section bordered>
+        <Eyebrow>Creative generation</Eyebrow>
+        <H2 className="max-w-[22ch]">
+          Images auto-generated. Videos via credits. Both production quality.
+        </H2>
+        <Lede>
+          Every brief produces 46 creative assets across Meta, TikTok, and Google. Image
+          generation is included automatically. Video generation runs through Higgsfield AI on
+          a credit basis.
+        </Lede>
+        <ul className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px hairline">
+          {[
+            ["Auto image generation", "Every brief automatically generates Meta, TikTok, and Google image creatives. Headlines, body copy, and image prompts are all generated. No credit draw, no extra step."],
+            ["Higgsfield video credits", "Video assets are produced via Higgsfield AI. Full Creative includes 3 credits, Agency includes 10 per month. Production quality, ready to upload."],
+            ["Direct export to ad managers", "Direct-import files for Meta Ads Manager, Google Ads Editor, and TikTok Ads Manager. Skip the manual asset upload step entirely."],
+            ["Tagged by funnel stage", "Cold, warm, and hot variants for every concept. So you don't run BoF copy at top of funnel."],
+          ].map(([t, b]) => (
+            <li key={t} className="p-6 hover-lift" style={{ background: "var(--surface)" }}>
+              <div className="text-[15px] font-medium tracking-tight">{t}</div>
+              <div className="mt-1.5 text-[13.5px] leading-relaxed" style={{ color: "var(--text-2)" }}>
+                {b}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section bordered>
         <Eyebrow>Integrations</Eyebrow>
         <H2 className="max-w-[20ch]">Plugs into the tools your team already runs on.</H2>
         <ul className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-px hairline">

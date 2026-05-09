@@ -23,7 +23,10 @@ const squads = [
 ];
 
 export function Sources() {
+  // Tracks active node from hover OR click. Mobile users tap to select since
+  // there's no hover; desktop users get hover behavior automatically.
   const [hover, setHover] = useState<number | null>(null);
+  const select = (i: number | null) => setHover(i);
   const cx = 320;
   const cy = 320;
   const radius = 240;
@@ -109,9 +112,14 @@ export function Sources() {
               return (
                 <g
                   key={n.i}
-                  onMouseEnter={() => setHover(n.i)}
-                  onMouseLeave={() => setHover(null)}
-                  style={{ cursor: "pointer" }}
+                  onMouseEnter={() => select(n.i)}
+                  onMouseLeave={() => select(null)}
+                  onClick={() => select(hover === n.i ? null : n.i)}
+                  onTouchStart={() => select(n.i)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${n.label}: ${n.d}`}
+                  style={{ cursor: "pointer", outline: "none" }}
                 >
                   <circle
                     cx={n.x}
@@ -155,7 +163,8 @@ export function Sources() {
           style={{ background: "var(--surface)" }}
         >
           <div className="num text-[10.5px] tracking-[0.16em]" style={{ color: "var(--accent)" }}>
-            HOVER A NODE
+            <span className="hidden md:inline">HOVER A SQUAD</span>
+            <span className="md:hidden">TAP A SQUAD</span>
           </div>
           <div className="mt-3 min-h-[140px]">
             {hover === null ? (
