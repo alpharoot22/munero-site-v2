@@ -6,7 +6,7 @@ import { Platform } from "../../components/home/Platform";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Every Munero feature: 16 intelligence sources, 46 creative assets, 8 AI assistants, agency workspace, and integrations.",
+    "Every Munero feature: 16 intelligence squads, 46 creative assets, 8 AI assistants, agency workspace, and integrations.",
 };
 
 export default function FeaturesPage() {

@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "What if my vertical is unusual?",
-    a: "The 16 sources adapt by vertical. We've run briefs across DTC commerce, fintech, B2B SaaS, healthcare, professional services, and creator brands. If a source doesn't apply (e.g. Amazon for B2B), it skips and the others compensate. You see exactly which sources contributed.",
+    a: "The 16 squads adapt by vertical. We've run briefs across DTC commerce, fintech, B2B SaaS, healthcare, professional services, and creator brands. If a squad's data source doesn't apply (e.g. Amazon for B2B), it skips and the others compensate. You see exactly which squads contributed.",
   },
   {
     q: "How long does it take?",
@@ -32,6 +32,10 @@ const faqs = [
   {
     q: "Can agencies actually use this with clients?",
     a: "The Agency tier is built for it. White-label reports with your branding, multi-client workspace, team seats, and Slack/Notion/Drive/Canva integrations. Several 10 to 50 person agencies are running it as a productized service.",
+  },
+  {
+    q: "How does image and video generation work?",
+    a: "Every brief automatically generates images for your creative assets at no extra cost. Video generation uses credits: Full Creative includes 3 video credits, Agency includes 10 per month. Videos are generated via Higgsfield AI at production quality. Credits do not roll over month to month on Agency.",
   },
 ];
 

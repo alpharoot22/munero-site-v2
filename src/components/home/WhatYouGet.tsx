@@ -101,6 +101,40 @@ export function WhatYouGet() {
             </li>
           ))}
         </ul>
+
+        {/* Credits explainer — only on Creative tab */}
+        {active === "creative" && (
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-px hairline-t"
+            style={{ background: "var(--border)" }}
+          >
+            <div
+              className="p-5"
+              style={{ background: "var(--surface-2)" }}
+            >
+              <p className="num text-[10px] uppercase tracking-[0.1em] mb-2" style={{ color: "var(--accent)" }}>
+                Auto-included
+              </p>
+              <p className="text-[14.5px] font-medium tracking-tight">Image generation</p>
+              <p className="mt-1 text-[12.5px] leading-relaxed" style={{ color: "var(--text-2)" }}>
+                Every creative asset gets an auto-generated image. Included in all tiers.
+              </p>
+            </div>
+            <div
+              className="p-5"
+              style={{ background: "var(--surface-2)" }}
+            >
+              <p className="num text-[10px] uppercase tracking-[0.1em] mb-2" style={{ color: "var(--accent)" }}>
+                Via credits
+              </p>
+              <p className="text-[14.5px] font-medium tracking-tight">Video generation</p>
+              <p className="mt-1 text-[12.5px] leading-relaxed" style={{ color: "var(--text-2)" }}>
+                Full Creative includes 3 video credits. Agency includes 10 / month. Powered by
+                Higgsfield AI (video AI platform).
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </Section>
   );

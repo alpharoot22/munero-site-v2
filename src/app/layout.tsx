@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     template: "%s · Munero",
   },
   description:
-    "Munero builds complete campaign briefs in 35 minutes using 16 intelligence sources. Know exactly what message will work before you spend on ads. $99 per brief, no subscription.",
+    "Munero builds complete campaign briefs in 35 minutes using 16 intelligence squads. Know exactly what message will work before you spend on ads. $99 per brief, no subscription.",
   openGraph: {
     title: "Munero: Know what works before you spend",
     description:
-      "Complete campaign briefs in 35 minutes. 16 intelligence sources. 46 creative assets. $99 one-time.",
+      "Complete campaign briefs in 35 minutes. 16 intelligence squads. 46 creative assets. $99 one-time.",
     type: "website",
     url: "https://munero.ai",
   },

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const matrix = [
-  { feature: "16 intelligence sources", brief: true, enhanced: true, full: true, agency: true },
+  { feature: "16 intelligence squads", brief: true, enhanced: true, full: true, agency: true },
   { feature: "Audience + pain point library", brief: true, enhanced: true, full: true, agency: true },
   { feature: "Competitor analysis (10)", brief: true, enhanced: true, full: true, agency: true },
   { feature: "Final strategy + opportunity score", brief: true, enhanced: true, full: true, agency: true },

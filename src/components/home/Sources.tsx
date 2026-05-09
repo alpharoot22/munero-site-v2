@@ -40,7 +40,7 @@ export function Sources() {
 
   return (
     <Section bordered id="sources">
-      <Eyebrow>The 16 sources</Eyebrow>
+      <Eyebrow>The 16 squads</Eyebrow>
       <H2 className="max-w-[26ch]">Every brief is built on 16 parallel intelligence streams.</H2>
       <Lede>
         Not a search wrapper. Real scraping, real APIs, real data assembled into one verifiable

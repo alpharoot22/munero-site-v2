@@ -10,13 +10,19 @@ export function Hero() {
       <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-14 md:pb-20 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
         {/* Left 55% */}
         <div>
-          <div className="eyebrow mb-5">
+          <div className="eyebrow mb-3">
             <span
               className="block w-1.5 h-1.5 rounded-full"
               style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
             />
             INTELLIGENCE ENGINE
           </div>
+          <p
+            className="num text-[11px] uppercase tracking-[0.12em] mb-6"
+            style={{ color: "var(--text-3)" }}
+          >
+            For DTC · Agencies · In-house teams · $5K+ mo ad spend
+          </p>
 
           <h1
             className="text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] font-bold"
@@ -35,7 +41,7 @@ export function Hero() {
             className="mt-6 text-[18px] leading-relaxed max-w-[480px]"
             style={{ color: "var(--text-2)" }}
           >
-            16 intelligence sources. One campaign brief. In 35 minutes.
+            16 intelligence squads. One campaign brief. In 35 minutes.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -48,6 +54,9 @@ export function Hero() {
               <Arrow />
             </Link>
           </div>
+          <p className="mt-6 text-[12.5px]" style={{ color: "var(--text-3)" }}>
+            28 briefs run this month · One-time payment · No subscription
+          </p>
         </div>
 
         {/* Right 45% — Octopus */}
@@ -67,7 +76,7 @@ function ProofStrip() {
       <div className="mx-auto max-w-6xl px-6 py-5 flex flex-wrap items-center gap-x-10 gap-y-3 justify-between">
         <Stat>
           <CountUp to={16} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>sources</span>
+          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>squads</span>
         </Stat>
         <Stat>
           <CountUp to={46} className="num text-[16px]" />
@@ -84,7 +93,13 @@ function ProofStrip() {
         </Stat>
         <Stat>
           <CountUp to={96} suffix="%" className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>success</span>
+          <span
+            className="text-[12.5px] num"
+            style={{ color: "var(--text-3)" }}
+            title="96% of briefs complete all 16 squads without a failed node"
+          >
+            complete error-free
+          </span>
         </Stat>
       </div>
     </div>

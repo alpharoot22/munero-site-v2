@@ -6,15 +6,17 @@
  * Stagger 1s per tentacle, total loop 10s. CSS-only.
  */
 
+// 8 cluster labels — short for mobile readability. Each spans 1-2 of the
+// 16 underlying squads.
 const SOURCES = [
-  { id: "reddit", label: "Reddit & Reviews",     angle: -90,  dist: 235 },
-  { id: "meta",   label: "Meta Ads Library",     angle: -45,  dist: 230 },
-  { id: "ggl",    label: "Google Ads",           angle: 0,    dist: 250 },
-  { id: "ttk",    label: "TikTok Intelligence",  angle: 45,   dist: 230 },
-  { id: "yt",     label: "YouTube Trends",       angle: 90,   dist: 215 },
-  { id: "comp",   label: "Competitor Analysis",  angle: 135,  dist: 230 },
-  { id: "mkt",    label: "Market Signals",       angle: 180,  dist: 250 },
-  { id: "srch",   label: "Search Intent",        angle: -135, dist: 230 },
+  { id: "pain",  label: "Pain",        angle: -90,  dist: 235 },
+  { id: "meta",  label: "Meta/TikTok", angle: -45,  dist: 230 },
+  { id: "ggl",   label: "Google",      angle: 0,    dist: 250 },
+  { id: "video", label: "Video",       angle: 45,   dist: 230 },
+  { id: "yt",    label: "YouTube",     angle: 90,   dist: 215 },
+  { id: "comp",  label: "Rivals",      angle: 135,  dist: 230 },
+  { id: "mkt",   label: "Market",      angle: 180,  dist: 250 },
+  { id: "srch",  label: "Search",      angle: -135, dist: 230 },
 ];
 
 function tip(angle: number, dist: number, cx: number, cy: number) {
@@ -123,16 +125,19 @@ export function Octopus() {
                 animationDelay: `${t.idx * 0.4}s`,
               }}
             />
-            {/* Label */}
+            {/* Label — fluid sizing, smaller on mobile */}
             <text
               x={t.x + (t.x > cx + 5 ? 12 : t.x < cx - 5 ? -12 : 0)}
               y={t.y + (t.y > cy + 5 ? 18 : t.y < cy - 5 ? -8 : 4)}
               fontFamily="var(--font-jetbrains), monospace"
-              fontSize="10.5"
-              letterSpacing="0.04em"
+              fontSize="11"
+              letterSpacing="0.06em"
               fill="var(--text-2)"
               textAnchor={t.x > cx + 10 ? "start" : t.x < cx - 10 ? "end" : "middle"}
-              style={{ textTransform: "uppercase" }}
+              style={{
+                textTransform: "uppercase",
+                fontSize: "clamp(10px, 1.6vw, 11px)",
+              }}
             >
               {t.label}
             </text>

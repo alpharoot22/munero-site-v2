@@ -7,7 +7,7 @@ const steps = [
   { t: "Tell us your brand and product.", d: "Brand, URL, what you sell, who it's for, and your monthly ad budget. Two minutes.", time: "2 min" },
   { t: "16 intelligence squads run in parallel.", d: "Reddit, Trustpilot, Google Trends, YouTube, Meta Ad Library, TikTok, LinkedIn, Amazon, deep competitor analysis, and seven more sources.", time: "20 min" },
   { t: "We assemble the brief.", d: "Audience segments mapped to pain points. Hooks ranked by predicted performance. Competitor gaps with attack angles. Budget allocation. Kill rules.", time: "8 min" },
-  { t: "Creative production fires.", d: "46 assets generated across Meta, TikTok, and Google. Headlines, body, image prompts, video scripts. Tagged by funnel stage and audience.", time: "5 min" },
+  { t: "Creative production fires.", d: "5 audience segments, 10 ad hooks, competitor angles, platform allocation. Images auto-generated for every asset. Videos via credits on Full Creative and Agency.", time: "5 min" },
   { t: "You get the campaign plan.", d: "30-day launch sequence. KPI targets. Kill and scale rules. Direct-import to Meta, Google, TikTok. SHA-256 audit hash.", time: "Done" },
 ];
 
