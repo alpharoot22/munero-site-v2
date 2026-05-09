@@ -4,8 +4,8 @@ import { Logo } from "./Logo";
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 const links = [
-  { href: "/#how", label: "How it works" },
-  { href: "/#what-you-get", label: "What you get" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/how-it-works#what-you-get", label: "What you get" },
   { href: "/pricing", label: "Pricing" },
   { href: "/agency", label: "Agency" },
 ];

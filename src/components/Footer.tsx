@@ -23,8 +23,8 @@ export function Footer() {
         <FooterCol
           title="Resources"
           links={[
-            { href: "/#how", label: "How it works" },
-            { href: "/#what-you-get", label: "What you get" },
+            { href: "/how-it-works", label: "How it works" },
+            { href: "/how-it-works#what-you-get", label: "What you get" },
             { href: "/#faq", label: "FAQ" },
           ]}
         />
