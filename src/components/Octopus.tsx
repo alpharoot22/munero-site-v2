@@ -163,10 +163,23 @@ export function Octopus() {
           <line x1={cx + 18} y1={cy} x2={cx + 30} y2={cy} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
           <line x1={cx} y1={cy - 30} x2={cx} y2={cy - 14} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
           <line x1={cx} y1={cy + 14} x2={cx} y2={cy + 30} stroke="var(--bg)" strokeWidth="0.75" opacity="0.6" />
-          {/* Center label — inside the circle */}
+          {/* Center label — two-line stack: brand prefix + CORE */}
           <text
             x={cx}
-            y={cy}
+            y={cy - 7}
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontFamily="var(--font-jetbrains), monospace"
+            fontSize="9"
+            letterSpacing="0.18em"
+            fill="var(--text-2)"
+            style={{ textTransform: "uppercase" }}
+          >
+            MUNERO
+          </text>
+          <text
+            x={cx}
+            y={cy + 7}
             textAnchor="middle"
             dominantBaseline="central"
             fontFamily="var(--font-jetbrains), monospace"
