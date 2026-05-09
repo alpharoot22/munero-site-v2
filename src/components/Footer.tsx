@@ -31,8 +31,9 @@ export function Footer() {
         <FooterCol
           title="Legal"
           links={[
-            { href: "https://munero.ai/privacy", label: "Privacy Policy" },
-            { href: "https://munero.ai/terms", label: "Terms of Service" },
+            { href: "/privacy", label: "Privacy Policy" },
+            { href: "/terms", label: "Terms of Service" },
+            { href: "/data-deletion", label: "Data Deletion" },
             { href: "mailto:hello@munero.ai", label: "hello@munero.ai" },
           ]}
         />
