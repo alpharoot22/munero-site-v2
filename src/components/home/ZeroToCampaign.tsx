@@ -42,7 +42,7 @@ export function ZeroToCampaign() {
   }, []);
 
   return (
-    <section className="hairline-t">
+    <section id="how" className="hairline-t scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
         <h2
           className="font-bold tracking-[-0.02em]"
