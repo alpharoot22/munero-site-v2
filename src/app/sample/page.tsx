@@ -105,7 +105,7 @@ export default function SamplePage() {
                   ["The pan that outlasts the pan you're replacing.", "92"],
                   ["Cookware that survives induction, gas, and your dishwasher.", "87"],
                   ["The wedding registry's quiet favorite.", "81"],
-                  ["Why ceramic — and why most ceramic is wrong.", "76"],
+                  ["Why ceramic, and why most ceramic is wrong.", "76"],
                   ["10 years from now, you'll still be using this.", "72"],
                 ].map(([hook, score]) => (
                   <li
@@ -184,7 +184,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-baseline justify-between hairline-b py-3 text-[14px]">
       <span style={{ color: "var(--text-2)" }}>{label}</span>
-      <span className="num" style={{ color: "var(--text-1)" }}>
+      <span className="num" style={{ color: "var(--text)" }}>
         {value}
       </span>
     </div>
@@ -203,7 +203,7 @@ function Segment({
   return (
     <div className="hairline rounded-md p-5 mt-3" style={{ background: "var(--surface)" }}>
       <div className="flex items-baseline justify-between">
-        <span className="text-[15.5px] font-medium tracking-tight" style={{ color: "var(--text-1)" }}>
+        <span className="text-[15.5px] font-medium tracking-tight" style={{ color: "var(--text)" }}>
           {name}
         </span>
         <span className="num text-[13px]" style={{ color: "var(--accent)" }}>

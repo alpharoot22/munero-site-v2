@@ -70,8 +70,8 @@ export function WhatYouGet() {
               onClick={() => setActive(t.id)}
               className="px-5 py-4 text-[13.5px] font-medium tracking-tight transition-colors whitespace-nowrap"
               style={{
-                color: active === t.id ? "var(--text-1)" : "var(--text-3)",
-                background: active === t.id ? "var(--surface-elev)" : "transparent",
+                color: active === t.id ? "var(--text)" : "var(--text-3)",
+                background: active === t.id ? "var(--surface-2)" : "transparent",
                 borderBottom: active === t.id ? "1px solid var(--accent)" : "none",
               }}
             >

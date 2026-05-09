@@ -173,7 +173,7 @@ function RowMock({
       <span
         className="num"
         style={{
-          color: success ? "var(--score-high)" : "var(--text-1)",
+          color: success ? "var(--score-high)" : "var(--text)",
         }}
       >
         {value}
@@ -187,7 +187,7 @@ function BarRow({ label, value }: { label: string; value: number }) {
     <div className="py-2">
       <div className="flex justify-between text-[12.5px] mb-1.5">
         <span style={{ color: "var(--text-2)" }}>{label}</span>
-        <span className="num" style={{ color: "var(--text-1)" }}>
+        <span className="num" style={{ color: "var(--text)" }}>
           {value}
         </span>
       </div>

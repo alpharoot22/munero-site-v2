@@ -10,12 +10,15 @@ export const metadata: Metadata = {
 export default function AgencyPage() {
   return (
     <>
-      <section className="bg-radial-subtle">
+      <section>
         <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-20">
-          <span className="tag">
-            <span className="dot" />
-            <span className="num">$499/mo · unlimited briefs</span>
-          </span>
+          <div className="eyebrow mb-5">
+            <span
+              className="block w-1.5 h-1.5 rounded-full"
+              style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
+            />
+            $499 / MO · UNLIMITED BRIEFS
+          </div>
           <h1 className="mt-6 text-[44px] md:text-[64px] leading-[1.04] tracking-[-0.03em] font-medium max-w-[18ch]">
             A productized intelligence layer for your agency.
           </h1>
@@ -27,7 +30,7 @@ export default function AgencyPage() {
             Compound cross-client intelligence into a moat your competitors can't replicate.
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="https://munero.ai" className="btn-primary">
+            <a href="https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency" className="btn-primary">
               Book a walkthrough
             </a>
             <a href="/sample" className="btn-secondary">
@@ -46,7 +49,7 @@ export default function AgencyPage() {
             ["White-label reports", "Your agency name and logo on every deliverable. Clients never see Munero unless you want them to."],
             ["Multi-client command center", "One workspace, every client visible. Filter by stage, threat level, or campaign window."],
             ["Team seats with roles", "Strategists, media buyers, creative leads, and account managers each get the right access."],
-            ["Cross-client intelligence", "Patterns observed in client A inform briefs for client B (when not conflicting) — a moat that compounds."],
+            ["Cross-client intelligence", "Patterns observed in client A inform briefs for client B (when not conflicting): a moat that compounds."],
           ].map(([title, body], i) => (
             <li key={title} className="hairline-b grid grid-cols-[auto_1fr] gap-6 py-7">
               <span className="num text-[14px] pt-1" style={{ color: "var(--accent)" }}>
@@ -91,13 +94,13 @@ export default function AgencyPage() {
         </div>
       </Section>
 
-      <section className="hairline-t bg-radial-subtle">
+      <section className="hairline-t">
         <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
           <h2 className="text-[36px] md:text-[52px] tracking-[-0.03em] leading-[1.04] font-medium max-w-[20ch]">
             Ready to make your agency feel ten years ahead?
           </h2>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
-            <a href="https://munero.ai" className="btn-primary">
+            <a href="https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency" className="btn-primary">
               Book a walkthrough
             </a>
             <a href="/pricing" className="btn-secondary">

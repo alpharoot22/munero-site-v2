@@ -98,7 +98,7 @@ function Tick() {
 function Dash() {
   return (
     <span style={{ color: "var(--text-3)" }} className="num text-[12px]">
-      —
+      ·
     </span>
   );
 }
