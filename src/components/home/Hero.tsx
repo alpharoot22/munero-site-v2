@@ -31,7 +31,7 @@ export function Hero() {
           35
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-6 pt-[140px] pb-[120px] grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
+        <div className="relative mx-auto max-w-6xl px-6 pt-14 md:pt-20 pb-20 md:pb-28 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
           {/* Left 55% */}
           <div className="relative z-10">
             <div
