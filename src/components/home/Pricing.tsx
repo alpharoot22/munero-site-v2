@@ -1,5 +1,9 @@
 import { Section, Eyebrow, H2 } from "../Section";
 
+// Single confirmed Stripe link from old codebase. All paid tiers point to the same
+// Stripe checkout for now. Per-tier links can be wired in when SKUs ship.
+const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
+
 const tiers = [
   {
     name: "Brief",
@@ -7,15 +11,14 @@ const tiers = [
     cadence: "one-time",
     blurb: "Intelligence and strategy. No creative production.",
     bullets: [
-      "16 intelligence sources",
-      "Audience + pain point library",
-      "Competitor analysis (10 deep dives)",
+      "16 intelligence squads",
+      "5 audience segments with intent scores",
+      "Competitor gap analysis (10 deep dives)",
       "Final strategy + market opportunity score",
       "30-day campaign plan with kill rules",
-      "SHA-256 audit hash",
     ],
-    cta: "Start with $99",
-    href: "https://munero.ai",
+    cta: "Get my brief · $99",
+    href: STRIPE_BRIEF,
   },
   {
     name: "Enhanced",
@@ -24,16 +27,16 @@ const tiers = [
     blurb: "Brief plus deeper research and competitor work.",
     bullets: [
       "Everything in Brief",
-      "Deep research module",
+      "Deep research module (Perplexity + academic)",
       "Extended competitor deep dive",
       "Cross-brand pattern detection",
       "Priority queue (faster turnaround)",
     ],
     cta: "Choose Enhanced",
-    href: "https://munero.ai",
+    href: STRIPE_BRIEF,
   },
   {
-    name: "Full creative",
+    name: "Full Creative",
     price: "$299",
     cadence: "one-time",
     blurb: "Brief plus 46 creative assets and video credits.",
@@ -44,10 +47,9 @@ const tiers = [
       "Video generation credits (Higgsfield)",
       "Image generation included",
       "Direct-import files for ad managers",
-      "Compliance review",
     ],
-    cta: "Get Full creative",
-    href: "https://munero.ai",
+    cta: "Get Full Creative",
+    href: STRIPE_BRIEF,
   },
   {
     name: "Agency",
@@ -60,10 +62,9 @@ const tiers = [
       "Multi-client command center",
       "Team seats + role permissions",
       "Slack, Notion, Drive, Canva integrations",
-      "Priority support",
     ],
-    cta: "Book a walkthrough",
-    href: "https://munero.ai",
+    cta: "Subscribe to Agency",
+    href: STRIPE_BRIEF,
   },
 ];
 
@@ -71,40 +72,54 @@ export function Pricing() {
   return (
     <Section bordered id="pricing">
       <Eyebrow>Pricing</Eyebrow>
-      <H2 className="max-w-[22ch]">Pay per brief. No subscription unless you want one.</H2>
+      <H2 className="max-w-[22ch]">
+        Pay per brief. <span className="italic-accent">No subscription unless you want one</span>.
+      </H2>
 
       <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px hairline">
         {tiers.map((t) => (
           <div
             key={t.name}
-            className="p-7 flex flex-col relative"
+            className="relative p-7 flex flex-col hover-lift"
             style={{
-              background: t.popular ? "var(--surface-elev)" : "var(--surface)",
+              background: t.popular ? "var(--surface-2)" : "var(--surface)",
             }}
           >
             {t.popular && (
-              <span
-                className="absolute top-4 right-4 num text-[10px] tracking-[0.12em] px-2 py-1 rounded"
-                style={{
-                  background: "var(--accent)",
-                  color: "#06140F",
-                  fontWeight: 600,
-                }}
-              >
-                MOST POPULAR
-              </span>
+              <>
+                <span
+                  aria-hidden
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at top, rgba(29,158,117,0.1) 0%, transparent 60%)",
+                  }}
+                />
+                <span
+                  className="absolute top-4 right-4 num text-[9.5px] tracking-[0.12em] px-2 py-1 rounded"
+                  style={{
+                    background: "var(--accent)",
+                    color: "#051410",
+                    fontWeight: 700,
+                  }}
+                >
+                  MOST POPULAR
+                </span>
+              </>
             )}
-            <div className="text-[14px] tracking-tight" style={{ color: "var(--text-2)" }}>
+            <div className="text-[13px] tracking-tight" style={{ color: "var(--text-2)" }}>
               {t.name}
             </div>
             <div className="mt-3 flex items-baseline gap-1.5">
-              <span className="num text-[34px] tracking-tight">{t.price}</span>
-              <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>
+              <span className="num text-[36px] tracking-[-0.02em]" style={{ color: "var(--text)" }}>
+                {t.price}
+              </span>
+              <span className="text-[12px] num" style={{ color: "var(--text-3)" }}>
                 {t.cadence}
               </span>
             </div>
             <p
-              className="mt-3 text-[13.5px] leading-relaxed min-h-[3em]"
+              className="mt-3 text-[13px] leading-relaxed min-h-[3em]"
               style={{ color: "var(--text-2)" }}
             >
               {t.blurb}
@@ -113,7 +128,7 @@ export function Pricing() {
               {t.bullets.map((b) => (
                 <li
                   key={b}
-                  className="text-[13px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+                  className="text-[12.5px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
                   style={{ color: "var(--text-2)" }}
                 >
                   <Tick />
@@ -123,7 +138,9 @@ export function Pricing() {
             </ul>
             <a
               href={t.href}
-              className={t.popular ? "btn-primary mt-7 justify-center" : "btn-secondary mt-7 justify-center"}
+              className={
+                t.popular ? "btn-primary mt-7 justify-center" : "btn-secondary mt-7 justify-center"
+              }
             >
               {t.cta}
             </a>

@@ -3,7 +3,9 @@ import { Problem } from "../components/home/Problem";
 import { HowItWorks } from "../components/home/HowItWorks";
 import { Sources } from "../components/home/Sources";
 import { WhatYouGet } from "../components/home/WhatYouGet";
-import { Platform } from "../components/home/Platform";
+import { Voices } from "../components/home/Voices";
+import { Compare } from "../components/home/Compare";
+import { AgencyTease } from "../components/home/AgencyTease";
 import { Pricing } from "../components/home/Pricing";
 import { FAQ } from "../components/home/FAQ";
 import { FinalCTA } from "../components/home/FinalCTA";
@@ -16,7 +18,9 @@ export default function Home() {
       <HowItWorks />
       <Sources />
       <WhatYouGet />
-      <Platform />
+      <Voices />
+      <Compare />
+      <AgencyTease />
       <Pricing />
       <FAQ />
       <FinalCTA />

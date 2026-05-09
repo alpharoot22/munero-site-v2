@@ -2,36 +2,36 @@ import { Section, Eyebrow, H2 } from "../Section";
 
 const faqs = [
   {
-    q: "Is it actually worth $99?",
-    a: "If you spend $5K a month on ads, the average wasted-spend on under-validated creative is 30 to 50 percent of that budget in the first 3 weeks. $99 buys you 35 minutes of parallel research that your team would take 2 weeks to assemble manually. The math is straightforward.",
+    q: "What exactly is a buying signal?",
+    a: "A buying signal is a pattern in real consumer behavior, search queries, Reddit complaints, review sentiment, competitor ad engagement, that predicts what message, offer, or angle will trigger a purchase. Munero reads these signals across 16 sources and scores your campaign idea against them before you spend.",
   },
   {
-    q: "How is this different from ChatGPT?",
-    a: "ChatGPT writes plausible ad copy from training data. Munero scrapes Reddit complaints, Trustpilot reviews, the live Meta Ad Library, current TikTok content, and competitor sites in parallel, then assembles them into one document with citations. It's the difference between guessing and grounding.",
+    q: "How is this different from ChatGPT or a freelancer?",
+    a: "ChatGPT generates plausible copy. A freelancer gives you their opinion. Munero gives you a scored prediction based on live market data: what your audience is actually searching, complaining about, clicking on, and buying. The brief includes a Campaign Readiness Score, top objections, and specific angles ranked by predicted conversion likelihood.",
   },
   {
-    q: "What if my vertical is unusual?",
-    a: "The 16 sources adapt by vertical. We've run briefs across DTC commerce, fintech, B2B SaaS, healthcare, professional services, and creator brands. If a source doesn't apply (e.g. Amazon for B2B), it skips and the others compensate. You see exactly which sources contributed.",
+    q: "Can I use this for client pitches?",
+    a: "Yes. Agencies use Munero briefs to walk into pitches with buying signal research their competitors don't have. The Agency plan includes white-label exports so you can present under your own brand.",
   },
   {
-    q: "How long does it take?",
-    a: "Roughly 35 minutes from kickoff to delivery. The 16 squads run in parallel, then assembly takes 8 minutes, then creative production fires. You can leave the tab open or get a notification.",
+    q: "How long does a brief take?",
+    a: "About 35 minutes from input to full deliverable. You enter your niche, country, and budget. Munero's 16 squads run simultaneously across data sources and deliver a complete brief.",
   },
   {
-    q: "Can I see a sample brief first?",
-    a: "Yes. The /sample page shows a real anonymized brief with every section populated. Audience segments, hooks, competitor analysis, the campaign plan. Look at it before you spend $99.",
+    q: "What if my campaign doesn't match the brief?",
+    a: "Every campaign result you feed back into Munero sharpens the next prediction. The system compounds, the more campaigns it sees in your vertical, the more accurate the scores become. Early users report the first brief alone saves 2 to 3 weeks of manual research.",
   },
   {
-    q: "Do I need a subscription?",
-    a: "No. The Brief, Enhanced, and Full creative tiers are one-time purchases. Agency is the only monthly tier and is purpose-built for shops running multiple client briefs per week.",
+    q: "Do I need existing campaign data to start?",
+    a: "No. Munero works before you have any performance data. It synthesizes external signals, what people search, say, review, and click, to predict what will work. You bring the niche, Munero brings the intelligence.",
   },
   {
-    q: "What if I'm not happy with the brief?",
-    a: "If the brief doesn't pass our internal quality bar (we run 12 verification checks before delivery), we re-run it on us. If it does pass and you still want a refund, contact support within 7 days and we'll handle it.",
+    q: "Is there a subscription?",
+    a: "Only for the Agency tier ($499 / month). Brief, Enhanced, and Full Creative are one-time payments. No auto-renewal, no commitments. Buy a brief, get a brief.",
   },
   {
-    q: "Can agencies actually use this with clients?",
-    a: "The Agency tier is built for it. White-label reports with your branding, multi-client workspace, team seats, and Slack/Notion/Drive/Canva integrations. Several 10 to 50 person agencies are running it as a productized service.",
+    q: "What verticals does Munero work for?",
+    a: "Briefs have shipped across DTC e-commerce, health and wellness, B2B SaaS, fashion, real estate, financial services, and creator brands. The 16 squads adapt by vertical: irrelevant sources skip and the others compensate. You see exactly which sources contributed to your brief.",
   },
 ];
 
@@ -39,22 +39,24 @@ export function FAQ() {
   return (
     <Section bordered id="faq">
       <Eyebrow>FAQ</Eyebrow>
-      <H2 className="max-w-[20ch]">The questions you'd ask before paying.</H2>
+      <H2 className="max-w-[20ch]">
+        Questions, <span className="italic-accent">answered</span>.
+      </H2>
 
-      <div className="mt-12 hairline-t">
+      <div className="mt-12 hairline-t max-w-[860px]">
         {faqs.map((f) => (
           <details key={f.q} className="hairline-b group">
             <summary className="flex items-center justify-between gap-6 py-6 px-1 cursor-pointer">
-              <span className="text-[16.5px] tracking-tight font-medium pr-6">{f.q}</span>
+              <span className="text-[16px] tracking-tight font-medium pr-6">{f.q}</span>
               <span
-                className="chev shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-full hairline"
+                className="chev shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full hairline"
                 style={{ color: "var(--text-2)" }}
               >
                 <Plus />
               </span>
             </summary>
             <div
-              className="pb-7 pr-12 text-[15px] leading-relaxed max-w-[68ch]"
+              className="pb-7 pr-12 text-[14.5px] leading-relaxed max-w-[68ch]"
               style={{ color: "var(--text-2)" }}
             >
               {f.a}
