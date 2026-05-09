@@ -1,4 +1,6 @@
 import { Hero } from "../components/home/Hero";
+import { WhyMunero } from "../components/home/WhyMunero";
+import { ZeroToCampaign } from "../components/home/ZeroToCampaign";
 import { Problem } from "../components/home/Problem";
 import { Personas } from "../components/home/Personas";
 import { HowItWorks } from "../components/home/HowItWorks";
@@ -18,6 +20,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <WhyMunero />
+      <ZeroToCampaign />
       <Problem />
       <Personas />
       <HowItWorks />

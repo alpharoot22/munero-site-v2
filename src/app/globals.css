@@ -258,3 +258,86 @@ details[open] > summary .chev { transform: rotate(45deg); }
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Generic scroll-reveal — IntersectionObserver toggles .revealed */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero load-staggered fade-up via --delay custom property */
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-on-load {
+  opacity: 0;
+  animation: hero-fade-up 400ms ease-out forwards;
+  animation-delay: calc(var(--delay, 0) * 80ms);
+}
+
+/* Two-row marquee (REPLACES / DELIVERS) */
+@keyframes scroll-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes scroll-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* Source pill pulse — ring + border lift on a 12s loop, staggered per pill */
+@keyframes pill-pulse {
+  0%, 85%, 100% {
+    box-shadow: 0 0 0 0 rgba(29, 158, 117, 0);
+    border-color: var(--border);
+    color: var(--text-2);
+  }
+  90% {
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+}
+.source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-2);
+  white-space: nowrap;
+  animation: pill-pulse 12s ease-in-out infinite;
+  animation-delay: calc(var(--pill-index, 0) * 1s);
+}
+.source-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Flow arrow draw-on-reveal */
+@keyframes flow-arrow-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes flow-arrow-head {
+  to { opacity: 1; }
+}
+
+/* Universal interactive press */
+button:active,
+.btn-primary:active,
+.btn-secondary:active,
+a[class*="btn-"]:active {
+  transform: scale(0.97);
+  transition: transform 80ms ease-out;
+}

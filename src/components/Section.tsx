@@ -72,7 +72,8 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
     <h2
-      className={`text-[40px] md:text-[48px] tracking-[-0.025em] leading-[1.05] font-bold ${className}`}
+      className={`tracking-[-0.02em] leading-[1.1] font-bold ${className}`}
+      style={{ fontSize: "clamp(32px, 4vw, 52px)" }}
     >
       {children}
     </h2>

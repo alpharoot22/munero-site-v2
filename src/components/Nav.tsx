@@ -5,7 +5,7 @@ const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief"
 
 const links = [
   { href: "/#how", label: "How it works" },
-  { href: "/#brief", label: "What you get" },
+  { href: "/#what-you-get", label: "What you get" },
   { href: "/pricing", label: "Pricing" },
   { href: "/agency", label: "Agency" },
 ];

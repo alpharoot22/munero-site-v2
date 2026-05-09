@@ -29,13 +29,14 @@ export function Problem() {
     <Section bordered id="problem">
       <Eyebrow>The problem</Eyebrow>
       <H2 className="max-w-[28ch]">
-        The average marketer spends{" "}
-        <span style={{ color: "var(--score-low)" }}>$10,000</span> learning what doesn&apos;t
-        work. Munero runs that research in 35 minutes for $99.
+        Most campaigns start with a guess.
+        <br />
+        Munero starts with{" "}
+        <span style={{ color: "var(--accent)" }}>evidence</span>.
       </H2>
       <Lede>
-        That math is broken. The cheapest market research is the kind that runs before media
-        spend, not after.
+        Real Reddit complaints. Real competitor ads. Real search behavior. Not AI
+        hallucinations. Not agency gut feel. Real signals.
       </Lede>
 
       <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px hairline">

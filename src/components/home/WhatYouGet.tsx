@@ -54,7 +54,7 @@ export function WhatYouGet() {
   const [active, setActive] = useState("intel");
   const current = tabs.find((t) => t.id === active)!;
   return (
-    <Section bordered id="brief">
+    <Section bordered id="what-you-get">
       <Eyebrow>What you get</Eyebrow>
       <H2 className="max-w-[20ch]">A brief built to be argued with, not skimmed.</H2>
       <Lede>

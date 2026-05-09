@@ -24,7 +24,7 @@ export function Footer() {
           title="Resources"
           links={[
             { href: "/#how", label: "How it works" },
-            { href: "/#brief", label: "What you get" },
+            { href: "/#what-you-get", label: "What you get" },
             { href: "/#faq", label: "FAQ" },
           ]}
         />

@@ -4,8 +4,14 @@ const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief"
 
 export function FinalCTA() {
   return (
-    <section className="hairline-t relative overflow-hidden" style={{ background: "var(--surface)" }}>
-      {/* Subtle octopus silhouette at 3% */}
+    <section
+      className="hairline-t relative overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(29,158,117,0.08) 0%, transparent 70%)",
+      }}
+    >
+      {/* Subtle octopus silhouette */}
       <svg
         aria-hidden="true"
         viewBox="0 0 800 600"
@@ -41,32 +47,57 @@ export function FinalCTA() {
       </svg>
 
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36 relative">
-        <div className="max-w-[28ch] mx-auto text-center">
-          <h2 className="text-[40px] md:text-[64px] tracking-[-0.03em] leading-[1.02] font-bold">
-            Your competitors are already testing. You should know what will win first.
-          </h2>
-          <p
-            className="mt-6 text-[17px] leading-relaxed max-w-[48ch] mx-auto"
-            style={{ color: "var(--text-2)" }}
+        <div className="max-w-[40ch] mx-auto text-center">
+          <h2
+            className="font-bold tracking-[-0.03em] leading-[1.0]"
+            style={{
+              fontSize: "clamp(42px, 6vw, 72px)",
+              color: "var(--text)",
+            }}
           >
-            Get a complete, defensible campaign brief in 35 minutes. $99 one-time.
+            Zero to running campaign.
+            <br />
+            <span style={{ color: "var(--accent)" }}>35 minutes.</span>{" "}
+            <span style={{ color: "var(--accent)" }}>$99.</span>
+          </h2>
+
+          <p
+            className="mt-6 mx-auto"
+            style={{
+              fontSize: 18,
+              color: "var(--text-2)",
+              maxWidth: 560,
+              lineHeight: 1.55,
+            }}
+          >
+            Everything your agency charges $5,000 to build. Built on real customer behavior.
+            Done before you spend a dollar.
           </p>
+
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <a href={STRIPE_BRIEF} className="btn-primary">
               Get my brief · $99
             </a>
             <Link href="/register" className="btn-secondary">
-              Register free, choose plan later
+              Register free · choose plan later
             </Link>
           </div>
           <Link
             href="/sample"
-            className="inline-block mt-5 text-[13px] transition-colors"
-            style={{ color: "var(--text-2)" }}
+            className="inline-block mt-5 transition-colors"
+            style={{ fontSize: 13, color: "var(--text-3)" }}
           >
             Or see a sample brief first{" "}
             <span style={{ color: "var(--accent)" }}>→</span>
           </Link>
+
+          <p
+            className="num mt-8"
+            style={{ fontSize: 11, color: "var(--text-3)" }}
+          >
+            28 briefs run this month · 16 intelligence squads · 46 creative assets · 9 AI
+            assistants
+          </p>
         </div>
       </div>
     </section>

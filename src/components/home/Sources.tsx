@@ -179,6 +179,49 @@ export function Sources() {
           </div>
         </aside>
       </div>
+
+      {/* Source pulse pills — flex-wrap grid below the radial */}
+      <div className="mt-14 grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap gap-2.5">
+        {SOURCE_PILLS.map((p, i) => (
+          <span
+            key={p.name}
+            className="source-pill"
+            style={
+              {
+                ["--pill-index" as string]: i,
+              } as React.CSSProperties
+            }
+          >
+            <span
+              className="source-pill-dot"
+              style={{ background: p.color }}
+              aria-hidden="true"
+            />
+            <span style={{ color: "inherit" }}>{p.name}</span>
+            <span
+              className="num text-[10px]"
+              style={{ color: "var(--text-3)", letterSpacing: "0.08em" }}
+            >
+              {p.abbr}
+            </span>
+          </span>
+        ))}
+      </div>
     </Section>
   );
 }
+
+const SOURCE_PILLS = [
+  { name: "Reddit",        abbr: "RD", color: "#FF4500" },
+  { name: "Trustpilot",    abbr: "TP", color: "#00B67A" },
+  { name: "Meta Ads",      abbr: "MT", color: "#1877F2" },
+  { name: "TikTok",        abbr: "TT", color: "#E94560" },
+  { name: "YouTube",       abbr: "YT", color: "#FF0033" },
+  { name: "Google Trends", abbr: "GT", color: "#4285F4" },
+  { name: "LinkedIn",      abbr: "LI", color: "#0A66C2" },
+  { name: "Amazon",        abbr: "AZ", color: "#FF9900" },
+  { name: "Walmart",       abbr: "WM", color: "#0071CE" },
+  { name: "Google Ads",    abbr: "GA", color: "#34A853" },
+  { name: "Perplexity",    abbr: "PX", color: "#6366F1" },
+  { name: "App Store",     abbr: "AS", color: "#0D96F6" },
+];
