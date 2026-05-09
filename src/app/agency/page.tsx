@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Section, Eyebrow, H2, Lede } from "../../components/Section";
+import { AgencyTease } from "../../components/home/AgencyTease";
 
 export const metadata: Metadata = {
   title: "Agency",
@@ -39,6 +40,8 @@ export default function AgencyPage() {
           </div>
         </div>
       </section>
+
+      <AgencyTease />
 
       <Section bordered>
         <Eyebrow>Built for shops</Eyebrow>
