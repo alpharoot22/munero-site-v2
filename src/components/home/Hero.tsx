@@ -49,7 +49,7 @@ export function Hero() {
             </Link>
           </div>
           <div
-            className="mt-6 text-[12.5px] num"
+            className="mt-6 text-[12.5px] tracking-[-0.005em]"
             style={{ color: "var(--text-3)" }}
           >
             One-time payment · No subscription · 28 briefs run · 96% complete error-free
