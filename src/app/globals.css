@@ -30,6 +30,7 @@
   --color-text-3: var(--text-3);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains);
+  --font-serif: var(--font-instrument);
 }
 
 * {
@@ -240,13 +241,15 @@ details[open] > summary .chev { transform: rotate(45deg); }
   50% { opacity: 0.5; }
 }
 
-/* Animated H2 italic accent */
+/* H2 italic accent — Instrument Serif gives it character beyond generic Inter italic */
 .italic-accent {
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-instrument), Georgia, serif;
   font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
   color: var(--accent-light);
+  /* Slight size bump to compensate for serif x-height differences */
+  font-size: 1.04em;
 }
 
 /* Scroll-drawn line container */

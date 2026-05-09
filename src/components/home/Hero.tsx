@@ -29,9 +29,7 @@ export function Hero() {
           >
             Your market.
             <br />
-            <span className="italic-accent" style={{ fontWeight: 300, fontStyle: "italic" }}>
-              Gathered.
-            </span>
+            <span className="italic-accent">Gathered.</span>
           </h1>
           <p
             className="mt-6 text-[18px] leading-relaxed max-w-[480px]"
