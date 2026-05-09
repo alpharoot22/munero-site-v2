@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Section, Eyebrow, H2, Lede } from "../../components/Section";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
-
 export const metadata: Metadata = {
   title: "Sample brief",
   description:
-    "See the structure of a real Munero campaign brief. Audience segments, ranked hooks, competitor angles, full campaign plan.",
+    "See a real, anonymized Munero campaign brief. Audience segments, hooks, competitor angles, full campaign plan.",
 };
 
 export default function SamplePage() {
@@ -14,29 +12,11 @@ export default function SamplePage() {
     <>
       <Section>
         <Eyebrow>Sample brief</Eyebrow>
-        <H2 className="max-w-[24ch]">
-          The structure of a real brief. <span className="italic-accent">Read before you buy</span>.
-        </H2>
+        <H2 className="max-w-[22ch]">A real brief, lightly anonymized. Read before you buy.</H2>
         <Lede>
-          A representative brief for a DTC e-commerce brand running $10K / month. Names changed,
-          structure preserved.
+          This is the actual output for a DTC home goods brand running $18K/mo on Meta. Names
+          changed, numbers preserved.
         </Lede>
-
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-px hairline">
-          {[
-            ["Vertical", "DTC e-commerce"],
-            ["Budget", "$10,000 / mo"],
-            ["Sources used", "16 of 16"],
-            ["Sections", "21 · 85+ data points"],
-          ].map(([k, v]) => (
-            <div key={k} className="p-5" style={{ background: "var(--surface)" }}>
-              <div className="num text-[10.5px]" style={{ color: "var(--accent)" }}>
-                {k.toUpperCase()}
-              </div>
-              <div className="mt-1.5 text-[14px] tracking-tight">{v}</div>
-            </div>
-          ))}
-        </div>
       </Section>
 
       <Section bordered>
@@ -55,7 +35,7 @@ export default function SamplePage() {
                 "Pain point library",
                 "Competitor gaps",
                 "Hooks ranked by signal",
-                "Creative briefs",
+                "Creative briefs (sample)",
                 "Campaign plan",
                 "Kill rules",
               ].map((s) => (
@@ -74,11 +54,12 @@ export default function SamplePage() {
           <div className="space-y-12">
             <Block id="executive-summary" title="Executive summary">
               <p>
-                The brief identifies three under-targeted segments where competitor coverage
-                scores below 40 of 100. Recommended attack: lead with the strongest pain-point
-                hook, secondary with category-trust positioning, tertiary with use-case-specific
-                creative. Channel split shifts budget toward the platform with the highest
-                segment density.
+                Brand X sells premium ceramic cookware DTC. Current monthly spend $18K, mixed
+                Meta/Google with a 1.4x blended ROAS. The brief identifies three under-targeted
+                segments (durability-skeptic gift buyers, induction-stovetop new users, cookware
+                gift-givers for housewarmings) where competitor coverage scores below 40 of 100.
+                Recommended attack: lead with durability proof, secondary with gift positioning,
+                tertiary with induction-specific creative.
               </p>
               <Stat label="Market opportunity score" value="74 / 100" />
               <Stat label="Predicted blended ROAS at month 2" value="2.6x" />
@@ -87,34 +68,33 @@ export default function SamplePage() {
 
             <Block id="audience-segments" title="Audience segments">
               <p>
-                Five primary segments with distinct pain language and channel weighting. Three
-                shown here.
+                Three primary segments, each with distinct pain language and channel weighting.
               </p>
               <Segment
-                name="Skeptic high-intent buyer"
-                size="32%"
+                name="Durability-skeptic gift buyers"
+                size="38%"
                 pains={[
-                  "Burned by previous purchases that didn't deliver.",
-                  "Don't trust brand claims, looks for review depth.",
-                  "Willing to spend, but only on validated quality.",
+                  "Burned by $200 pans that warped in 6 months.",
+                  "Don't trust brand claims, look for review depth.",
+                  "Willing to spend, but only on validated longevity.",
                 ]}
               />
               <Segment
-                name="Category-curious researcher"
+                name="Induction stovetop new users"
+                size="34%"
+                pains={[
+                  "Just moved to apartments with induction.",
+                  "Confused which existing cookware works.",
+                  "Looking for clear induction-compatibility signaling.",
+                ]}
+              />
+              <Segment
+                name="Housewarming gift-givers"
                 size="28%"
                 pains={[
-                  "New to the category, learning what to value.",
-                  "Confused which features actually matter.",
-                  "Comparing across 4 to 6 brands.",
-                ]}
-              />
-              <Segment
-                name="Gift-occasion buyer"
-                size="22%"
-                pains={[
-                  "Wants a gift that looks premium but isn't generic.",
-                  "Sensitive to shipping windows around occasions.",
-                  "Registry adjacency.",
+                  "Want a gift that looks premium but isn't generic.",
+                  "Need fast shipping windows around moves.",
+                  "Wedding registry adjacency.",
                 ]}
               />
             </Block>
@@ -122,10 +102,10 @@ export default function SamplePage() {
             <Block id="hooks-ranked-by-signal" title="Hooks ranked by signal">
               <ol className="space-y-3">
                 {[
-                  ["The category that outlasts what you're replacing.", "92"],
-                  ["Built for the way you actually use it.", "87"],
-                  ["The quiet favorite of [target persona].", "81"],
-                  ["Why this category — and why most options get it wrong.", "76"],
+                  ["The pan that outlasts the pan you're replacing.", "92"],
+                  ["Cookware that survives induction, gas, and your dishwasher.", "87"],
+                  ["The wedding registry's quiet favorite.", "81"],
+                  ["Why ceramic — and why most ceramic is wrong.", "76"],
                   ["10 years from now, you'll still be using this.", "72"],
                 ].map(([hook, score]) => (
                   <li
@@ -156,7 +136,7 @@ export default function SamplePage() {
               style={{ background: "var(--surface)" }}
             >
               <div className="num text-[11px] mb-3" style={{ color: "var(--accent)" }}>
-                17 MORE SECTIONS · 85+ DATA POINTS
+                40+ MORE PAGES
               </div>
               <h3 className="text-[22px] tracking-tight font-medium">
                 The full brief covers competitor gaps, creative briefs, and the day-by-day plan.
@@ -167,8 +147,11 @@ export default function SamplePage() {
               >
                 Get yours in 35 minutes for $99.
               </p>
-              <a href={STRIPE_BRIEF} className="btn-primary mt-6 inline-flex">
-                Get my brief · $99
+              <a
+                href="https://munero.ai"
+                className="btn-primary mt-6 inline-flex"
+              >
+                Get my brief for $99
               </a>
             </div>
           </div>
@@ -190,10 +173,7 @@ function Block({
   return (
     <div id={id} className="scroll-mt-20">
       <h3 className="text-[22px] tracking-tight font-medium">{title}</h3>
-      <div
-        className="mt-3 space-y-4 text-[15px] leading-relaxed"
-        style={{ color: "var(--text-2)" }}
-      >
+      <div className="mt-3 space-y-4 text-[15px] leading-relaxed" style={{ color: "var(--text-2)" }}>
         {children}
       </div>
     </div>
@@ -204,7 +184,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-baseline justify-between hairline-b py-3 text-[14px]">
       <span style={{ color: "var(--text-2)" }}>{label}</span>
-      <span className="num" style={{ color: "var(--text)" }}>
+      <span className="num" style={{ color: "var(--text-1)" }}>
         {value}
       </span>
     </div>
@@ -223,7 +203,7 @@ function Segment({
   return (
     <div className="hairline rounded-md p-5 mt-3" style={{ background: "var(--surface)" }}>
       <div className="flex items-baseline justify-between">
-        <span className="text-[15.5px] font-medium tracking-tight" style={{ color: "var(--text)" }}>
+        <span className="text-[15.5px] font-medium tracking-tight" style={{ color: "var(--text-1)" }}>
           {name}
         </span>
         <span className="num text-[13px]" style={{ color: "var(--accent)" }}>

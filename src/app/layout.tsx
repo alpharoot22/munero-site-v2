@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
@@ -16,14 +16,6 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const instrument = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://munero.ai"),
   title: {
@@ -33,7 +25,7 @@ export const metadata: Metadata = {
   description:
     "Munero builds complete campaign briefs in 35 minutes using 16 intelligence sources. Know exactly what message will work before you spend on ads. $99 per brief, no subscription.",
   openGraph: {
-    title: "Munero: Know what works before you spend",
+    title: "Munero — Know what works before you spend",
     description:
       "Complete campaign briefs in 35 minutes. 16 intelligence sources. 46 creative assets. $99 one-time.",
     type: "website",
@@ -47,7 +39,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${instrument.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Nav />
         <main className="flex-1">{children}</main>

@@ -3,12 +3,12 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="hairline-t mt-24" style={{ background: "var(--surface)" }}>
-      <div className="mx-auto max-w-6xl px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-10 text-[13px]">
+    <footer className="hairline-t mt-32">
+      <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-[13.5px]">
         <div className="col-span-2 md:col-span-1">
           <Logo />
-          <p className="mt-3 max-w-[28ch] text-[12.5px]" style={{ color: "var(--text-3)" }}>
-            AI marketing intelligence. 16 squads. Know before you spend.
+          <p className="mt-3 max-w-[28ch]" style={{ color: "var(--text-3)" }}>
+            AI marketing intelligence for performance teams.
           </p>
         </div>
         <FooterCol
@@ -21,28 +21,27 @@ export function Footer() {
           ]}
         />
         <FooterCol
-          title="Resources"
+          title="Company"
           links={[
-            { href: "/#how", label: "How it works" },
-            { href: "/#brief", label: "What you get" },
-            { href: "/#faq", label: "FAQ" },
+            { href: "https://munero.ai", label: "App" },
+            { href: "/sample", label: "How it works" },
           ]}
         />
         <FooterCol
           title="Legal"
           links={[
-            { href: "https://munero.ai/privacy", label: "Privacy Policy" },
-            { href: "https://munero.ai/terms", label: "Terms of Service" },
-            { href: "mailto:hello@munero.ai", label: "hello@munero.ai" },
+            { href: "#", label: "Terms" },
+            { href: "#", label: "Privacy" },
           ]}
         />
       </div>
       <div className="hairline-t">
         <div
-          className="mx-auto max-w-6xl px-6 py-5 text-[12px]"
+          className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between text-[12px]"
           style={{ color: "var(--text-3)" }}
         >
-          © {new Date().getFullYear()} Munero · hello@munero.ai
+          <span className="num">© {new Date().getFullYear()} Munero</span>
+          <span className="num">v2.0</span>
         </div>
       </div>
     </footer>
@@ -59,7 +58,7 @@ function FooterCol({
   return (
     <div>
       <div
-        className="text-[10.5px] uppercase tracking-[0.16em] num mb-3"
+        className="text-[11px] uppercase tracking-[0.12em] mb-3"
         style={{ color: "var(--text-3)" }}
       >
         {title}
@@ -67,7 +66,7 @@ function FooterCol({
       <ul className="space-y-2">
         {links.map((l) => (
           <li key={l.label}>
-            <Link href={l.href} style={{ color: "var(--text-2)" }} className="hover:text-[var(--text)] transition-colors">
+            <Link href={l.href} style={{ color: "var(--text-2)" }}>
               {l.label}
             </Link>
           </li>

@@ -1,113 +1,73 @@
 import Link from "next/link";
-import { Octopus } from "../Octopus";
-import { CountUp } from "../CountUp";
-
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export function Hero() {
   return (
-    <section className="relative">
-      <div className="mx-auto max-w-6xl px-6 pt-20 md:pt-28 pb-16 md:pb-24 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
-        {/* Left */}
-        <div>
-          <div className="eyebrow flex items-center gap-2.5 mb-3">
-            <span
-              className="block w-1.5 h-1.5 rounded-full"
-              style={{ background: "var(--accent)", boxShadow: "0 0 8px var(--accent)" }}
-            />
-            INTELLIGENCE ENGINE
-          </div>
-          <div
-            className="num text-[10.5px] tracking-[0.16em] mb-5"
-            style={{ color: "var(--text-3)", textTransform: "uppercase" }}
-          >
-            FOR DTC · AGENCIES · IN-HOUSE TEAMS · $5K+ MO AD SPEND
-          </div>
-          <h1
-            className="text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] font-bold"
-            style={{ color: "var(--text)" }}
-          >
-            Your market.
+    <section className="relative bg-radial-subtle">
+      <div className="mx-auto max-w-6xl px-6 pt-24 md:pt-32 pb-20 md:pb-28">
+        <div className="max-w-[820px]">
+          <span className="tag">
+            <span className="dot" />
+            <span className="num">28 briefs run this month</span>
+          </span>
+          <h1 className="mt-6 text-[44px] md:text-[72px] leading-[1.02] tracking-[-0.03em] font-medium">
+            Know what works
             <br />
-            <span className="italic-accent">Gathered.</span>
+            <span style={{ color: "var(--text-2)" }}>before you spend.</span>
           </h1>
           <p
-            className="mt-6 text-[18px] leading-relaxed max-w-[480px]"
+            className="mt-6 text-[18px] md:text-[19px] leading-relaxed max-w-[58ch]"
             style={{ color: "var(--text-2)" }}
           >
-            16 intelligence squads scan your market. One brief tells you exactly
-            what message will work. Before you spend a dollar.
+            Munero builds a complete campaign brief in 35 minutes using 16 intelligence
+            sources. Every audience, hook, competitor angle, and creative tested against real
+            market signal. So you launch ads that work the first time.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href={STRIPE_BRIEF} className="btn-primary">
-              Get my brief · $99
+          <div className="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="https://munero.ai" className="btn-primary">
+              Get my brief for $99
               <Arrow />
             </a>
             <Link href="/sample" className="btn-secondary">
-              See sample output
-              <Arrow />
+              See a sample brief
             </Link>
           </div>
           <div
-            className="mt-6 text-[12.5px] tracking-[-0.005em]"
+            className="mt-8 flex items-center gap-2 text-[13px]"
             style={{ color: "var(--text-3)" }}
           >
-            One-time payment · No subscription · 28 briefs run · 96% complete error-free
+            <CheckIcon />
+            <span>One-time payment. No subscription. Brief in 35 minutes.</span>
           </div>
         </div>
-
-        {/* Right — Octopus */}
-        <div className="relative">
-          <Octopus />
-        </div>
       </div>
-
       <ProofStrip />
     </section>
   );
 }
 
 function ProofStrip() {
+  const items = [
+    { num: "16", label: "intelligence sources" },
+    { num: "46", label: "creative assets" },
+    { num: "35", label: "minutes per brief" },
+    { num: "$99", label: "one-time" },
+    { num: "96%", label: "brief success rate" },
+  ];
   return (
-    <div className="hairline-t hairline-b" style={{ background: "rgba(8, 8, 14, 0.5)" }}>
-      <div className="mx-auto max-w-6xl px-6 py-5 flex flex-wrap items-center gap-x-10 gap-y-3 justify-between">
-        <Stat>
-          <CountUp to={16} className="num text-[18px]" />{" "}
-          <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>squads</span>
-        </Stat>
-        <Stat>
-          <CountUp to={46} className="num text-[18px]" />{" "}
-          <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>creative assets</span>
-        </Stat>
-        <Stat>
-          <span className="num text-[18px]">~</span>
-          <CountUp to={35} className="num text-[18px]" />{" "}
-          <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>minutes</span>
-        </Stat>
-        <Stat>
-          <CountUp to={99} prefix="$" className="num text-[18px]" />{" "}
-          <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>one-time</span>
-        </Stat>
-        <Stat>
-          <CountUp to={96} suffix="%" className="num text-[18px]" />{" "}
-          <span
-            className="text-[12.5px]"
-            style={{ color: "var(--text-3)" }}
-            title="Defined as: brief completes all 16 squads with no failed nodes"
-          >
-            briefs complete error-free
-          </span>
-        </Stat>
+    <div className="hairline-t hairline-b">
+      <div className="mx-auto max-w-6xl px-6 py-6 grid grid-cols-2 md:grid-cols-5 gap-y-4 gap-x-6">
+        {items.map((it) => (
+          <div key={it.label} className="flex items-baseline gap-2">
+            <span className="num text-[20px] tracking-tight" style={{ color: "var(--text-1)" }}>
+              {it.num}
+            </span>
+            <span className="text-[12.5px]" style={{ color: "var(--text-3)" }}>
+              {it.label}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
-  );
-}
-
-function Stat({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="flex items-baseline gap-1.5" style={{ color: "var(--text)" }}>
-      {children}
-    </span>
   );
 }
 
@@ -117,6 +77,20 @@ function Arrow() {
       <path
         d="M3 8h10m0 0L9 4m4 4l-4 4"
         stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M3 8.5L6 11.5L13 4.5"
+        stroke="var(--accent)"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

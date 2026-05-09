@@ -8,32 +8,32 @@ const tabs = [
     id: "intel",
     label: "Intelligence",
     items: [
-      ["5 audience segments with intent scores", "Demographics, psychographics, pain triggers, and a 0 to 10 intent score per segment."],
-      ["Pain point library", "Ranked by frequency and emotional intensity, with quotes attached to each."],
-      ["Competitor watchlist", "10 deep dives. Threat levels, attack angles, gaps you can exploit."],
-      ["Keyword + trend intelligence", "Intent class, CPC, search volume trajectory, breakout queries."],
-      ["Evidence library", "50+ verifiable items per brief across Reddit, reviews, ads, video, search."],
+      ["Audience segments", "3 to 5 distinct buyer profiles, mapped to pain points and channels."],
+      ["Pain point library", "Ranked by frequency, emotional intensity, and competitor coverage."],
+      ["Keyword intelligence", "Intent class, CPC, search volume trend, competitive density."],
+      ["Market trends", "Growth rate by sub-segment with 18-month trajectory."],
+      ["Evidence library", "50+ verifiable items across Reddit, reviews, ads, video, search."],
     ],
   },
   {
     id: "creative",
     label: "Creative",
     items: [
-      ["46 creative assets", "Headlines, body copy, image prompts, video scripts. Ready to ship."],
-      ["10 hooks ranked by predicted CTR", "Pattern-matched against winning ads in your category."],
-      ["Funnel-stage tagging", "Cold, warm, hot variants. So you don't run BoF copy at top of funnel."],
-      ["Auto image generation", "Every brief generates Meta, TikTok, and Google image creatives. Included."],
-      ["Higgsfield video credits", "3 credits on Full Creative, 10 per month on Agency. Production quality."],
+      ["46 creative assets", "Headlines, body, image prompts, video scripts, ad units."],
+      ["Hooks ranked by signal", "Predicted CTR based on pattern match against winning ads."],
+      ["Funnel-stage tagging", "Cold, warm, hot. So you don't run BoF copy at top of funnel."],
+      ["Image and video prompts", "Plug into Higgsfield or your generation tool of choice."],
+      ["Compliance review", "Flagged claims, restricted categories, platform policy notes."],
     ],
   },
   {
     id: "strategy",
     label: "Strategy",
     items: [
-      ["Competitor gap analysis", "10 competitors mapped. Where they're weak. Specific attack angles."],
-      ["Platform budget allocation", "Channel split with rationale grounded in segment fit and CAC benchmarks."],
-      ["Market opportunity score", "0 to 100, with the inputs that drove the score."],
-      ["Positioning recommendation", "Where to plant the flag this quarter and why."],
+      ["Competitor gap analysis", "10 competitors. Where they're weak. Exact attack angles."],
+      ["Budget allocation", "Channel split with rationale grounded in audience data."],
+      ["Market opportunity score", "0 to 100 score with the inputs that drove it."],
+      ["Positioning recommendation", "Where to plant the flag and why this quarter."],
       ["Risk register", "What could kill the campaign and how to detect it early."],
     ],
   },
@@ -43,9 +43,9 @@ const tabs = [
     items: [
       ["30-day launch plan", "Day-by-day sequence: tests, scale points, kill criteria."],
       ["KPI targets", "CPM, CTR, CPA, ROAS by audience by funnel stage."],
-      ["Kill rules and scale rules", "Quantified thresholds. No more 'let it run another week'."],
+      ["Kill rules", "Quantified thresholds. No more 'let it run another week'."],
+      ["Scale rules", "What signal earns more budget and at what increment."],
       ["Direct-import files", "Meta Ads Manager, Google Ads Editor, TikTok Ads Manager."],
-      ["SHA-256 audit hash", "Every brief is hashed. Provable record of what you got and when."],
     ],
   },
 ];
@@ -56,46 +56,29 @@ export function WhatYouGet() {
   return (
     <Section bordered id="brief">
       <Eyebrow>What you get</Eyebrow>
-      <H2 className="max-w-[22ch]">
-        A brief built to be argued with, not <span className="italic-accent">skimmed</span>.
-      </H2>
+      <H2 className="max-w-[20ch]">A brief built to be argued with, not skimmed.</H2>
       <Lede>
         Every claim is footnoted to source data. Every recommendation has a kill criterion.
         Audit-ready by default.
       </Lede>
 
-      <div
-        className="mt-12 hairline rounded-lg overflow-hidden"
-        style={{ background: "var(--surface)" }}
-      >
-        <div className="flex hairline-b overflow-x-auto" role="tablist">
+      <div className="mt-12 hairline rounded-md overflow-hidden" style={{ background: "var(--surface)" }}>
+        <div className="flex hairline-b overflow-x-auto">
           {tabs.map((t) => (
             <button
               key={t.id}
-              role="tab"
-              aria-selected={active === t.id}
               onClick={() => setActive(t.id)}
-              className="px-5 py-3.5 text-[13.5px] font-medium tracking-tight transition-colors whitespace-nowrap relative"
+              className="px-5 py-4 text-[13.5px] font-medium tracking-tight transition-colors whitespace-nowrap"
               style={{
-                color: active === t.id ? "var(--text)" : "var(--text-3)",
-                background: active === t.id ? "var(--surface-2)" : "transparent",
+                color: active === t.id ? "var(--text-1)" : "var(--text-3)",
+                background: active === t.id ? "var(--surface-elev)" : "transparent",
+                borderBottom: active === t.id ? "1px solid var(--accent)" : "none",
               }}
             >
               {t.label}
-              {active === t.id && (
-                <span
-                  aria-hidden
-                  className="absolute left-0 right-0 bottom-0 h-[1.5px]"
-                  style={{
-                    background: "var(--accent)",
-                    boxShadow: "0 0 6px var(--accent)",
-                  }}
-                />
-              )}
             </button>
           ))}
         </div>
-
         <ul className="p-2">
           {current.items.map(([title, body]) => (
             <li
@@ -110,7 +93,7 @@ export function WhatYouGet() {
                 </div>
               </div>
               <span
-                className="num text-[10.5px] tracking-[0.1em]"
+                className="num text-[11.5px] tracking-[0.08em]"
                 style={{ color: "var(--text-3)" }}
               >
                 INCLUDED
