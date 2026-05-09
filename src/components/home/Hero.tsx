@@ -74,8 +74,8 @@ export function Hero() {
         </div>
       </div>
 
-      <ProofStrip />
       <SourceMarquee />
+      <ProofStrip />
     </section>
   );
 }
