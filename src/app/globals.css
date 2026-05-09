@@ -456,6 +456,72 @@ details[open] > summary .chev { transform: rotate(45deg); }
   padding: 20px 24px;
 }
 
+/* Guide pages */
+.guide-content h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 48px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 96px;
+}
+.guide-content h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+.guide-content p {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 16px;
+  max-width: 65ch;
+}
+.guide-content ul,
+.guide-content ol {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.75;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  max-width: 65ch;
+}
+.guide-content li { margin-bottom: 8px; }
+.guide-content ul { list-style: disc; }
+.guide-content ol { list-style: decimal; }
+.guide-content strong { color: var(--text); font-weight: 600; }
+.guide-content a { color: var(--accent); text-decoration: none; }
+.guide-content a:hover { text-decoration: underline; }
+
+.guide-callout {
+  background: rgba(29, 158, 117, 0.06);
+  border: 0.5px solid rgba(29, 158, 117, 0.2);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 32px 0;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.65;
+  max-width: 100%;
+}
+.guide-callout-label {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 10px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+.guide-stat {
+  font-family: var(--font-jetbrains), monospace;
+  color: var(--accent);
+  font-weight: 600;
+}
+
 /* Universal interactive press */
 button:active,
 .btn-primary:active,

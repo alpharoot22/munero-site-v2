@@ -24,7 +24,13 @@ export function Footer() {
           title="Resources"
           links={[
             { href: "/how-it-works", label: "How it works" },
-            { href: "/how-it-works#what-you-get", label: "What you get" },
+            { href: "/sample", label: "Sample brief" },
+            { href: "/guides", label: "All guides" },
+            { href: "/guides/meta-ads", label: "Meta Ads guide" },
+            { href: "/guides/tiktok-ads", label: "TikTok Ads guide" },
+            { href: "/guides/google-ads", label: "Google Ads guide" },
+            { href: "/guides/linkedin-ads", label: "LinkedIn Ads guide" },
+            { href: "/guides/email-marketing", label: "Email marketing guide" },
             { href: "/#faq", label: "FAQ" },
           ]}
         />

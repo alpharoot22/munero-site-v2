@@ -8,6 +8,7 @@ const links = [
   { href: "/#workspace", label: "The Workspace" },
   { href: "/pricing", label: "Pricing" },
   { href: "/agency", label: "Agency" },
+  { href: "/guides", label: "Guides" },
 ];
 
 export function Nav() {
