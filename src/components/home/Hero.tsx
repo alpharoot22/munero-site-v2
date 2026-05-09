@@ -54,7 +54,15 @@ export function Hero() {
               <Arrow />
             </Link>
           </div>
-          <p className="mt-6 text-[12.5px]" style={{ color: "var(--text-3)" }}>
+          <Link
+            href="/register"
+            className="inline-block mt-4 text-[13px] transition-colors"
+            style={{ color: "var(--text-2)" }}
+          >
+            Or register free, choose your plan after{" "}
+            <span style={{ color: "var(--accent)" }}>→</span>
+          </Link>
+          <p className="mt-5 text-[12.5px]" style={{ color: "var(--text-3)" }}>
             28 briefs run this month · One-time payment · No subscription
           </p>
         </div>

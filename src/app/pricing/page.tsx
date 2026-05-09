@@ -30,9 +30,48 @@ const matrix = [
   { feature: "Slack / Notion / Drive / Canva", brief: false, enhanced: false, full: false, agency: true },
 ];
 
-export default function PricingPage() {
+type SearchParams = Promise<{ registered?: string; name?: string }>;
+
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const params = await searchParams;
+  const isRegistered = params.registered === "true";
+  const visitorName =
+    typeof params.name === "string" ? params.name.trim().slice(0, 60) : "";
+
   return (
     <>
+      {isRegistered && (
+        <div className="mx-auto max-w-6xl px-6 pt-10">
+          <div
+            className="text-center py-5 px-6 rounded-md hairline"
+            style={{
+              background: "var(--surface)",
+              borderColor: "rgba(29, 158, 117, 0.4)",
+            }}
+          >
+            <p
+              className="num text-[10.5px] uppercase tracking-[0.16em] mb-1.5"
+              style={{ color: "var(--accent)" }}
+            >
+              You're registered
+            </p>
+            <p
+              className="text-[16.5px] font-semibold tracking-tight"
+              style={{ color: "var(--text)" }}
+            >
+              Welcome{visitorName ? `, ${visitorName}` : ""}. Choose your plan to get started.
+            </p>
+            <p className="text-[13px] mt-1" style={{ color: "var(--text-2)" }}>
+              Your details are saved. You can come back anytime.
+            </p>
+          </div>
+        </div>
+      )}
+
       <Section>
         <Eyebrow>Pricing</Eyebrow>
         <H2 className="max-w-[22ch]">No subscription unless you want one.</H2>

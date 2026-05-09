@@ -32,9 +32,17 @@ export function Nav() {
             </Link>
           ))}
         </nav>
-        <a href={STRIPE_BRIEF} className="btn-primary !h-11 !px-3.5 !text-[13px]">
-          Get my brief
-        </a>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/register"
+            className="btn-secondary !h-11 !px-3.5 !text-[13px] hidden sm:inline-flex"
+          >
+            Get started free
+          </Link>
+          <a href={STRIPE_BRIEF} className="btn-primary !h-11 !px-3.5 !text-[13px]">
+            Get my brief
+          </a>
+        </div>
       </div>
     </header>
   );

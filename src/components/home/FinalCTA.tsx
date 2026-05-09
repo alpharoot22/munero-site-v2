@@ -55,10 +55,18 @@ export function FinalCTA() {
             <a href={STRIPE_BRIEF} className="btn-primary">
               Get my brief · $99
             </a>
-            <Link href="/sample" className="btn-secondary">
-              See a sample first
+            <Link href="/register" className="btn-secondary">
+              Register free, choose plan later
             </Link>
           </div>
+          <Link
+            href="/sample"
+            className="inline-block mt-5 text-[13px] transition-colors"
+            style={{ color: "var(--text-2)" }}
+          >
+            Or see a sample brief first{" "}
+            <span style={{ color: "var(--accent)" }}>→</span>
+          </Link>
         </div>
       </div>
     </section>
