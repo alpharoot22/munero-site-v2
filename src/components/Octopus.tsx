@@ -125,18 +125,23 @@ export function Octopus() {
                 animationDelay: `${t.idx * 0.4}s`,
               }}
             />
-            {/* Label — fluid sizing, smaller on mobile */}
+            {/* Label — bright, semibold, pulled closer to tip for clear coupling */}
             <text
-              x={t.x + (t.x > cx + 5 ? 12 : t.x < cx - 5 ? -12 : 0)}
-              y={t.y + (t.y > cy + 5 ? 18 : t.y < cy - 5 ? -8 : 4)}
+              x={t.x + (t.x > cx + 5 ? 14 : t.x < cx - 5 ? -14 : 0)}
+              y={t.y + (t.y > cy + 5 ? 20 : t.y < cy - 5 ? -12 : 4)}
               fontFamily="var(--font-jetbrains), monospace"
-              fontSize="11"
-              letterSpacing="0.06em"
-              fill="var(--text-2)"
+              fontSize="12"
+              fontWeight="600"
+              letterSpacing="0.08em"
+              fill="var(--text)"
               textAnchor={t.x > cx + 10 ? "start" : t.x < cx - 10 ? "end" : "middle"}
               style={{
                 textTransform: "uppercase",
-                fontSize: "clamp(10px, 1.6vw, 11px)",
+                fontSize: "clamp(11px, 1.8vw, 12.5px)",
+                paintOrder: "stroke",
+                stroke: "var(--bg)",
+                strokeWidth: 3,
+                strokeLinejoin: "round",
               }}
             >
               {t.label}

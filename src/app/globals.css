@@ -195,13 +195,13 @@ details[open] > summary .chev { transform: rotate(45deg); }
 
 /* ====== OCTOPUS ANIMATIONS ====== */
 
-/* Tentacle draws + retracts on 10s loop, staggered per tentacle */
+/* Tentacle draws on 10s loop. Always remains visible at min 0.55 so the
+ * connection to the labeled node is never broken visually. */
 @keyframes tentacle-draw {
-  0%   { stroke-dashoffset: var(--len, 200); opacity: 0.2; }
-  40%  { stroke-dashoffset: 0; opacity: 1; }
-  70%  { stroke-dashoffset: 0; opacity: 1; }
-  90%  { stroke-dashoffset: calc(var(--len, 200) * 0.4); opacity: 0.4; }
-  100% { stroke-dashoffset: var(--len, 200); opacity: 0.2; }
+  0%   { stroke-dashoffset: var(--len, 200); opacity: 0.55; }
+  35%  { stroke-dashoffset: 0; opacity: 1; }
+  75%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: var(--len, 200); opacity: 0.55; }
 }
 
 /* Data dot travels tip -> core via offset-path */
@@ -218,10 +218,10 @@ details[open] > summary .chev { transform: rotate(45deg); }
   50%      { opacity: 1; transform: scale(1.04); }
 }
 
-/* Tip node pulse */
+/* Tip node pulse — stays visible throughout, just breathes in size */
 @keyframes tip-pulse {
-  0%, 100% { r: 4; opacity: 0.6; }
-  50%      { r: 7; opacity: 1; }
+  0%, 100% { r: 4; opacity: 0.9; }
+  50%      { r: 6; opacity: 1; }
 }
 
 /* Scroll-drawn line for HowItWorks */
