@@ -419,6 +419,43 @@ details[open] > summary .chev { transform: rotate(45deg); }
   border: 0.5px solid var(--border);
 }
 
+/* Workspace section + mockup */
+.workspace-section {
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(29, 158, 117, 0.03) 50%,
+    var(--bg) 100%
+  );
+}
+.workspace-mockup {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  margin-top: 64px;
+}
+.workspace-topbar {
+  background: var(--surface-2);
+  border-bottom: 0.5px solid var(--border);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.workspace-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+}
+.workspace-sidebar {
+  border-right: 0.5px solid var(--border);
+  padding: 16px 0;
+}
+.workspace-main {
+  padding: 20px 24px;
+}
+
 /* Universal interactive press */
 button:active,
 .btn-primary:active,
