@@ -1,13 +1,11 @@
 import Link from "next/link";
 import { Octopus } from "../Octopus";
-import { ReplaceDeliverMarquee } from "./ReplaceDeliverMarquee";
 
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export function Hero() {
   return (
-    <>
-      <section
+    <section
         className="relative overflow-hidden"
         style={{
           background:
@@ -157,10 +155,7 @@ export function Hero() {
             <Octopus />
           </div>
         </div>
-      </section>
-
-      <ReplaceDeliverMarquee />
-    </>
+    </section>
   );
 }
 

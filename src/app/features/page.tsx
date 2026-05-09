@@ -3,6 +3,9 @@ import { Section, Eyebrow, H2, Lede } from "../../components/Section";
 import { Sources } from "../../components/home/Sources";
 import { Assistants } from "../../components/home/Assistants";
 import { Integrations } from "../../components/home/Integrations";
+import { HowItWorks } from "../../components/home/HowItWorks";
+import { Platform } from "../../components/home/Platform";
+import { Lifecycle } from "../../components/home/Lifecycle";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -92,6 +95,8 @@ export default function FeaturesPage() {
         </Lede>
       </Section>
 
+      <HowItWorks />
+
       <Sources />
 
       <FeatureGroup title="Brief output" eyebrow="What lands in every brief" features={briefOutput} />
@@ -99,9 +104,13 @@ export default function FeaturesPage() {
       <FeatureGroup title="Creative production" eyebrow="46 assets per Full Creative" features={creative} />
       <FeatureGroup title="Campaign management" eyebrow="After the brief is delivered" features={campaign} />
 
+      <Platform />
+
       <Assistants />
 
       <FeatureGroup title="The intelligence flywheel" eyebrow="Compounds over time" features={flywheel} />
+
+      <Lifecycle />
 
       <Integrations />
 

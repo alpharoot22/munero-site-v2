@@ -38,11 +38,19 @@ export function Footer() {
         />
       </div>
       <div className="hairline-t">
-        <div
-          className="mx-auto max-w-6xl px-6 py-5 text-[12px]"
-          style={{ color: "var(--text-3)" }}
-        >
-          © {new Date().getFullYear()} Munero · hello@munero.ai
+        <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <p
+            className="num text-[12px]"
+            style={{ color: "var(--text-3)" }}
+          >
+            Works with: Slack · Notion · Google Drive · Canva · Google Sheets · Higgsfield
+          </p>
+          <p
+            className="text-[12px]"
+            style={{ color: "var(--text-3)" }}
+          >
+            © {new Date().getFullYear()} Munero · hello@munero.ai
+          </p>
         </div>
       </div>
     </footer>

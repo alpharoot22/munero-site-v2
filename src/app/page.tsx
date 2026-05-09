@@ -1,18 +1,13 @@
 import { Hero } from "../components/home/Hero";
-import { WhyMunero } from "../components/home/WhyMunero";
-import { ZeroToCampaign } from "../components/home/ZeroToCampaign";
+import { ReplaceDeliverMarquee } from "../components/home/ReplaceDeliverMarquee";
 import { Problem } from "../components/home/Problem";
 import { Personas } from "../components/home/Personas";
-import { HowItWorks } from "../components/home/HowItWorks";
-import { Sources } from "../components/home/Sources";
-import { AgencyTease } from "../components/home/AgencyTease";
+import { ZeroToCampaign } from "../components/home/ZeroToCampaign";
+import { TraditionalVsMunero } from "../components/home/TraditionalVsMunero";
 import { WhatYouGet } from "../components/home/WhatYouGet";
-import { Lifecycle } from "../components/home/Lifecycle";
 import { Compare } from "../components/home/Compare";
-import { Platform } from "../components/home/Platform";
-import { Assistants } from "../components/home/Assistants";
-import { Integrations } from "../components/home/Integrations";
 import { Pricing } from "../components/home/Pricing";
+import { AgencyTease } from "../components/home/AgencyTease";
 import { FAQ } from "../components/home/FAQ";
 import { FinalCTA } from "../components/home/FinalCTA";
 
@@ -20,20 +15,15 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WhyMunero />
-      <ZeroToCampaign />
+      <ReplaceDeliverMarquee />
       <Problem />
       <Personas />
-      <HowItWorks />
-      <Sources />
-      <AgencyTease />
+      <ZeroToCampaign />
+      <TraditionalVsMunero />
       <WhatYouGet />
-      <Lifecycle />
       <Compare />
-      <Platform />
-      <Assistants />
-      <Integrations />
       <Pricing />
+      <AgencyTease />
       <FAQ />
       <FinalCTA />
     </>
