@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
+import { TopBanner } from "../components/TopBanner";
 import { Footer } from "../components/Footer";
 
 const inter = Inter({
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <TopBanner />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
