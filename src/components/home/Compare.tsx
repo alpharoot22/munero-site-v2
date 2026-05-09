@@ -3,34 +3,28 @@ import { Section, Eyebrow, H2, Lede } from "../Section";
 const tools = [
   {
     n: "Munero",
-    d: "AI marketing intelligence platform",
-    p: "$99 per brief / $499 unlimited",
-    w: "Replaces 4 tools at 1/40th the annual cost. Brief + creative + plan in 35 minutes.",
+    d: "Live intelligence + strategy + creative",
+    p: "$99 per brief · $499 / mo unlimited",
+    w: "Brief, hooks, and 46 creative assets in 35 minutes. Includes the campaign plan.",
     a: true,
   },
   {
-    n: "Semrush",
-    d: "SEO + PPC data toolkit",
+    n: "ChatGPT",
+    d: "General-purpose LLM",
+    p: "$20 / mo",
+    w: "Plausible copy from training data. No live Reddit, Meta Ad Library, or competitor scraping. No scoring.",
+  },
+  {
+    n: "Freelance strategist",
+    d: "Human consultant",
+    p: "$2K to $8K per brief",
+    w: "Two weeks per brief. One person's gut feel. Quality varies. Doesn't scale across clients.",
+  },
+  {
+    n: "Semrush + similar",
+    d: "SEO / PPC data toolkit",
     p: "$139 to $499 / mo",
-    w: "Gives data, not strategy. No brief.",
-  },
-  {
-    n: "SimilarWeb",
-    d: "Traffic + ad intelligence",
-    p: "$125 to $833 / mo",
-    w: "Heavy, expensive, steep learning curve.",
-  },
-  {
-    n: "SpyFu",
-    d: "Google Ads history",
-    p: "$39 to $299 / mo",
-    w: "Google-only. No social, no synthesis.",
-  },
-  {
-    n: "Pathmatics",
-    d: "Enterprise cross-channel",
-    p: "$30K to $100K / yr",
-    w: "Enterprise pricing. No self-serve.",
+    w: "Gives you data. You assemble the brief yourself. No creative, no strategy, no plan.",
   },
 ];
 
@@ -39,11 +33,11 @@ export function Compare() {
     <Section bordered id="compare">
       <Eyebrow>Compare</Eyebrow>
       <H2 className="max-w-[22ch]">
-        Munero replaces the stack, not just <span className="italic-accent">a tile in it</span>.
+        Munero replaces the stack, not <span className="italic-accent">a tile in it</span>.
       </H2>
       <Lede>
-        Total annual cost of Semrush + SimilarWeb + Adbeat + Pathmatics: $40K to $106K per year.
-        Munero starts at $99 per brief and includes the strategy.
+        ChatGPT writes copy. Strategists write decks. SEO tools surface data. Munero ships the
+        brief, the creative, and the campaign plan in 35 minutes.
       </Lede>
 
       <div

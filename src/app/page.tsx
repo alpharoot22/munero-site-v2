@@ -3,7 +3,6 @@ import { Problem } from "../components/home/Problem";
 import { HowItWorks } from "../components/home/HowItWorks";
 import { Sources } from "../components/home/Sources";
 import { WhatYouGet } from "../components/home/WhatYouGet";
-import { Voices } from "../components/home/Voices";
 import { Compare } from "../components/home/Compare";
 import { AgencyTease } from "../components/home/AgencyTease";
 import { Pricing } from "../components/home/Pricing";
@@ -18,7 +17,6 @@ export default function Home() {
       <HowItWorks />
       <Sources />
       <WhatYouGet />
-      <Voices />
       <Compare />
       <AgencyTease />
       <Pricing />

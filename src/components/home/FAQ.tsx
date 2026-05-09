@@ -2,40 +2,36 @@ import { Section, Eyebrow, H2 } from "../Section";
 
 const faqs = [
   {
-    q: "What exactly is a buying signal?",
-    a: "A buying signal is a pattern in real consumer behavior, search queries, Reddit complaints, review sentiment, competitor ad engagement, that predicts what message, offer, or angle will trigger a purchase. Munero reads these signals across 16 sources and scores your campaign idea against them before you spend.",
+    q: "Is it actually worth $99?",
+    a: "If you spend $5K a month on ads, the average wasted-spend on under-validated creative runs 30 to 50 percent of that budget in the first 3 weeks. $99 buys you 35 minutes of parallel research that your team would take 2 weeks to assemble manually. The math is straightforward.",
   },
   {
-    q: "How is this different from ChatGPT or a freelancer?",
-    a: "ChatGPT generates plausible copy. A freelancer gives you their opinion. Munero gives you a scored prediction based on live market data: what your audience is actually searching, complaining about, clicking on, and buying. The brief includes a Campaign Readiness Score, top objections, and specific angles ranked by predicted conversion likelihood.",
+    q: "How is this different from ChatGPT?",
+    a: "ChatGPT writes plausible ad copy from training data. Munero scrapes Reddit complaints, Trustpilot reviews, the live Meta Ad Library, current TikTok content, and competitor sites in parallel, then assembles them into one document with citations. The difference between guessing and grounding.",
   },
   {
-    q: "Can I use this for client pitches?",
-    a: "Yes. Agencies use Munero briefs to walk into pitches with buying signal research their competitors don't have. The Agency plan includes white-label exports so you can present under your own brand.",
+    q: "What if my vertical is unusual?",
+    a: "The 16 squads adapt by vertical. Briefs have shipped across DTC e-commerce, health and wellness, B2B SaaS, fashion, real estate, financial services, and creator brands. If a source doesn't apply, it skips and the others compensate. You see exactly which sources contributed to your brief.",
   },
   {
-    q: "How long does a brief take?",
-    a: "About 35 minutes from input to full deliverable. You enter your niche, country, and budget. Munero's 16 squads run simultaneously across data sources and deliver a complete brief.",
+    q: "How long does it take?",
+    a: "About 35 minutes from kickoff to delivery. The 16 squads run in parallel, then assembly takes 8 minutes, then creative production fires. You can leave the tab open or get a notification.",
   },
   {
-    q: "What if my campaign doesn't match the brief?",
-    a: "Every campaign result you feed back into Munero sharpens the next prediction. The system compounds, the more campaigns it sees in your vertical, the more accurate the scores become. Early users report the first brief alone saves 2 to 3 weeks of manual research.",
+    q: "Can I see a sample brief first?",
+    a: "Yes. The /sample page shows the structure of a real brief. Audience segments, ranked hooks, competitor analysis, the campaign plan. Look at it before you spend $99.",
   },
   {
-    q: "Do I need existing campaign data to start?",
-    a: "No. Munero works before you have any performance data. It synthesizes external signals, what people search, say, review, and click, to predict what will work. You bring the niche, Munero brings the intelligence.",
-  },
-  {
-    q: "Is there a subscription?",
-    a: "Only for the Agency tier ($499 / month). Brief, Enhanced, and Full Creative are one-time payments. No auto-renewal, no commitments. Buy a brief, get a brief.",
-  },
-  {
-    q: "What verticals does Munero work for?",
-    a: "Briefs have shipped across DTC e-commerce, health and wellness, B2B SaaS, fashion, real estate, financial services, and creator brands. The 16 squads adapt by vertical: irrelevant sources skip and the others compensate. You see exactly which sources contributed to your brief.",
+    q: "Do I need a subscription?",
+    a: "Only for the Agency tier ($499 / month). Brief, Enhanced, and Full Creative are one-time purchases. No auto-renewal, no commitments. Buy a brief, get a brief.",
   },
   {
     q: "How does image and video generation work?",
-    a: "Every brief automatically generates images for your creative assets (no credit draw). Video generation uses credits: Full Creative includes 3 video credits, Agency includes 10 per month. Videos are produced via Higgsfield AI at production quality and ready to upload directly into Meta, TikTok, or YouTube ad managers.",
+    a: "Every brief automatically generates images for your creative assets. No credit draw. Video generation uses credits: Full Creative includes 3 video credits, Agency includes 10 per month. Videos are produced via Higgsfield AI at production quality and ready to upload directly into Meta, TikTok, or YouTube ad managers.",
+  },
+  {
+    q: "Can agencies use this with clients?",
+    a: "The Agency tier is built for it. White-label reports with your branding, multi-client workspace, team seats, and Slack / Notion / Drive / Canva integrations. You charge clients $500 to $1,500 / month for the research line item at near-100% margin.",
   },
 ];
 
@@ -44,7 +40,7 @@ export function FAQ() {
     <Section bordered id="faq">
       <Eyebrow>FAQ</Eyebrow>
       <H2 className="max-w-[20ch]">
-        Questions, <span className="italic-accent">answered</span>.
+        The questions you'd ask <span className="italic-accent">before paying</span>.
       </H2>
 
       <div className="mt-12 hairline-t max-w-[860px]">
@@ -75,12 +71,7 @@ export function FAQ() {
 function Plus() {
   return (
     <svg width="11" height="11" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path
-        d="M8 3v10M3 8h10"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
