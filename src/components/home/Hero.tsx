@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Octopus } from "../Octopus";
-import { CountUp } from "../CountUp";
 import { SourceMarquee } from "./SourceMarquee";
 
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
@@ -75,46 +74,7 @@ export function Hero() {
       </div>
 
       <SourceMarquee />
-      <ProofStrip />
     </section>
-  );
-}
-
-function ProofStrip() {
-  return (
-    <div className="hairline-t hairline-b" style={{ background: "var(--surface)" }}>
-      <div className="mx-auto max-w-6xl px-6 py-5 flex flex-wrap items-center gap-x-10 gap-y-3 justify-between">
-        <Stat>
-          <CountUp to={16} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>squads</span>
-        </Stat>
-        <Stat>
-          <CountUp to={46} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>assets</span>
-        </Stat>
-        <Stat>
-          <CountUp to={9} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>AI assistants</span>
-        </Stat>
-        <Stat>
-          <span className="num text-[16px]">~</span>
-          <CountUp to={35} className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>min</span>
-        </Stat>
-        <Stat>
-          <CountUp to={99} prefix="$" className="num text-[16px]" />
-          <span className="text-[12.5px] num" style={{ color: "var(--text-3)" }}>one-time</span>
-        </Stat>
-      </div>
-    </div>
-  );
-}
-
-function Stat({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="flex items-baseline gap-1.5" style={{ color: "var(--text)" }}>
-      {children}
-    </span>
   );
 }
 
