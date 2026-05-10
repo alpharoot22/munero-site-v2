@@ -102,12 +102,11 @@ export function IntelligenceCore() {
             </p>
           </div>
 
-          {/* WHY IT MATTERS card */}
+          {/* WHY IT MATTERS card — sits right beside the headline, no extra top margin */}
           <aside
-            className="md:mt-2"
             style={{
               background: "var(--surface)",
-              border: "0.5px solid var(--border)",
+              border: "0.5px solid var(--border-2)",
               borderRadius: 10,
               padding: "18px 20px",
             }}
@@ -149,7 +148,7 @@ export function IntelligenceCore() {
 
         {/* Visual container — wraps the 3-col body + bottom strip as one unified system */}
         <div
-          className="mt-10 rounded-xl"
+          className="mt-6 rounded-xl"
           style={{
             background:
               "linear-gradient(180deg, rgba(13,13,24,0.6) 0%, rgba(8,8,14,0.4) 100%)",
@@ -164,12 +163,13 @@ export function IntelligenceCore() {
               <div
                 className="num"
                 style={{
-                  fontSize: 10,
-                  color: "var(--accent)",
+                  fontSize: 11,
+                  color: "var(--accent-light)",
                   textTransform: "uppercase",
                   letterSpacing: "0.16em",
                   marginBottom: 14,
                   paddingLeft: 4,
+                  fontWeight: 600,
                 }}
               >
                 SIGNAL SOURCES
@@ -181,7 +181,7 @@ export function IntelligenceCore() {
                     className="hover-lift relative grid grid-cols-[36px_1fr_auto] items-center gap-3 p-3 pr-2"
                     style={{
                       background: "var(--surface)",
-                      border: "0.5px solid var(--border)",
+                      border: "0.5px solid var(--border-2)",
                       borderRadius: 8,
                       opacity: revealed ? 1 : 0,
                       transform: revealed ? "translateX(0)" : "translateX(-12px)",
@@ -214,7 +214,7 @@ export function IntelligenceCore() {
                       </div>
                       <div
                         className="leading-snug"
-                        style={{ fontSize: 12.5, color: "var(--text-2)" }}
+                        style={{ fontSize: 12.5, color: "rgba(184, 184, 200, 0.95)" }}
                       >
                         {desc}
                       </div>
@@ -227,20 +227,21 @@ export function IntelligenceCore() {
                       <span
                         style={{
                           display: "block",
-                          width: 14,
+                          width: 22,
                           height: 1,
                           background:
-                            "linear-gradient(90deg, var(--accent) 0%, rgba(29,158,117,0.1) 100%)",
+                            "linear-gradient(90deg, var(--accent-light) 0%, rgba(29,158,117,0.2) 100%)",
+                          boxShadow: "0 0 4px rgba(29,158,117,0.4)",
                         }}
                       />
                       <span
                         style={{
                           display: "block",
-                          width: 7,
-                          height: 7,
+                          width: 8,
+                          height: 8,
                           borderRadius: "50%",
-                          background: "var(--accent)",
-                          boxShadow: "0 0 6px var(--accent)",
+                          background: "var(--accent-light)",
+                          boxShadow: "0 0 8px var(--accent)",
                           marginLeft: 4,
                         }}
                       />
@@ -255,11 +256,12 @@ export function IntelligenceCore() {
               <div
                 className="num"
                 style={{
-                  fontSize: 10,
-                  color: "var(--accent)",
+                  fontSize: 11,
+                  color: "var(--accent-light)",
                   textTransform: "uppercase",
                   letterSpacing: "0.16em",
                   marginBottom: 8,
+                  fontWeight: 600,
                 }}
               >
                 MUNERO INTELLIGENCE CORE
@@ -268,16 +270,26 @@ export function IntelligenceCore() {
               <CoreSVG revealed={revealed} />
 
               {/* Caption tight under core */}
-              <div className="mt-2 text-center">
+              <div className="mt-3 text-center">
                 <div
-                  className="num inline-flex items-center gap-2"
+                  className="num inline-flex items-center gap-2.5"
                   style={{
-                    fontSize: 11,
-                    color: "var(--text-2)",
+                    fontSize: 12.5,
+                    color: "var(--text)",
+                    fontWeight: 600,
+                    letterSpacing: "0.02em",
                   }}
                 >
                   Raw signals
-                  <span style={{ color: "var(--accent)", fontSize: 14 }}>→</span>
+                  <span
+                    style={{
+                      color: "var(--accent-light)",
+                      fontSize: 16,
+                      filter: "drop-shadow(0 0 4px rgba(0, 229, 160, 0.5))",
+                    }}
+                  >
+                    →
+                  </span>
                   Campaign decisions
                 </div>
               </div>
@@ -288,12 +300,13 @@ export function IntelligenceCore() {
               <div
                 className="num lg:text-right"
                 style={{
-                  fontSize: 10,
-                  color: "var(--accent)",
+                  fontSize: 11,
+                  color: "var(--accent-light)",
                   textTransform: "uppercase",
                   letterSpacing: "0.16em",
                   marginBottom: 14,
                   paddingRight: 4,
+                  fontWeight: 600,
                 }}
               >
                 CAMPAIGN-READY OUTPUTS
@@ -305,7 +318,7 @@ export function IntelligenceCore() {
                     className="hover-lift relative grid grid-cols-[auto_36px_1fr] items-center gap-3 p-3 pl-2"
                     style={{
                       background: "var(--surface)",
-                      border: "0.5px solid var(--border)",
+                      border: "0.5px solid var(--border-2)",
                       borderRadius: 8,
                       opacity: revealed ? 1 : 0,
                       transform: revealed ? "translateX(0)" : "translateX(12px)",
@@ -320,21 +333,22 @@ export function IntelligenceCore() {
                       <span
                         style={{
                           display: "block",
-                          width: 7,
-                          height: 7,
+                          width: 8,
+                          height: 8,
                           borderRadius: "50%",
-                          background: "var(--accent)",
-                          boxShadow: "0 0 6px var(--accent)",
+                          background: "var(--accent-light)",
+                          boxShadow: "0 0 8px var(--accent)",
                           marginRight: 4,
                         }}
                       />
                       <span
                         style={{
                           display: "block",
-                          width: 14,
+                          width: 22,
                           height: 1,
                           background:
-                            "linear-gradient(90deg, rgba(29,158,117,0.1) 0%, var(--accent) 100%)",
+                            "linear-gradient(90deg, rgba(29,158,117,0.2) 0%, var(--accent-light) 100%)",
+                          boxShadow: "0 0 4px rgba(29,158,117,0.4)",
                         }}
                       />
                     </span>
@@ -364,7 +378,7 @@ export function IntelligenceCore() {
                       </div>
                       <div
                         className="leading-snug"
-                        style={{ fontSize: 12.5, color: "var(--text-2)" }}
+                        style={{ fontSize: 12.5, color: "rgba(184, 184, 200, 0.95)" }}
                       >
                         {desc}
                       </div>
@@ -414,13 +428,13 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
       >
         <defs>
           <radialGradient id="core-glow-outer" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#1D9E75" stopOpacity="0.55" />
-            <stop offset="50%" stopColor="#1D9E75" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="#1D9E75" stopOpacity="0.7" />
+            <stop offset="50%" stopColor="#1D9E75" stopOpacity="0.2" />
             <stop offset="100%" stopColor="#1D9E75" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="core-glow-inner" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00E5A0" stopOpacity="0.5" />
-            <stop offset="60%" stopColor="#1D9E75" stopOpacity="0.25" />
+            <stop offset="0%" stopColor="#00E5A0" stopOpacity="0.6" />
+            <stop offset="60%" stopColor="#1D9E75" stopOpacity="0.3" />
             <stop offset="100%" stopColor="#1D9E75" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -668,14 +682,21 @@ function Metric({
       <span
         className="num"
         style={{
-          fontSize: 10.5,
-          color: "var(--accent)",
-          letterSpacing: "0.12em",
+          fontSize: 12,
+          color: "var(--accent-light)",
+          letterSpacing: "0.14em",
+          fontWeight: 700,
         }}
       >
         {label}
       </span>
-      <span style={{ fontSize: 12, color: "var(--text-2)", lineHeight: 1.5 }}>
+      <span
+        style={{
+          fontSize: 12,
+          color: "rgba(184, 184, 200, 0.95)",
+          lineHeight: 1.5,
+        }}
+      >
         {desc}
       </span>
     </li>
