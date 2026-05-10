@@ -98,9 +98,6 @@ export async function POST(req: NextRequest) {
         monthly_ad_spend,
         registered_at,
         source: "munero-site-v2",
-        // Routing hint for the n8n "Handle Site Registration" node: after the
-        // user-facing welcome email is sent, send a second copy here.
-        admin_notify_email: "barkobi04@gmail.com",
       }),
     });
     if (!n8nRes.ok) {
@@ -111,5 +108,62 @@ export async function POST(req: NextRequest) {
     console.error("[register] n8n webhook failed", err);
   }
 
+  // Admin notification: second Resend send straight to the founder so
+  // registrations show up in the inbox immediately, independent of the n8n
+  // welcome flow. Runs after n8n so a slow n8n call doesn't delay this.
+  const resendKey = process.env.RESEND_API_KEY;
+  const adminEmail = process.env.ADMIN_NOTIFY_EMAIL;
+  if (resendKey && adminEmail) {
+    const adminSubject = `New Munero registration: ${name} - ${email}`;
+    const adminHtml = `
+      <div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#0A0A0F;color:#E8E8F0;">
+        <p style="font-size:11px;color:#1D9E75;text-transform:uppercase;letter-spacing:0.14em;margin:0 0 16px;">New registration</p>
+        <h1 style="font-size:22px;font-weight:600;color:#E8E8F0;margin:0 0 24px;letter-spacing:-0.02em;">${escapeHtml(name)}</h1>
+        <table style="border-collapse:collapse;width:100%;font-size:13px;">
+          <tr><td style="padding:6px 0;color:#9898A8;width:140px;">Email</td><td style="padding:6px 0;color:#E8E8F0;">${escapeHtml(email)}</td></tr>
+          <tr><td style="padding:6px 0;color:#9898A8;">Company</td><td style="padding:6px 0;color:#E8E8F0;">${escapeHtml(company)}</td></tr>
+          <tr><td style="padding:6px 0;color:#9898A8;">Role</td><td style="padding:6px 0;color:#E8E8F0;">${escapeHtml(role) || "—"}</td></tr>
+          <tr><td style="padding:6px 0;color:#9898A8;">Monthly ad spend</td><td style="padding:6px 0;color:#E8E8F0;">${escapeHtml(monthly_ad_spend) || "—"}</td></tr>
+          <tr><td style="padding:6px 0;color:#9898A8;">Registered at</td><td style="padding:6px 0;color:#E8E8F0;font-family:monospace;font-size:12px;">${registered_at}</td></tr>
+        </table>
+        <p style="color:#5A5A6A;font-size:11px;margin-top:32px;">Sent from munero.ai · /api/register</p>
+      </div>
+    `;
+    try {
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Munero <hello@munero.ai>",
+          to: [adminEmail],
+          subject: adminSubject,
+          html: adminHtml,
+        }),
+      });
+      if (!r.ok) {
+        const text = await r.text().catch(() => "");
+        console.error("[register] admin Resend non-2xx", r.status, text);
+      }
+    } catch (err) {
+      console.error("[register] admin Resend failed", err);
+    }
+  } else {
+    console.warn(
+      "[register] RESEND_API_KEY or ADMIN_NOTIFY_EMAIL missing — skipping admin notification"
+    );
+  }
+
   return NextResponse.json({ ok: true });
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
