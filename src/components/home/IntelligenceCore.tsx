@@ -61,11 +61,11 @@ export function IntelligenceCore() {
           "radial-gradient(ellipse 80% 50% at 50% 50%, rgba(29,158,117,0.04) 0%, transparent 70%)",
       }}
     >
-      <div className="mx-auto max-w-6xl px-6 py-24 md:py-28">
-        {/* Top header — headline left, checkmarks right */}
-        <div className="grid md:grid-cols-[1.6fr_1fr] gap-10 items-start">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        {/* Top header — headline left, WHY IT MATTERS card right */}
+        <div className="grid md:grid-cols-[1.6fr_1fr] gap-8 md:gap-10 items-start">
           <div>
-            <div className="eyebrow mb-5">
+            <div className="eyebrow mb-4">
               <span
                 className="block w-1.5 h-1.5 rounded-full"
                 style={{
@@ -78,7 +78,7 @@ export function IntelligenceCore() {
             <h2
               className="font-bold tracking-[-0.03em] leading-[1.05]"
               style={{
-                fontSize: "clamp(36px, 5vw, 56px)",
+                fontSize: "clamp(34px, 4.6vw, 52px)",
                 fontWeight: 800,
                 color: "var(--text)",
               }}
@@ -89,11 +89,11 @@ export function IntelligenceCore() {
               <span style={{ color: "var(--accent)" }}>before</span> you spend.
             </h2>
             <p
-              className="mt-5 leading-relaxed"
+              className="mt-4 leading-relaxed"
               style={{
                 fontSize: 16,
                 color: "var(--text-2)",
-                maxWidth: 480,
+                maxWidth: 520,
               }}
             >
               Munero scans customer pain, search intent, competitor ads, social
@@ -102,199 +102,289 @@ export function IntelligenceCore() {
             </p>
           </div>
 
-          <ul className="space-y-3 md:pt-3">
-            {[
-              "Real signals. Not guesses.",
-              "One intelligence layer.",
-              "Campaigns that win.",
-            ].map((c) => (
-              <li
-                key={c}
-                className="flex items-center gap-2.5 num"
-                style={{ fontSize: 13, color: "var(--text)" }}
-              >
-                <CheckBadge />
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Three columns */}
-        <div className="mt-14 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr_1fr] gap-8 lg:gap-6">
-          {/* LEFT — Signal Sources */}
-          <div>
+          {/* WHY IT MATTERS card */}
+          <aside
+            className="md:mt-2"
+            style={{
+              background: "var(--surface)",
+              border: "0.5px solid var(--border)",
+              borderRadius: 10,
+              padding: "18px 20px",
+            }}
+          >
             <div
-              className="num text-[10px] mb-4"
+              className="num"
               style={{
+                fontSize: 10,
                 color: "var(--accent)",
                 textTransform: "uppercase",
                 letterSpacing: "0.16em",
+                marginBottom: 12,
               }}
             >
-              SIGNAL SOURCES
+              WHY IT MATTERS
             </div>
-            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
-              {SOURCES.map(({ Icon, title, desc }, i) => (
+            <ul className="space-y-2.5">
+              {[
+                "Real signals. Not guesses.",
+                "One intelligence layer.",
+                "Campaign plans with proof.",
+              ].map((c) => (
                 <li
-                  key={title}
-                  className="hover-lift relative grid grid-cols-[36px_1fr_auto] items-center gap-3 p-3"
+                  key={c}
+                  className="flex items-center gap-2.5"
                   style={{
-                    background: "var(--surface)",
-                    border: "0.5px solid var(--border)",
-                    borderRadius: 8,
-                    opacity: revealed ? 1 : 0,
-                    transform: revealed ? "translateX(0)" : "translateX(-12px)",
-                    transition: `opacity 400ms ease-out ${i * 50}ms, transform 400ms ease-out ${i * 50}ms`,
+                    fontSize: 13.5,
+                    color: "var(--text)",
+                    lineHeight: 1.4,
                   }}
                 >
-                  <span
-                    className="inline-flex items-center justify-center"
-                    style={{
-                      width: 32,
-                      height: 32,
-                      background: "var(--surface-2)",
-                      borderRadius: 6,
-                      color: "var(--accent)",
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Icon />
-                  </span>
-                  <div className="min-w-0">
-                    <div
-                      className="font-semibold tracking-tight truncate"
-                      style={{ fontSize: 13.5, color: "var(--text)" }}
-                    >
-                      {title}
-                    </div>
-                    <div
-                      className="leading-snug"
-                      style={{ fontSize: 11.5, color: "var(--text-3)" }}
-                    >
-                      {desc}
-                    </div>
-                  </div>
-                  <ConnectorDot />
+                  <CheckBadge />
+                  {c}
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* CENTER — Intelligence Core */}
-          <div className="flex flex-col items-center justify-start py-6 lg:py-2">
-            <div
-              className="num text-[10px] mb-6 hidden lg:block"
-              style={{
-                color: "var(--accent)",
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
-              }}
-            >
-              MUNERO INTELLIGENCE CORE
-            </div>
-
-            <CoreSVG revealed={revealed} />
-
-            <div className="mt-5 text-center">
-              <div
-                className="num"
-                style={{
-                  fontSize: 11,
-                  color: "var(--text-2)",
-                }}
-              >
-                Raw signals
-              </div>
-              <div
-                style={{
-                  fontSize: 16,
-                  color: "var(--accent)",
-                  margin: "4px 0",
-                }}
-              >
-                ↓
-              </div>
-              <div
-                className="num"
-                style={{
-                  fontSize: 11,
-                  color: "var(--text-2)",
-                }}
-              >
-                Campaign decisions
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT — Campaign-Ready Outputs */}
-          <div>
-            <div
-              className="num text-[10px] mb-4 lg:text-right"
-              style={{
-                color: "var(--accent)",
-                textTransform: "uppercase",
-                letterSpacing: "0.16em",
-              }}
-            >
-              CAMPAIGN-READY OUTPUTS
-            </div>
-            <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
-              {OUTPUTS.map(({ Icon, title, desc }, i) => (
-                <li
-                  key={title}
-                  className="hover-lift relative grid grid-cols-[auto_36px_1fr] items-center gap-3 p-3"
-                  style={{
-                    background: "var(--surface)",
-                    border: "0.5px solid var(--border)",
-                    borderRadius: 8,
-                    opacity: revealed ? 1 : 0,
-                    transform: revealed ? "translateX(0)" : "translateX(12px)",
-                    transition: `opacity 400ms ease-out ${i * 50}ms, transform 400ms ease-out ${i * 50}ms`,
-                  }}
-                >
-                  <ConnectorDot />
-                  <span
-                    className="inline-flex items-center justify-center"
-                    style={{
-                      width: 32,
-                      height: 32,
-                      background: "var(--surface-2)",
-                      borderRadius: 6,
-                      color: "var(--accent)",
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Icon />
-                  </span>
-                  <div className="min-w-0">
-                    <div
-                      className="font-semibold tracking-tight truncate"
-                      style={{ fontSize: 13.5, color: "var(--text)" }}
-                    >
-                      {title}
-                    </div>
-                    <div
-                      className="leading-snug"
-                      style={{ fontSize: 11.5, color: "var(--text-3)" }}
-                    >
-                      {desc}
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+          </aside>
         </div>
 
-        {/* Bottom strip */}
-        <BottomStrip
+        {/* Visual container — wraps the 3-col body + bottom strip as one unified system */}
+        <div
+          className="mt-10 rounded-xl"
           style={{
-            opacity: revealed ? 1 : 0,
-            transform: revealed ? "translateY(0)" : "translateY(12px)",
-            transition: "opacity 500ms ease-out 600ms, transform 500ms ease-out 600ms",
+            background:
+              "linear-gradient(180deg, rgba(13,13,24,0.6) 0%, rgba(8,8,14,0.4) 100%)",
+            border: "0.5px solid var(--border-2)",
+            padding: "20px",
           }}
-        />
+        >
+          {/* Three columns — tighter gap */}
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr_1fr] gap-4 lg:gap-3 items-start">
+            {/* LEFT — Signal Sources */}
+            <div>
+              <div
+                className="num"
+                style={{
+                  fontSize: 10,
+                  color: "var(--accent)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                  marginBottom: 14,
+                  paddingLeft: 4,
+                }}
+              >
+                SIGNAL SOURCES
+              </div>
+              <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+                {SOURCES.map(({ Icon, title, desc }, i) => (
+                  <li
+                    key={title}
+                    className="hover-lift relative grid grid-cols-[36px_1fr_auto] items-center gap-3 p-3 pr-2"
+                    style={{
+                      background: "var(--surface)",
+                      border: "0.5px solid var(--border)",
+                      borderRadius: 8,
+                      opacity: revealed ? 1 : 0,
+                      transform: revealed ? "translateX(0)" : "translateX(-12px)",
+                      transition: `opacity 400ms ease-out ${i * 50}ms, transform 400ms ease-out ${i * 50}ms`,
+                    }}
+                  >
+                    <span
+                      className="inline-flex items-center justify-center"
+                      style={{
+                        width: 32,
+                        height: 32,
+                        background: "rgba(29, 158, 117, 0.1)",
+                        borderRadius: 6,
+                        color: "var(--accent-light)",
+                      }}
+                      aria-hidden="true"
+                    >
+                      <Icon />
+                    </span>
+                    <div className="min-w-0">
+                      <div
+                        className="font-semibold tracking-tight"
+                        style={{
+                          fontSize: 14,
+                          color: "var(--text)",
+                          letterSpacing: "-0.005em",
+                        }}
+                      >
+                        {title}
+                      </div>
+                      <div
+                        className="leading-snug"
+                        style={{ fontSize: 12.5, color: "var(--text-2)" }}
+                      >
+                        {desc}
+                      </div>
+                    </div>
+                    {/* Connector: dot + short outward line */}
+                    <span
+                      aria-hidden="true"
+                      className="hidden lg:flex items-center"
+                    >
+                      <span
+                        style={{
+                          display: "block",
+                          width: 14,
+                          height: 1,
+                          background:
+                            "linear-gradient(90deg, var(--accent) 0%, rgba(29,158,117,0.1) 100%)",
+                        }}
+                      />
+                      <span
+                        style={{
+                          display: "block",
+                          width: 7,
+                          height: 7,
+                          borderRadius: "50%",
+                          background: "var(--accent)",
+                          boxShadow: "0 0 6px var(--accent)",
+                          marginLeft: 4,
+                        }}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* CENTER — Intelligence Core */}
+            <div className="flex flex-col items-center justify-center min-h-full">
+              <div
+                className="num"
+                style={{
+                  fontSize: 10,
+                  color: "var(--accent)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                  marginBottom: 8,
+                }}
+              >
+                MUNERO INTELLIGENCE CORE
+              </div>
+
+              <CoreSVG revealed={revealed} />
+
+              {/* Caption tight under core */}
+              <div className="mt-2 text-center">
+                <div
+                  className="num inline-flex items-center gap-2"
+                  style={{
+                    fontSize: 11,
+                    color: "var(--text-2)",
+                  }}
+                >
+                  Raw signals
+                  <span style={{ color: "var(--accent)", fontSize: 14 }}>→</span>
+                  Campaign decisions
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT — Campaign-Ready Outputs */}
+            <div>
+              <div
+                className="num lg:text-right"
+                style={{
+                  fontSize: 10,
+                  color: "var(--accent)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.16em",
+                  marginBottom: 14,
+                  paddingRight: 4,
+                }}
+              >
+                CAMPAIGN-READY OUTPUTS
+              </div>
+              <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+                {OUTPUTS.map(({ Icon, title, desc }, i) => (
+                  <li
+                    key={title}
+                    className="hover-lift relative grid grid-cols-[auto_36px_1fr] items-center gap-3 p-3 pl-2"
+                    style={{
+                      background: "var(--surface)",
+                      border: "0.5px solid var(--border)",
+                      borderRadius: 8,
+                      opacity: revealed ? 1 : 0,
+                      transform: revealed ? "translateX(0)" : "translateX(12px)",
+                      transition: `opacity 400ms ease-out ${i * 50}ms, transform 400ms ease-out ${i * 50}ms`,
+                    }}
+                  >
+                    {/* Connector: dot + short outward line */}
+                    <span
+                      aria-hidden="true"
+                      className="hidden lg:flex items-center"
+                    >
+                      <span
+                        style={{
+                          display: "block",
+                          width: 7,
+                          height: 7,
+                          borderRadius: "50%",
+                          background: "var(--accent)",
+                          boxShadow: "0 0 6px var(--accent)",
+                          marginRight: 4,
+                        }}
+                      />
+                      <span
+                        style={{
+                          display: "block",
+                          width: 14,
+                          height: 1,
+                          background:
+                            "linear-gradient(90deg, rgba(29,158,117,0.1) 0%, var(--accent) 100%)",
+                        }}
+                      />
+                    </span>
+                    <span
+                      className="inline-flex items-center justify-center"
+                      style={{
+                        width: 32,
+                        height: 32,
+                        background: "rgba(29, 158, 117, 0.1)",
+                        borderRadius: 6,
+                        color: "var(--accent-light)",
+                      }}
+                      aria-hidden="true"
+                    >
+                      <Icon />
+                    </span>
+                    <div className="min-w-0">
+                      <div
+                        className="font-semibold tracking-tight"
+                        style={{
+                          fontSize: 14,
+                          color: "var(--text)",
+                          letterSpacing: "-0.005em",
+                        }}
+                      >
+                        {title}
+                      </div>
+                      <div
+                        className="leading-snug"
+                        style={{ fontSize: 12.5, color: "var(--text-2)" }}
+                      >
+                        {desc}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom strip — inside the same container */}
+          <BottomStrip
+            style={{
+              opacity: revealed ? 1 : 0,
+              transform: revealed ? "translateY(0)" : "translateY(12px)",
+              transition:
+                "opacity 500ms ease-out 600ms, transform 500ms ease-out 600ms",
+            }}
+          />
+        </div>
       </div>
     </section>
   );
@@ -308,126 +398,143 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
       className="relative"
       style={{
         width: "100%",
-        maxWidth: 320,
+        maxWidth: 420,
         aspectRatio: "1 / 1",
         transform: revealed ? "scale(1)" : "scale(0.85)",
         opacity: revealed ? 1 : 0.4,
-        transition: "transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms, opacity 600ms ease-out 200ms",
+        transition:
+          "transform 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms, opacity 600ms ease-out 200ms",
       }}
     >
       <svg
-        viewBox="0 0 320 320"
+        viewBox="0 0 420 420"
         className="absolute inset-0 w-full h-full"
         aria-hidden="true"
+        style={{ overflow: "visible" }}
       >
         <defs>
-          <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#1D9E75" stopOpacity="0.5" />
-            <stop offset="60%" stopColor="#1D9E75" stopOpacity="0.1" />
+          <radialGradient id="core-glow-outer" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#1D9E75" stopOpacity="0.55" />
+            <stop offset="50%" stopColor="#1D9E75" stopOpacity="0.15" />
             <stop offset="100%" stopColor="#1D9E75" stopOpacity="0" />
           </radialGradient>
-          <radialGradient id="core-fill" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#1D9E75" stopOpacity="0.35" />
+          <radialGradient id="core-glow-inner" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#00E5A0" stopOpacity="0.5" />
+            <stop offset="60%" stopColor="#1D9E75" stopOpacity="0.25" />
             <stop offset="100%" stopColor="#1D9E75" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        {/* Soft halo */}
-        <circle cx="160" cy="160" r="140" fill="url(#core-glow)" />
+        {/* Strong outer halo */}
+        <circle cx="210" cy="210" r="200" fill="url(#core-glow-outer)" />
 
-        {/* Spoke lines radiating outward — visually suggest connection to columns */}
+        {/* Spoke fans — left side (8) reaching toward source column */}
         {Array.from({ length: 8 }).map((_, i) => {
-          const angle = (Math.PI / 7) * i + Math.PI / 2 - Math.PI / 2 - (Math.PI * 0.42);
-          // 8 spokes on the left side fanning out to suggest source connections
           const a = -Math.PI + (i / 7) * Math.PI * 0.7;
-          const x1 = 160 + Math.cos(a) * 100;
-          const y1 = 160 + Math.sin(a) * 100;
-          const x2 = 160 + Math.cos(a) * 155;
-          const y2 = 160 + Math.sin(a) * 155;
+          const x1 = 210 + Math.cos(a) * 130;
+          const y1 = 210 + Math.sin(a) * 130;
+          const x2 = 210 + Math.cos(a) * 205;
+          const y2 = 210 + Math.sin(a) * 205;
           return (
-            <line
-              key={`L${i}`}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="var(--accent)"
-              strokeWidth="1"
-              opacity="0.4"
-            />
+            <g key={`L${i}`}>
+              <line
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="var(--accent)"
+                strokeWidth="1"
+                opacity="0.55"
+              />
+              {/* Bright tip dot */}
+              <circle cx={x2} cy={y2} r="2" fill="var(--accent-light)" opacity="0.8" />
+            </g>
           );
         })}
-        {/* Right-side spokes for outputs (7 lines) */}
+        {/* Spoke fans — right side (7) reaching toward output column */}
         {Array.from({ length: 7 }).map((_, i) => {
           const a = -Math.PI * 0.3 + (i / 6) * Math.PI * 0.6;
-          const x1 = 160 + Math.cos(a) * 100;
-          const y1 = 160 + Math.sin(a) * 100;
-          const x2 = 160 + Math.cos(a) * 155;
-          const y2 = 160 + Math.sin(a) * 155;
+          const x1 = 210 + Math.cos(a) * 130;
+          const y1 = 210 + Math.sin(a) * 130;
+          const x2 = 210 + Math.cos(a) * 205;
+          const y2 = 210 + Math.sin(a) * 205;
           return (
-            <line
-              key={`R${i}`}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="var(--accent)"
-              strokeWidth="1"
-              opacity="0.4"
-            />
+            <g key={`R${i}`}>
+              <line
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="var(--accent)"
+                strokeWidth="1"
+                opacity="0.55"
+              />
+              <circle cx={x2} cy={y2} r="2" fill="var(--accent-light)" opacity="0.8" />
+            </g>
           );
         })}
 
         {/* Slow-rotating dashed ring */}
         <g
           style={{
-            transformOrigin: "160px 160px",
+            transformOrigin: "210px 210px",
             animation: "core-rotate 30s linear infinite",
           }}
         >
           <circle
-            cx="160"
-            cy="160"
-            r="120"
+            cx="210"
+            cy="210"
+            r="160"
             fill="none"
             stroke="var(--accent)"
             strokeWidth="0.75"
             strokeDasharray="3 6"
-            opacity="0.35"
+            opacity="0.4"
           />
         </g>
 
         {/* Outer ring with slow pulse */}
         <g
           style={{
-            transformOrigin: "160px 160px",
+            transformOrigin: "210px 210px",
             animation: "core-pulse-ring 3s ease-in-out infinite",
           }}
         >
           <circle
-            cx="160"
-            cy="160"
-            r="100"
+            cx="210"
+            cy="210"
+            r="130"
             fill="none"
             stroke="var(--accent)"
-            strokeWidth="2"
-            opacity="0.55"
+            strokeWidth="2.5"
+            opacity="0.7"
           />
         </g>
 
-        {/* Inner ring */}
+        {/* Inner glow disc */}
         <circle
-          cx="160"
-          cy="160"
-          r="80"
-          fill="url(#core-fill)"
+          cx="210"
+          cy="210"
+          r="105"
+          fill="url(#core-glow-inner)"
           stroke="var(--accent-light)"
-          strokeWidth="1.5"
-          opacity="0.85"
+          strokeWidth="1.75"
+          opacity="0.95"
+        />
+
+        {/* Inner-most ring */}
+        <circle
+          cx="210"
+          cy="210"
+          r="105"
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="1"
+          opacity="0.5"
         />
       </svg>
 
-      {/* Center label — HTML over SVG so we can use the brand wordmark */}
+      {/* Center label — HTML over SVG */}
       <div
         className="absolute inset-0 flex flex-col items-center justify-center text-center"
         style={{ pointerEvents: "none" }}
@@ -435,8 +542,8 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
         <div
           className="num"
           style={{
-            fontSize: 9,
-            letterSpacing: "0.24em",
+            fontSize: 10,
+            letterSpacing: "0.28em",
             color: "var(--accent-light)",
           }}
         >
@@ -445,11 +552,11 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
         <div
           className="num"
           style={{
-            fontSize: 13,
-            letterSpacing: "0.18em",
+            fontSize: 16,
+            letterSpacing: "0.2em",
             color: "var(--text)",
             fontWeight: 700,
-            marginTop: 4,
+            marginTop: 6,
           }}
         >
           INTELLIGENCE
@@ -457,8 +564,8 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
         <div
           className="num"
           style={{
-            fontSize: 13,
-            letterSpacing: "0.18em",
+            fontSize: 16,
+            letterSpacing: "0.2em",
             color: "var(--text)",
             fontWeight: 700,
           }}
@@ -475,7 +582,7 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
 function BottomStrip({ style }: { style?: React.CSSProperties }) {
   return (
     <div
-      className="hairline-t mt-14 pt-10 grid md:grid-cols-[1.5fr_1fr] gap-8 items-center"
+      className="hairline-t mt-8 pt-8 grid md:grid-cols-[1.5fr_1fr] gap-8 items-center"
       style={style}
     >
       {/* Left: M mark + manifesto */}
@@ -497,7 +604,7 @@ function BottomStrip({ style }: { style?: React.CSSProperties }) {
         </div>
         <p
           style={{
-            fontSize: 15,
+            fontSize: 15.5,
             color: "var(--text)",
             lineHeight: 1.6,
             maxWidth: "52ch",
@@ -513,9 +620,21 @@ function BottomStrip({ style }: { style?: React.CSSProperties }) {
 
       {/* Right: 3 metrics */}
       <ul className="grid grid-cols-3 gap-3">
-        <Metric icon={<ClockIcon />} label="35 MINUTES" desc="First brief ready in 35 minutes" />
-        <Metric icon={<DocIcon />} label="ONE WORKSPACE" desc="Everything organized in one place" />
-        <Metric icon={<ChartIcon />} label="SHARPER OVER TIME" desc="Gets smarter with every campaign you run" />
+        <Metric
+          icon={<ClockIcon />}
+          label="35 MINUTES"
+          desc="First brief ready"
+        />
+        <Metric
+          icon={<DocIcon />}
+          label="ONE WORKSPACE"
+          desc="Everything organized"
+        />
+        <Metric
+          icon={<ChartIcon />}
+          label="SHARPER OVER TIME"
+          desc="Every campaign improves the next"
+        />
       </ul>
     </div>
   );
@@ -556,30 +675,14 @@ function Metric({
       >
         {label}
       </span>
-      <span style={{ fontSize: 11.5, color: "var(--text-3)", lineHeight: 1.5 }}>
+      <span style={{ fontSize: 12, color: "var(--text-2)", lineHeight: 1.5 }}>
         {desc}
       </span>
     </li>
   );
 }
 
-/* -------------------------- Connector dot + check badge -------------------------- */
-
-function ConnectorDot() {
-  return (
-    <span
-      aria-hidden="true"
-      className="block shrink-0"
-      style={{
-        width: 7,
-        height: 7,
-        borderRadius: "50%",
-        background: "var(--accent)",
-        boxShadow: "0 0 6px var(--accent)",
-      }}
-    />
-  );
-}
+/* -------------------------- Check badge -------------------------- */
 
 function CheckBadge() {
   return (
