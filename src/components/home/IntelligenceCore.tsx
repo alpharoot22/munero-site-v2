@@ -79,7 +79,7 @@ export function IntelligenceCore() {
             <h2
               className="font-bold tracking-[-0.03em] leading-[1.05]"
               style={{
-                fontSize: "clamp(34px, 4.6vw, 52px)",
+                fontSize: "clamp(30px, 3.8vw, 44px)",
                 fontWeight: 800,
                 color: "var(--text)",
               }}
@@ -415,7 +415,7 @@ function CoreSVG({ revealed }: { revealed: boolean }) {
       className="relative"
       style={{
         width: "100%",
-        maxWidth: 420,
+        maxWidth: 560,
         aspectRatio: "1 / 1",
         transform: revealed ? "scale(1)" : "scale(0.85)",
         opacity: revealed ? 1 : 0.4,
