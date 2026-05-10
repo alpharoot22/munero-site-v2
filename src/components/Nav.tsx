@@ -41,7 +41,7 @@ export function Nav() {
             Get started free
           </Link>
           <a href={STRIPE_BRIEF} className="btn-primary !h-11 !px-3.5 !text-[13px]">
-            Get my brief
+            Open workspace · $99
           </a>
         </div>
       </div>

@@ -20,15 +20,15 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://munero.ai"),
   title: {
-    default: "Munero · Know what works before you spend",
+    default: "Munero · Your Marketing Intelligence Workspace",
     template: "%s · Munero",
   },
   description:
-    "Munero builds complete campaign briefs in 35 minutes using 16 intelligence squads. Know exactly what message will work before you spend on ads. $99 per brief, no subscription.",
+    "Munero is a marketing intelligence workspace for DTC founders, agencies, and in-house marketers. First brief ready in 35 minutes. Built on real customer behavior. Starting at $99.",
   openGraph: {
-    title: "Munero: Know what works before you spend",
+    title: "Munero · Your Marketing Intelligence Workspace",
     description:
-      "Complete campaign briefs in 35 minutes. 16 intelligence squads. 46 creative assets. $99 one-time.",
+      "Marketing intelligence workspace. First brief ready in 35 minutes. Built on real customer behavior. Starting at $99.",
     type: "website",
     url: "https://munero.ai",
   },

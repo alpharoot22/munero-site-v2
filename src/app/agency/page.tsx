@@ -32,7 +32,7 @@ export default function AgencyPage() {
           </p>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
             <a href="https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency" className="btn-primary">
-              Book a walkthrough
+              Open agency workspace
             </a>
             <a href="/sample" className="btn-secondary">
               See a sample brief
@@ -104,7 +104,7 @@ export default function AgencyPage() {
           </h2>
           <div className="mt-9 flex flex-col sm:flex-row gap-3">
             <a href="https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency" className="btn-primary">
-              Book a walkthrough
+              Open agency workspace
             </a>
             <a href="/pricing" className="btn-secondary">
               See pricing

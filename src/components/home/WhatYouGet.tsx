@@ -55,11 +55,16 @@ export function WhatYouGet() {
   const current = tabs.find((t) => t.id === active)!;
   return (
     <Section bordered id="what-you-get">
-      <Eyebrow>What you get</Eyebrow>
-      <H2 className="max-w-[20ch]">A brief built to be argued with, not skimmed.</H2>
+      <Eyebrow>Inside your workspace</Eyebrow>
+      <H2 className="max-w-[24ch]">
+        Everything inside your workspace.
+        <br />
+        Built on real customer behavior.
+      </H2>
       <Lede>
-        Every claim is footnoted to source data. Every recommendation has a kill criterion.
-        Audit-ready by default.
+        Your workspace opens the moment you start. Munero runs your first
+        brief, then keeps your market intelligence, competitors, creative
+        assets, campaign plan, and next moves organized in one place.
       </Lede>
 
       {/* SHA-256 trust line */}

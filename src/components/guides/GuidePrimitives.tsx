@@ -342,7 +342,7 @@ export function MuneroCTA({ platformLine }: { platformLine: string }) {
         }}
       >
         <a href={STRIPE_BRIEF} className="btn-primary">
-          Get my brief · $99
+          Open your workspace · $99
         </a>
         <Link href="/sample" className="btn-secondary">
           See a sample brief first

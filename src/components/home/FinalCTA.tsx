@@ -1,6 +1,7 @@
 import Link from "next/link";
 
-const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
+const STRIPE_BRIEF =
+  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export function FinalCTA() {
   return (
@@ -47,7 +48,7 @@ export function FinalCTA() {
       </svg>
 
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36 relative">
-        <div className="max-w-[40ch] mx-auto text-center">
+        <div className="max-w-[36ch] mx-auto text-center">
           <h2
             className="font-bold tracking-[-0.03em] leading-[1.0]"
             style={{
@@ -55,10 +56,11 @@ export function FinalCTA() {
               color: "var(--text)",
             }}
           >
-            Zero to running campaign.
+            Your workspace.
             <br />
-            <span style={{ color: "var(--accent)" }}>35 minutes.</span>{" "}
-            <span style={{ color: "var(--accent)" }}>$99.</span>
+            Your market.
+            <br />
+            <span style={{ color: "var(--accent)" }}>Your edge.</span>
           </h2>
 
           <p
@@ -70,24 +72,25 @@ export function FinalCTA() {
               lineHeight: 1.55,
             }}
           >
-            Everything your agency charges $5,000 to build. Built on real customer behavior.
-            Done before you spend a dollar.
+            Open your Munero workspace today. Your first intelligence brief is
+            ready in 35 minutes. Built on real customer behavior. Organized
+            for action. Ready before you spend.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <a href={STRIPE_BRIEF} className="btn-primary">
-              Get my brief · $99
+              Open your workspace · $99
             </a>
             <Link href="/register" className="btn-secondary">
-              Register free · choose plan later
+              Register free · explore first
             </Link>
           </div>
           <Link
-            href="/sample"
+            href="/how-it-works#what-you-get"
             className="inline-block mt-5 transition-colors"
             style={{ fontSize: 13, color: "var(--text-3)" }}
           >
-            Or see a sample brief first{" "}
+            See what&apos;s inside{" "}
             <span style={{ color: "var(--accent)" }}>→</span>
           </Link>
 
@@ -95,8 +98,8 @@ export function FinalCTA() {
             className="num mt-8"
             style={{ fontSize: 11, color: "var(--text-3)" }}
           >
-            28 briefs run this month · 16 intelligence squads · 46 creative assets · 9 AI
-            assistants
+            28 workspaces opened this month · 16 intelligence squads · 9 AI
+            assistants · First brief ready in 35 min
           </p>
         </div>
       </div>

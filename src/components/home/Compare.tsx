@@ -4,10 +4,10 @@ const TOOLS = [
   {
     name: "Munero",
     you: true,
-    what: "AI marketing intelligence platform",
-    price: "$99 per brief / $499 unlimited",
+    what: "Marketing intelligence workspace with brief, creative, and campaign planning tools",
+    price: "$99 starter · $499 / mo unlimited",
     limitation:
-      "Replaces 4 tools at 1/40th the annual cost. Brief + creative + plan in 35 minutes.",
+      "One workspace connects market signals, competitors, creative strategy, and campaign planning. First brief ready in 35 minutes.",
   },
   {
     name: "Semrush",

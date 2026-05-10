@@ -91,7 +91,7 @@ export default function FeaturesPage() {
         </H2>
         <Lede>
           This page is the complete inventory. No roadmap items, no &ldquo;coming soon&rdquo;.
-          If it&apos;s listed here, it ships when you buy a brief.
+          If it&apos;s listed here, it&apos;s part of the workspace you open.
         </Lede>
       </Section>
 

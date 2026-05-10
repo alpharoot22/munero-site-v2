@@ -10,7 +10,7 @@ const FLOW_STEPS = [
   { step: "05", label: "Market gaps found",     detail: "Attack angles identified" },
   { step: "06", label: "46 creative assets",    detail: "Copy · Images · Video" },
   { step: "07", label: "Ads manager ready",     detail: "Meta · Google · TikTok" },
-  { step: "08", label: "Live",                  detail: "35 min total", live: true },
+  { step: "08", label: "Workspace open + campaign plan ready", detail: "35 min total", live: true },
 ];
 
 export function ZeroToCampaign() {
@@ -52,15 +52,16 @@ export function ZeroToCampaign() {
             color: "var(--text)",
           }}
         >
-          Everything between zero and launch.
+          From signup to campaign plan.
           <br />
-          Built on real customer behavior.
+          Your workspace does the work.
         </h2>
         <p
           className="mt-3"
-          style={{ fontSize: 16, color: "var(--text-2)" }}
+          style={{ fontSize: 16, color: "var(--text-2)", maxWidth: "60ch" }}
         >
-          This is what Munero does. In 35 minutes. For $99.
+          This is what happens the moment you open your Munero workspace. Your
+          first intelligence brief is ready in 35 minutes. Starting at $99.
         </p>
 
         <div ref={ref} className="mt-12 overflow-x-auto md:overflow-visible">

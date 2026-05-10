@@ -78,7 +78,7 @@ export default function HowItWorksPage() {
           </h2>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <a href={STRIPE_BRIEF} className="btn-primary">
-              Get my brief · $99
+              Open your workspace · $99
             </a>
             <Link href="/sample" className="btn-secondary">
               See a sample first

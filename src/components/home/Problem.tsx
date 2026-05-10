@@ -6,21 +6,21 @@ const pains = [
     bigLabel: "burned per learning round",
     title: "You launch on a hunch.",
     body:
-      "You have a hypothesis about what will land, but no proof. You spend $10K to find out, and most of it teaches you what doesn't work.",
+      "You have a hypothesis but no proof. You spend budget learning what does not work. Munero helps you see the market before you spend.",
   },
   {
     bigStat: "0",
-    bigLabel: "live market signals in ChatGPT",
+    bigLabel: "live market signals",
     title: "ChatGPT gives you guesses, not signal.",
     body:
-      "Generic ad copy that hasn't been validated against real Reddit complaints, Trustpilot reviews, current Meta ads, or what your competitors are running this week.",
+      "Generic copy has no live competitor intelligence, no search behavior, no pain-point data, and no market proof. Munero grounds strategy in real customer behavior.",
   },
   {
-    bigStat: "14 days",
-    bigLabel: "before your agency starts ads",
-    title: "Your agency briefs are theater.",
+    bigStat: "7+",
+    bigLabel: "tools to stitch together",
+    title: "Your stack does not have a brain.",
     body:
-      "30-page decks built from competitor screenshots and a media planner's gut feel. By the time you read them, the ads have been running for two weeks.",
+      "SEO tools show keywords. Ad libraries show ads. Spreadsheets hold plans. Munero connects the dots inside one workspace.",
   },
 ];
 
@@ -29,14 +29,13 @@ export function Problem() {
     <Section bordered id="problem">
       <Eyebrow>The problem</Eyebrow>
       <H2 className="max-w-[28ch]">
-        Most campaigns start with a guess.
-        <br />
-        Munero starts with{" "}
-        <span style={{ color: "var(--accent)" }}>evidence</span>.
+        Most marketers have tools. None of them talk to each other.
       </H2>
       <Lede>
-        Real Reddit complaints. Real competitor ads. Real search behavior. Not AI
-        hallucinations. Not agency gut feel. Real signals.
+        You have Semrush for data. ChatGPT for copy. A spreadsheet for
+        planning. And a gut feeling for everything else. Munero replaces the
+        mess with one workspace that connects market signals, competitors,
+        creative strategy, and campaign planning.
       </Lede>
 
       <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-px hairline">

@@ -72,11 +72,19 @@ export function Lifecycle() {
   return (
     <Section bordered id="lifecycle">
       <Eyebrow>After delivery</Eyebrow>
-      <H2 className="max-w-[24ch]">The brief is just the beginning.</H2>
+      <H2 className="max-w-[26ch]">Your workspace keeps the strategy organized.</H2>
       <Lede>
-        A delivered brief opens a 60-day intelligence loop. Every campaign feeds the next brief
-        sharper.
+        The moment your first brief lands, your workspace becomes the home for
+        your market intelligence. Competitors, buying signals, creative ideas,
+        campaign plan, KPI targets, and next actions stay in one place.
       </Lede>
+      <p
+        className="mt-3 text-[14px] leading-relaxed max-w-[60ch]"
+        style={{ color: "var(--text-3)" }}
+      >
+        Upgrade when you want monitoring, refreshes, unlimited briefs, or
+        agency workflows.
+      </p>
 
       <div ref={ref} className="mt-14 relative">
         {/* Connecting line */}

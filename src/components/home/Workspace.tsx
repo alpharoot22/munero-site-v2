@@ -90,13 +90,14 @@ export function Workspace() {
   return (
     <Section bordered id="workspace" className="workspace-section scroll-mt-24">
       <Eyebrow>YOUR WORKSPACE · LIVE AT APP.MUNERO.AI</Eyebrow>
-      <H2 className="max-w-[24ch]">
-        The brief is the starting point. The workspace runs forever.
+      <H2 className="max-w-[26ch]">
+        The brief is what Munero runs first. The workspace is what you keep.
       </H2>
       <Lede className="max-w-[60ch]">
-        The moment you pay, your workspace is ready. Every brief, every
-        creative, every competitor, every AI assistant, all in one place.
-        Connected. Compounding. Getting sharper with every campaign you run.
+        The moment you start, your workspace is ready. Your market intelligence,
+        competitors, creative assets, campaign plan, and AI assistants all live
+        in one place. Upgrade when you want monitoring, refreshes, unlimited
+        briefs, or agency workflows.
       </Lede>
 
       {/* Three stat columns */}

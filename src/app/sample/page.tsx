@@ -151,7 +151,7 @@ export default function SamplePage() {
                 href="https://munero.ai"
                 className="btn-primary mt-6 inline-flex"
               >
-                Get my brief for $99
+                Open your workspace · $99
               </a>
             </div>
           </div>
