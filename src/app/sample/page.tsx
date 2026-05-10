@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Section, Eyebrow, H2, Lede } from "../../components/Section";
 
+const STRIPE_BRIEF =
+  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter";
+
 export const metadata: Metadata = {
   title: "Sample brief",
   description:
-    "See a real, anonymized Munero campaign brief. Audience segments, hooks, competitor angles, full campaign plan.",
+    "See a real, anonymized Munero campaign brief. 16 sections from market opportunity score to SHA-256 audit hash.",
 };
 
 export default function SamplePage() {
@@ -31,20 +34,39 @@ export default function SamplePage() {
             <ul className="space-y-2 text-[13.5px]">
               {[
                 "Executive summary",
+                "Market opportunity score",
                 "Audience segments",
                 "Pain point library",
+                "Search intent keywords",
                 "Competitor gaps",
+                "Winning angles",
                 "Hooks ranked by signal",
-                "Creative briefs (sample)",
+                "Creative briefs",
+                "Image & video kit",
+                "Landing page direction",
                 "Campaign plan",
-                "Kill rules",
-              ].map((s) => (
+                "KPI targets",
+                "Kill & scale rules",
+                "Evidence library",
+                "SHA-256 audit hash",
+              ].map((s, i) => (
                 <li key={s}>
                   <a
-                    href={`#${s.toLowerCase().replace(/\s+/g, "-")}`}
+                    href={`#${s.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")}`}
+                    className="grid grid-cols-[28px_1fr] gap-1 items-baseline"
                     style={{ color: "var(--text-2)" }}
                   >
-                    {s}
+                    <span
+                      className="num"
+                      style={{
+                        fontSize: 11,
+                        color: "var(--text-3)",
+                        letterSpacing: "0.04em",
+                      }}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>{s}</span>
                   </a>
                 </li>
               ))}
@@ -136,10 +158,10 @@ export default function SamplePage() {
               style={{ background: "var(--surface)" }}
             >
               <div className="num text-[11px] mb-3" style={{ color: "var(--accent)" }}>
-                40+ MORE PAGES
+                16 SECTIONS · 80+ DATA POINTS
               </div>
               <h3 className="text-[22px] tracking-tight font-medium">
-                The full brief covers competitor gaps, creative briefs, and the day-by-day plan.
+                The full brief covers all 16 sections from market opportunity score to SHA-256 audit hash.
               </h3>
               <p
                 className="mt-3 text-[14.5px] max-w-[52ch] mx-auto"
@@ -148,7 +170,7 @@ export default function SamplePage() {
                 Get yours in 35 minutes for $99.
               </p>
               <a
-                href="https://munero.ai"
+                href={STRIPE_BRIEF}
                 className="btn-primary mt-6 inline-flex"
               >
                 Open your workspace · $99
