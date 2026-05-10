@@ -38,7 +38,13 @@ export async function POST(req: NextRequest) {
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const n8nWebhook = process.env.MUNERO_N8N_WEBHOOK_URL;
+
+  // Canonical n8n Router endpoint. Env var overrides for staging or test runs.
+  const n8nWebhook =
+    process.env.MUNERO_N8N_WEBHOOK_URL ??
+    "https://bar0807.app.n8n.cloud/webhook/munero-router";
+
+  const registered_at = new Date().toISOString();
 
   // Insert into Supabase waitlist. Treat 409 (duplicate email) as success.
   if (supabaseUrl && supabaseKey) {
@@ -73,9 +79,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Fire-and-forget to n8n Router for email automation.
-  if (n8nWebhook) {
-    fetch(n8nWebhook, {
+  // Fire to n8n Router for the welcome-email automation. Await so we don't
+  // race the request lifecycle on serverless — Vercel may freeze the function
+  // immediately after the response, killing an unresolved fire-and-forget.
+  // The site flow is: form POSTs to /api/register, awaits the response, then
+  // navigates to /pricing. A few hundred ms here is invisible to users and
+  // guarantees the n8n call actually reaches the network.
+  try {
+    const n8nRes = await fetch(n8nWebhook, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -85,11 +96,19 @@ export async function POST(req: NextRequest) {
         company,
         role,
         monthly_ad_spend,
+        registered_at,
         source: "munero-site-v2",
+        // Routing hint for the n8n "Handle Site Registration" node: after the
+        // user-facing welcome email is sent, send a second copy here.
+        admin_notify_email: "barkobi04@gmail.com",
       }),
-    }).catch((err) => {
-      console.error("[register] n8n webhook failed", err);
     });
+    if (!n8nRes.ok) {
+      const text = await n8nRes.text().catch(() => "");
+      console.error("[register] n8n webhook non-2xx", n8nRes.status, text);
+    }
+  } catch (err) {
+    console.error("[register] n8n webhook failed", err);
   }
 
   return NextResponse.json({ ok: true });
