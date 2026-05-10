@@ -3,6 +3,7 @@ import { ReplaceDeliverMarquee } from "../components/home/ReplaceDeliverMarquee"
 import { Problem } from "../components/home/Problem";
 import { Personas } from "../components/home/Personas";
 import { TraditionalVsMunero } from "../components/home/TraditionalVsMunero";
+import { IntelligenceCore } from "../components/home/IntelligenceCore";
 import { Workspace } from "../components/home/Workspace";
 import { Compare } from "../components/home/Compare";
 import { Pricing } from "../components/home/Pricing";
@@ -17,6 +18,7 @@ export default function Home() {
       <Problem />
       <Personas />
       <TraditionalVsMunero />
+      <IntelligenceCore />
       <Workspace />
       <Compare />
       <Pricing />
