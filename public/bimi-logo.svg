@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny-ps" viewBox="0 0 96 96" preserveAspectRatio="xMidYMid meet">
+  <title>Munero</title>
+  <rect width="96" height="96" fill="#050508"/>
+  <g fill="none" stroke="#1D9E75" stroke-width="3.4" stroke-linecap="round">
+    <path d="M28 50 Q22 64 26 78"/>
+    <path d="M33 51 Q28 65 32 79"/>
+    <path d="M40 53 Q37 67 40 81"/>
+    <path d="M45 53 Q44 68 45 82"/>
+    <path d="M51 53 Q52 68 51 82"/>
+    <path d="M56 53 Q59 67 56 81"/>
+    <path d="M63 51 Q68 65 64 79"/>
+    <path d="M68 50 Q74 64 70 78"/>
+  </g>
+  <circle cx="48" cy="36" r="16" fill="#1D9E75"/>
+  <circle cx="42.5" cy="34.5" r="2.8" fill="#050508"/>
+  <circle cx="53.5" cy="34.5" r="2.8" fill="#050508"/>
+</svg>
