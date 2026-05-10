@@ -32,13 +32,13 @@ export function Hero() {
         35
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-14 md:pt-20 pb-16 md:pb-20">
+      <div className="relative mx-auto max-w-6xl px-6 pt-12 md:pt-16 pb-12 md:pb-16">
         {/* Top grid — copy left, dashboard right */}
         <div className="grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-start">
-          {/* Left 55% — copy only */}
+          {/* Left 55% — copy */}
           <div className="relative z-10">
             <div
-              className="eyebrow mb-7 animate-on-load"
+              className="eyebrow mb-2 animate-on-load"
               style={{ ["--delay" as string]: "0" }}
             >
               <span
@@ -50,6 +50,24 @@ export function Hero() {
               />
               YOUR MARKETING INTELLIGENCE WORKSPACE
             </div>
+
+            {/* ICP qualifier — restored above the fold */}
+            <p
+              className="num animate-on-load mb-6"
+              style={{
+                fontSize: 10.5,
+                color: "var(--text-3)",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                ["--delay" as string]: "0",
+              }}
+            >
+              FOR DTC FOUNDERS · AGENCIES · IN-HOUSE TEAMS{" "}
+              <span style={{ color: "var(--text-2)" }}>·</span>{" "}
+              <span style={{ color: "var(--accent)" }}>
+                $5K+ MONTHLY AD SPEND
+              </span>
+            </p>
 
             <h1
               className="font-bold tracking-[-0.035em] leading-[1.05] animate-on-load"
@@ -68,14 +86,14 @@ export function Hero() {
             </h1>
 
             <p
-              className="mt-6 animate-on-load"
+              className="mt-5 animate-on-load"
               style={{
-                fontSize: 19,
+                fontSize: 18,
                 fontWeight: 500,
                 color: "var(--text)",
                 letterSpacing: "-0.01em",
                 lineHeight: 1.45,
-                maxWidth: 560,
+                maxWidth: 540,
                 ["--delay" as string]: "2",
               }}
             >
@@ -85,22 +103,48 @@ export function Hero() {
             </p>
 
             <p
-              className="mt-5 animate-on-load"
+              className="mt-4 animate-on-load"
               style={{
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: 400,
                 color: "var(--text-2)",
-                lineHeight: 1.7,
-                maxWidth: 560,
+                lineHeight: 1.65,
+                maxWidth: 540,
                 ["--delay" as string]: "3",
               }}
             >
               Competitors scanned. Buying signals mapped. Market gaps
               identified. Creative assets written. Campaign plan ready. All
-              inside one workspace. Your research, competitors, creatives, and
-              next moves stay organized in one place, so every launch gets
-              sharper.
+              inside one workspace.
             </p>
+
+            {/* Primary CTA pulled into the copy column so it sits above the fold */}
+            <div
+              className="mt-7 flex flex-col sm:flex-row sm:items-center gap-3 animate-on-load"
+              style={{ ["--delay" as string]: "4" }}
+            >
+              <a href={STRIPE_BRIEF} className="btn-primary">
+                Open your workspace · $99
+                <Arrow />
+              </a>
+              <a href="#what-you-get" className="btn-secondary">
+                See what you get
+                <Arrow />
+              </a>
+            </div>
+            <Link
+              href="/register"
+              className="inline-flex items-center mt-3 transition-colors animate-on-load"
+              style={{
+                color: "var(--text-2)",
+                fontSize: 13,
+                minHeight: 44,
+                ["--delay" as string]: "5",
+              }}
+            >
+              Register free, explore first{" "}
+              <span style={{ color: "var(--accent)", marginLeft: 6 }}>→</span>
+            </Link>
           </div>
 
           {/* Right 45% — Workspace dashboard mockup */}
@@ -109,41 +153,19 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Full-width CTA row below the grid */}
-        <div
-          className="relative z-10 mt-10 md:mt-14 pt-8 md:pt-10 hairline-t flex flex-col md:flex-row md:items-center md:justify-between gap-6 animate-on-load"
-          style={{ ["--delay" as string]: "4" }}
+        {/* Trust strip below grid — small, full-width */}
+        <p
+          className="num animate-on-load mt-8 md:mt-10 pt-6 hairline-t text-center md:text-left"
+          style={{
+            fontSize: 11.5,
+            color: "var(--text-3)",
+            letterSpacing: "0.04em",
+            ["--delay" as string]: "5",
+          }}
         >
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-            <a href={STRIPE_BRIEF} className="btn-primary">
-              Open your workspace · $99
-              <Arrow />
-            </a>
-            <a href="#what-you-get" className="btn-secondary">
-              See what&apos;s inside
-              <Arrow />
-            </a>
-            <Link
-              href="/register"
-              className="inline-block sm:ml-2 text-[13px] transition-colors"
-              style={{ color: "var(--text-2)" }}
-            >
-              Register free, explore first{" "}
-              <span style={{ color: "var(--accent)" }}>→</span>
-            </Link>
-          </div>
-
-          <p
-            className="num text-[12px] md:text-right md:max-w-[36ch]"
-            style={{
-              color: "var(--text-3)",
-              lineHeight: 1.5,
-            }}
-          >
-            28 workspaces opened this month · First brief ready in 35 min ·
-            Upgrade anytime for ongoing intelligence
-          </p>
-        </div>
+          28 workspaces opened this month · First brief ready in 35 min ·
+          Upgrade anytime for ongoing intelligence
+        </p>
       </div>
     </section>
   );

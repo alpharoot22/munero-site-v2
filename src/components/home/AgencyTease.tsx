@@ -1,74 +1,45 @@
 import Link from "next/link";
 import { Section, Eyebrow, H2, Lede } from "../Section";
 
-const STRIPE_AGENCY =
-  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency";
-
-const stats = [
-  {
-    n: "Unlimited",
-    cadence: "briefs",
-    label: "across all clients · no per-brief cost",
-  },
-  {
-    n: "White-label",
-    cadence: "outputs",
-    label: "your brand · your domain · no Munero shown",
-  },
-  {
-    n: "Multi-client",
-    cadence: "command center",
-    label: "team seats · client workspaces · repeatable workflows",
-  },
+const BULLETS = [
+  "Multi-client workspace",
+  "White-label outputs",
+  "Team seats",
+  "Unlimited briefs on Agency Workspace",
+  "Faster pitch and strategy delivery",
 ];
 
 export function AgencyTease() {
   return (
     <Section bordered id="agency-tease">
       <Eyebrow>For agencies</Eyebrow>
-      <H2 className="max-w-[26ch]">
-        One agency workspace. Every client. Unlimited briefs.
+      <H2 className="max-w-[28ch]">
+        Turn Munero into a{" "}
+        <span style={{ color: "var(--accent)" }}>$500 to $1,500 / mo</span>{" "}
+        strategy line item.
       </H2>
       <Lede>
-        $499 / month opens an agency workspace built for client strategy.
-        White-label outputs. Multi-client command center. Team seats.
-        Repeatable intelligence workflows. Higher-margin strategy delivery.
+        Run client intelligence briefs, white-label the output, and deliver
+        campaign-ready strategy at near-100% margin, without adding research
+        headcount.
       </Lede>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
-        {stats.map((s) => (
-          <div key={s.label}>
-            <div className="flex items-baseline gap-2">
-              <span
-                className="num text-[36px] tracking-[-0.02em] leading-none"
-                style={{ color: "var(--accent)" }}
-              >
-                {s.n}
-              </span>
-              <span
-                className="num text-[12.5px]"
-                style={{ color: "var(--text-3)" }}
-              >
-                {s.cadence}
-              </span>
-            </div>
-            <p
-              className="mt-3 text-[14px] leading-relaxed"
-              style={{ color: "var(--text-2)" }}
+      <div className="mt-10 grid md:grid-cols-[1fr_auto] gap-8 items-end">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+          {BULLETS.map((b) => (
+            <li
+              key={b}
+              className="text-[14px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+              style={{ color: "var(--text)" }}
             >
-              {s.label}
-            </p>
-          </div>
-        ))}
-      </div>
+              <Tick />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
 
-      <div className="mt-12 flex flex-col sm:flex-row gap-3">
-        <a href={STRIPE_AGENCY} className="btn-primary">
-          Open agency workspace
-          <Arrow />
-        </a>
-        <Link href="/agency" className="btn-secondary">
-          See agency features
+        <Link href="/agency" className="btn-secondary self-center">
+          See agency workspace
           <Arrow />
         </Link>
       </div>
@@ -76,9 +47,36 @@ export function AgencyTease() {
   );
 }
 
+function Tick() {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+      className="mt-1"
+    >
+      <path
+        d="M3 8.5L6 11.5L13 4.5"
+        stroke="var(--accent)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function Arrow() {
   return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M3 8h10m0 0L9 4m4 4l-4 4"
         stroke="currentColor"

@@ -67,11 +67,11 @@ export function Compare() {
         }}
       >
         <p className="text-[14.5px] leading-relaxed" style={{ color: "var(--text)" }}>
-          Total annual cost of Semrush + SimilarWeb + SpyFu + Pathmatics:{" "}
+          Traditional research stack:{" "}
           <span className="num" style={{ color: "var(--score-mid)" }}>
-            $40K to $106K
+            $40K to $106K / year
           </span>{" "}
-          per year.
+          across tools, freelancers, and strategy time.
         </p>
         <p
           className="mt-2 text-[14.5px] leading-relaxed"
@@ -81,7 +81,7 @@ export function Compare() {
           <span className="num" style={{ color: "var(--accent-light)" }}>
             $99
           </span>{" "}
-          per brief and includes the strategy, the creative, and the plan.
+          with one workspace and a campaign-ready brief.
         </p>
       </div>
 

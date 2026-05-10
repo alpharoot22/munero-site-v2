@@ -1,19 +1,26 @@
 import { Section, Eyebrow, H2 } from "../Section";
 
-// Per-tier Stripe links. All four currently point at the same $99 checkout
-// with a `?tier=` query param so analytics can distinguish clicks. Replace
-// each with a real Stripe payment link as SKUs are provisioned.
-const STRIPE_LINKS = {
-  // TODO: Replace with real $99 Stripe payment link
-  brief: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00",
-  // TODO: Create $149 Stripe payment link and replace
-  enhanced: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=enhanced",
-  // TODO: Create $299 Stripe payment link and replace
-  full_creative: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=full_creative",
-  // TODO: Create $499/mo Stripe payment link and replace
-  agency: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=agency",
+/**
+ * Per-tier checkout URLs. Each tier owns its own URL constant so we never
+ * silently route a higher-tier purchase to the $99 Stripe link.
+ *
+ * Starter is live on Stripe. The other three tiers are reservations that
+ * route to /register?tier=… until per-SKU Stripe links are provisioned.
+ * The card UI shows a "CHECKOUT OPENS SOON" badge when checkoutAvailable
+ * is false so the buyer is never surprised at the payment step.
+ */
+const STARTER_CHECKOUT_URL =
+  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter";
+const INTELLIGENCE_CHECKOUT_URL = "/register?tier=intelligence";
+const CREATIVE_CHECKOUT_URL = "/register?tier=creative";
+const AGENCY_CHECKOUT_URL = "/register?tier=agency";
+
+export const STRIPE_LINKS = {
+  brief: STARTER_CHECKOUT_URL,
+  enhanced: INTELLIGENCE_CHECKOUT_URL,
+  full_creative: CREATIVE_CHECKOUT_URL,
+  agency: AGENCY_CHECKOUT_URL,
 };
-export { STRIPE_LINKS };
 
 interface Tier {
   name: string;
@@ -26,6 +33,9 @@ interface Tier {
   cta: string;
   href: string;
   popular?: boolean;
+  /** True when the buyer can pay right now via Stripe. False when they're
+   * routed to /register with a "checkout opens soon" reservation flow. */
+  checkoutAvailable: boolean;
 }
 
 const starterTier: Tier = {
@@ -36,6 +46,7 @@ const starterTier: Tier = {
   price: "$99",
   cadence: "one-time",
   recurring: false,
+  checkoutAvailable: true,
   bullets: [
     "Workspace opens immediately",
     "First brief ready in 35 minutes",
@@ -45,7 +56,7 @@ const starterTier: Tier = {
     "Campaign plan with kill rules",
   ],
   cta: "Open workspace · $99",
-  href: STRIPE_LINKS.brief,
+  href: STARTER_CHECKOUT_URL,
 };
 
 const intelligenceTier: Tier = {
@@ -56,6 +67,7 @@ const intelligenceTier: Tier = {
   price: "$149",
   cadence: "one-time",
   recurring: false,
+  checkoutAvailable: false,
   bullets: [
     "Everything in Starter",
     "Deep research module",
@@ -63,8 +75,8 @@ const intelligenceTier: Tier = {
     "Cross-brand pattern detection",
     "Priority queue (faster turnaround)",
   ],
-  cta: "Open workspace · $149",
-  href: STRIPE_LINKS.enhanced,
+  cta: "Reserve workspace · $149",
+  href: INTELLIGENCE_CHECKOUT_URL,
 };
 
 const creativeTier: Tier = {
@@ -76,6 +88,7 @@ const creativeTier: Tier = {
   cadence: "one-time",
   recurring: false,
   popular: true,
+  checkoutAvailable: false,
   bullets: [
     "Everything in Intelligence",
     "46 creative assets across Meta, TikTok, Google",
@@ -84,8 +97,8 @@ const creativeTier: Tier = {
     "Direct-import files for ad managers",
     "Compliance review",
   ],
-  cta: "Open creative workspace · $299",
-  href: STRIPE_LINKS.full_creative,
+  cta: "Reserve creative workspace · $299",
+  href: CREATIVE_CHECKOUT_URL,
 };
 
 const agencyTier: Tier = {
@@ -96,6 +109,7 @@ const agencyTier: Tier = {
   price: "$499",
   cadence: "per month",
   recurring: true,
+  checkoutAvailable: false,
   bullets: [
     "Unlimited briefs across clients",
     "White-label outputs with your branding",
@@ -104,8 +118,8 @@ const agencyTier: Tier = {
     "10 video credits per month",
     "Slack, Notion, Drive, Canva integrations",
   ],
-  cta: "Open agency workspace · $499/mo",
-  href: STRIPE_LINKS.agency,
+  cta: "Reserve agency workspace · $499/mo",
+  href: AGENCY_CHECKOUT_URL,
 };
 
 export function Pricing() {
@@ -164,6 +178,26 @@ export function Pricing() {
   );
 }
 
+function ComingSoonBadge() {
+  return (
+    <span
+      className="num"
+      style={{
+        fontSize: 9,
+        letterSpacing: "0.14em",
+        color: "#FFB547",
+        background: "rgba(255, 183, 71, 0.1)",
+        border: "0.5px solid rgba(255, 183, 71, 0.4)",
+        borderRadius: 4,
+        padding: "2px 6px",
+        fontWeight: 700,
+      }}
+    >
+      CHECKOUT OPENS SOON
+    </span>
+  );
+}
+
 /** Standard tier — slightly muted next to Creative. */
 function SmallCard({ tier }: { tier: Tier }) {
   return (
@@ -197,16 +231,20 @@ function SmallCard({ tier }: { tier: Tier }) {
         >
           {tier.cadence}
         </span>
-        <span
-          className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
-          style={{
-            color: "var(--accent)",
-            border: "0.5px solid var(--accent)",
-            background: "rgba(29, 158, 117, 0.08)",
-          }}
-        >
-          BETA PRICE
-        </span>
+        {tier.checkoutAvailable ? (
+          <span
+            className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
+            style={{
+              color: "var(--accent)",
+              border: "0.5px solid var(--accent)",
+              background: "rgba(29, 158, 117, 0.08)",
+            }}
+          >
+            BETA PRICE
+          </span>
+        ) : (
+          <ComingSoonBadge />
+        )}
       </div>
       <p
         className="mt-3 text-[12.5px] leading-relaxed min-h-[3em]"
@@ -279,16 +317,20 @@ function BigCard({ tier }: { tier: Tier }) {
           >
             {tier.cadence}
           </span>
-          <span
-            className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
-            style={{
-              color: "var(--accent)",
-              border: "0.5px solid var(--accent)",
-              background: "rgba(29, 158, 117, 0.12)",
-            }}
-          >
-            BETA PRICE
-          </span>
+          {tier.checkoutAvailable ? (
+            <span
+              className="num text-[9px] uppercase tracking-[0.12em] px-1.5 py-0.5 rounded"
+              style={{
+                color: "var(--accent)",
+                border: "0.5px solid var(--accent)",
+                background: "rgba(29, 158, 117, 0.12)",
+              }}
+            >
+              BETA PRICE
+            </span>
+          ) : (
+            <ComingSoonBadge />
+          )}
         </div>
         <p
           className="mt-3 text-[13px] leading-relaxed"
@@ -348,6 +390,11 @@ function AgencyCard({ tier }: { tier: Tier }) {
               {tier.cadence}
             </span>
           </div>
+          {!tier.checkoutAvailable && (
+            <div className="mt-2.5">
+              <ComingSoonBadge />
+            </div>
+          )}
           <p className="mt-3 text-[12.5px] leading-snug" style={{ color: "var(--text-2)" }}>
             {tier.note}
           </p>

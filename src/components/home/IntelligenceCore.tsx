@@ -202,16 +202,17 @@ export function IntelligenceCore() {
                       <Icon />
                     </span>
                     <div className="min-w-0">
-                      <div
+                      <h3
                         className="font-semibold tracking-tight"
                         style={{
                           fontSize: 14,
                           color: "var(--text)",
                           letterSpacing: "-0.005em",
+                          margin: 0,
                         }}
                       >
                         {title}
-                      </div>
+                      </h3>
                       <div
                         className="leading-snug"
                         style={{ fontSize: 12.5, color: "rgba(184, 184, 200, 0.95)" }}
@@ -366,16 +367,17 @@ export function IntelligenceCore() {
                       <Icon />
                     </span>
                     <div className="min-w-0">
-                      <div
+                      <h3
                         className="font-semibold tracking-tight"
                         style={{
                           fontSize: 14,
                           color: "var(--text)",
                           letterSpacing: "-0.005em",
+                          margin: 0,
                         }}
                       >
                         {title}
-                      </div>
+                      </h3>
                       <div
                         className="leading-snug"
                         style={{ fontSize: 12.5, color: "rgba(184, 184, 200, 0.95)" }}
@@ -646,8 +648,8 @@ function BottomStrip({ style }: { style?: React.CSSProperties }) {
         />
         <Metric
           icon={<ChartIcon />}
-          label="SHARPER OVER TIME"
-          desc="Every campaign improves the next"
+          label="SHARPER WITH HISTORY"
+          desc="Available on ongoing workspaces"
         />
       </ul>
     </div>
