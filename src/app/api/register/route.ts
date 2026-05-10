@@ -108,11 +108,11 @@ export async function POST(req: NextRequest) {
     console.error("[register] n8n webhook failed", err);
   }
 
-  // Admin notification: second Resend send straight to the founder so
-  // registrations show up in the inbox immediately, independent of the n8n
-  // welcome flow. Runs after n8n so a slow n8n call doesn't delay this.
+  // Admin notification: second Resend send straight to the sales inbox so
+  // registrations show up immediately, independent of the n8n welcome flow.
+  // Runs after n8n so a slow n8n call doesn't delay this.
   const resendKey = process.env.RESEND_API_KEY;
-  const adminEmail = process.env.ADMIN_NOTIFY_EMAIL;
+  const adminEmail = process.env.ADMIN_NOTIFY_EMAIL ?? "sales@munero.ai";
   if (resendKey && adminEmail) {
     const adminSubject = `New Munero registration: ${name} - ${email}`;
     const adminHtml = `
