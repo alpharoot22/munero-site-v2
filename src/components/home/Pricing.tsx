@@ -1,44 +1,39 @@
 import { Section, Eyebrow, H2 } from "../Section";
 
 /**
- * Per-tier checkout URLs. Each tier owns its own URL constant so we never
- * silently route a higher-tier purchase to the $99 Stripe link.
- *
- * Starter is live on Stripe. The other three tiers are reservations that
- * route to /register?tier=… until per-SKU Stripe links are provisioned.
- * The card UI shows a "CHECKOUT OPENS SOON" badge when checkoutAvailable
- * is false so the buyer is never surprised at the payment step.
+ * Per-tier checkout URLs. Starter is live on Stripe. The other three
+ * route to /register?upgrade=… until per-SKU Stripe links are provisioned.
  */
-const STARTER_CHECKOUT_URL =
-  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter";
-const INTELLIGENCE_CHECKOUT_URL = "/register?tier=intelligence";
-const CREATIVE_CHECKOUT_URL = "/register?tier=creative";
-const AGENCY_CHECKOUT_URL = "/register?tier=agency";
-
-export const STRIPE_LINKS = {
-  brief: STARTER_CHECKOUT_URL,
-  enhanced: INTELLIGENCE_CHECKOUT_URL,
-  full_creative: CREATIVE_CHECKOUT_URL,
-  agency: AGENCY_CHECKOUT_URL,
+const STRIPE_LINKS = {
+  starter:  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter",
+  feed:     "/register?upgrade=feed",
+  creative: "/register?upgrade=creative",
+  agency:   "/register?upgrade=agency",
 };
+export { STRIPE_LINKS };
+
+const AMBER = "#FFB547";
 
 interface Tier {
+  key: "starter" | "feed" | "creative" | "agency";
   name: string;
-  note: string;
-  description: string;
   price: string;
   cadence: string;
   recurring: boolean;
+  note: string;
+  description: string;
   bullets: string[];
   cta: string;
   href: string;
   popular?: boolean;
-  /** True when the buyer can pay right now via Stripe. False when they're
-   * routed to /register with a "checkout opens soon" reservation flow. */
+  feed?: boolean;
+  badge?: string;
+  /** True when the buyer can pay right now via Stripe. */
   checkoutAvailable: boolean;
 }
 
 const starterTier: Tier = {
+  key: "starter",
   name: "Starter Workspace",
   note: "Your workspace opens. First intelligence brief included.",
   description:
@@ -54,34 +49,41 @@ const starterTier: Tier = {
     "5 audience segments with intent scores",
     "Competitor analysis (10 deep dives)",
     "Campaign plan with kill rules",
+    "SHA-256 audit hash",
   ],
   cta: "Open workspace · $99",
-  href: STARTER_CHECKOUT_URL,
+  href: STRIPE_LINKS.starter,
 };
 
-const intelligenceTier: Tier = {
-  name: "Intelligence Workspace",
-  note: "Deeper research. Stronger competitor and signal analysis.",
+const feedTier: Tier = {
+  key: "feed",
+  name: "Intelligence Feed",
+  note: "Engine keeps running. Signals delivered weekly.",
   description:
-    "For teams that want extended market intelligence, sharper opportunities, and stronger campaign direction.",
-  price: "$149",
-  cadence: "one-time",
-  recurring: false,
+    "For marketers who want to know when their market moves, automatically.",
+  price: "$49",
+  cadence: "per month",
+  recurring: true,
+  feed: true,
+  badge: "BEST FOR RETENTION",
   checkoutAvailable: false,
   bullets: [
-    "Everything in Starter",
-    "Deep research module",
-    "Extended competitor deep dive",
-    "Cross-brand pattern detection",
-    "Priority queue (faster turnaround)",
+    "Weekly vertical intelligence digest",
+    "Competitor ad change alerts (real-time)",
+    "Rising pain point detection",
+    "Buy alerts when demand spikes in your category",
+    "Market gap notifications",
+    "New brief at 50% off when signals peak",
+    "Cancel anytime",
   ],
-  cta: "Reserve workspace · $149",
-  href: INTELLIGENCE_CHECKOUT_URL,
+  cta: "Start Intelligence Feed · $49/mo",
+  href: STRIPE_LINKS.feed,
 };
 
 const creativeTier: Tier = {
+  key: "creative",
   name: "Creative Workspace",
-  note: "Intelligence plus creative production.",
+  note: "Intelligence plus production-ready assets.",
   description:
     "For teams that want campaign-ready hooks, angles, copy, and creative assets built from the intelligence.",
   price: "$299",
@@ -90,7 +92,9 @@ const creativeTier: Tier = {
   popular: true,
   checkoutAvailable: false,
   bullets: [
-    "Everything in Intelligence",
+    "Everything in Starter Workspace",
+    "Deep research module",
+    "Extended competitor deep dive",
     "46 creative assets across Meta, TikTok, Google",
     "Auto image generation included",
     "3 video credits (Higgsfield AI)",
@@ -98,28 +102,30 @@ const creativeTier: Tier = {
     "Compliance review",
   ],
   cta: "Reserve creative workspace · $299",
-  href: CREATIVE_CHECKOUT_URL,
+  href: STRIPE_LINKS.creative,
 };
 
 const agencyTier: Tier = {
+  key: "agency",
   name: "Agency Workspace",
   note: "One workspace. Every client. Unlimited briefs.",
   description:
-    "Multi-client command center for agencies. White-label outputs, team seats, client workspaces, and ongoing intelligence.",
+    "For shops running 5+ clients. Multi-client command center, white-label outputs, team seats, and ongoing intelligence.",
   price: "$499",
   cadence: "per month",
   recurring: true,
+  badge: "FOR TEAMS",
   checkoutAvailable: false,
   bullets: [
     "Unlimited briefs across clients",
-    "White-label outputs with your branding",
+    "White-label reports with your branding",
     "Multi-client command center",
     "Team seats + role permissions",
     "10 video credits per month",
     "Slack, Notion, Drive, Canva integrations",
   ],
   cta: "Reserve agency workspace · $499/mo",
-  href: AGENCY_CHECKOUT_URL,
+  href: STRIPE_LINKS.agency,
 };
 
 export function Pricing() {
@@ -127,16 +133,21 @@ export function Pricing() {
     <Section bordered id="pricing">
       <Eyebrow>Pricing</Eyebrow>
       <H2 className="max-w-[26ch]">
-        Choose your workspace level. Start with one brief. Scale when ready.
+        Start with a brief.
+        <br />
+        Keep the signals running. Scale when ready.
       </H2>
       <p
         className="mt-4 text-[16.5px] leading-relaxed max-w-[60ch]"
         style={{ color: "var(--text-2)" }}
       >
-        Every tier opens a Munero workspace. The first thing Munero runs is
-        your intelligence brief. The workspace is where your market,
-        competitors, creatives, campaign plan, and next moves live.
+        Every tier opens or extends a Munero workspace. Buy a brief once.
+        Subscribe to keep the engine running. Upgrade when you want creative
+        assets or a multi-client command center.
       </p>
+
+      {/* 4-step flow strip */}
+      <FlowStrip />
 
       {/* Beta urgency banner */}
       <div
@@ -157,10 +168,10 @@ export function Pricing() {
         </p>
       </div>
 
-      {/* Three one-time tiers — Creative dominates */}
+      {/* 3-card top row — Starter, Feed (amber), Creative (popular) */}
       <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
         <SmallCard tier={starterTier} />
-        <SmallCard tier={intelligenceTier} />
+        <FeedCard tier={feedTier} />
         <BigCard tier={creativeTier} />
       </div>
 
@@ -178,6 +189,97 @@ export function Pricing() {
   );
 }
 
+/* ----------------- 4-step flow strip ----------------- */
+
+const FLOW_STEPS = [
+  { num: "01", label: "Brief",    price: "$99",     desc: "Understand your market" },
+  { num: "02", label: "Feed",     price: "$49/mo",  desc: "Keep the signals coming" },
+  { num: "03", label: "Creative", price: "$299",    desc: "Build the campaign assets" },
+  { num: "04", label: "Agency",   price: "$499/mo", desc: "Scale to every client" },
+];
+
+function FlowStrip() {
+  return (
+    <div className="mt-10 hairline rounded-md overflow-hidden" style={{ background: "var(--surface)" }}>
+      <ul className="grid grid-cols-1 md:grid-cols-4 gap-px hairline-b md:hairline-b" style={{ background: "var(--border)" }}>
+        {FLOW_STEPS.map((s, i) => (
+          <li
+            key={s.num}
+            className="relative flex items-center gap-3 px-5 py-4"
+            style={{ background: "var(--surface)" }}
+          >
+            <span
+              className="num shrink-0 inline-flex items-center justify-center"
+              style={{
+                width: 26,
+                height: 26,
+                borderRadius: "50%",
+                border: "0.5px solid var(--accent)",
+                background: "rgba(29, 158, 117, 0.08)",
+                fontSize: 10.5,
+                color: "var(--accent)",
+                fontWeight: 700,
+              }}
+            >
+              {s.num}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div
+                className="flex items-baseline gap-2"
+                style={{ color: "var(--text)" }}
+              >
+                <span style={{ fontSize: 14, fontWeight: 600, letterSpacing: "-0.01em" }}>
+                  {s.label}
+                </span>
+                <span
+                  className="num"
+                  style={{ fontSize: 11, color: "var(--text-3)" }}
+                >
+                  {s.price}
+                </span>
+              </div>
+              <div
+                style={{
+                  fontSize: 11.5,
+                  color: "rgba(184, 184, 200, 0.95)",
+                  marginTop: 2,
+                }}
+              >
+                {s.desc}
+              </div>
+            </div>
+            {/* Arrow between steps — desktop only, not after last */}
+            {i < FLOW_STEPS.length - 1 && (
+              <span
+                aria-hidden="true"
+                className="hidden md:block absolute"
+                style={{
+                  right: -8,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  zIndex: 1,
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10m0 0L9 4m4 4l-4 4"
+                    stroke="var(--accent)"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/* ----------------- Cards ----------------- */
+
 function ComingSoonBadge() {
   return (
     <span
@@ -185,9 +287,9 @@ function ComingSoonBadge() {
       style={{
         fontSize: 9,
         letterSpacing: "0.14em",
-        color: "#FFB547",
+        color: AMBER,
         background: "rgba(255, 183, 71, 0.1)",
-        border: "0.5px solid rgba(255, 183, 71, 0.4)",
+        border: `0.5px solid ${AMBER}66`,
         borderRadius: 4,
         padding: "2px 6px",
         fontWeight: 700,
@@ -198,7 +300,7 @@ function ComingSoonBadge() {
   );
 }
 
-/** Standard tier — slightly muted next to Creative. */
+/** Standard tier (Starter). */
 function SmallCard({ tier }: { tier: Tier }) {
   return (
     <div
@@ -212,17 +314,11 @@ function SmallCard({ tier }: { tier: Tier }) {
       <div className="text-[14px] tracking-tight font-semibold" style={{ color: "var(--text)" }}>
         {tier.name}
       </div>
-      <div
-        className="mt-1.5 text-[11.5px] leading-snug"
-        style={{ color: "var(--text-3)" }}
-      >
+      <div className="mt-1.5 text-[11.5px] leading-snug" style={{ color: "var(--text-3)" }}>
         {tier.note}
       </div>
       <div className="mt-3 flex items-baseline gap-2 flex-wrap">
-        <span
-          className="num text-[32px] tracking-[-0.02em]"
-          style={{ color: "var(--text)" }}
-        >
+        <span className="num text-[32px] tracking-[-0.02em]" style={{ color: "var(--text)" }}>
           {tier.price}
         </span>
         <span
@@ -246,10 +342,7 @@ function SmallCard({ tier }: { tier: Tier }) {
           <ComingSoonBadge />
         )}
       </div>
-      <p
-        className="mt-3 text-[12.5px] leading-relaxed min-h-[3em]"
-        style={{ color: "var(--text-2)" }}
-      >
+      <p className="mt-3 text-[12.5px] leading-relaxed min-h-[3em]" style={{ color: "var(--text-2)" }}>
         {tier.description}
       </p>
       <ul className="mt-4 space-y-2.5 flex-1">
@@ -265,6 +358,118 @@ function SmallCard({ tier }: { tier: Tier }) {
         ))}
       </ul>
       <a href={tier.href} className="btn-secondary mt-7 justify-center">
+        {tier.cta}
+      </a>
+    </div>
+  );
+}
+
+/** Intelligence Feed — amber dashed border, recurring tier, "KEEPS RUNNING" badge. */
+function FeedCard({ tier }: { tier: Tier }) {
+  return (
+    <div
+      className="relative p-6 flex flex-col hover-lift rounded-md"
+      style={{
+        background: "var(--surface)",
+        border: `0.5px dashed ${AMBER}55`,
+      }}
+    >
+      <span
+        className="absolute top-4 right-4 num"
+        style={{
+          fontSize: 9,
+          letterSpacing: "0.14em",
+          color: AMBER,
+          background: `${AMBER}1a`,
+          border: `0.5px solid ${AMBER}66`,
+          borderRadius: 4,
+          padding: "2px 6px",
+          fontWeight: 700,
+        }}
+      >
+        KEEPS RUNNING
+      </span>
+
+      <div className="text-[14px] tracking-tight font-semibold" style={{ color: "var(--text)" }}>
+        {tier.name}
+      </div>
+      <div className="mt-1.5 text-[11.5px] leading-snug" style={{ color: "var(--text-3)" }}>
+        {tier.note}
+      </div>
+
+      <div className="mt-3 flex items-baseline gap-2 flex-wrap">
+        <span className="num text-[32px] tracking-[-0.02em]" style={{ color: "var(--text)" }}>
+          {tier.price}
+        </span>
+        <span
+          className="num text-[11px] uppercase tracking-[0.06em]"
+          style={{ color: AMBER, fontWeight: 700 }}
+        >
+          {tier.cadence}
+        </span>
+      </div>
+
+      {/* Pulse line under the price */}
+      <p
+        className="mt-2"
+        style={{
+          fontSize: 11.5,
+          color: AMBER,
+          fontStyle: "italic",
+          letterSpacing: "-0.005em",
+        }}
+      >
+        Your market doesn&apos;t stop. Neither does Munero.
+      </p>
+
+      {tier.badge && (
+        <div className="mt-3">
+          <span
+            className="num"
+            style={{
+              fontSize: 9,
+              letterSpacing: "0.14em",
+              color: AMBER,
+              fontWeight: 700,
+            }}
+          >
+            {tier.badge}
+          </span>
+        </div>
+      )}
+
+      <p className="mt-3 text-[12.5px] leading-relaxed min-h-[3em]" style={{ color: "var(--text-2)" }}>
+        {tier.description}
+      </p>
+
+      <ul className="mt-4 space-y-2.5 flex-1">
+        {tier.bullets.map((b) => (
+          <li
+            key={b}
+            className="text-[13px] leading-relaxed grid grid-cols-[auto_1fr] gap-2.5"
+            style={{ color: "var(--text-2)" }}
+          >
+            <FeedTick />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={tier.href}
+        className="mt-7 inline-flex items-center justify-center gap-2 transition-colors"
+        style={{
+          height: 44,
+          padding: "0 18px",
+          borderRadius: 6,
+          background: `${AMBER}15`,
+          color: AMBER,
+          border: `0.5px solid ${AMBER}80`,
+          fontSize: 14.5,
+          fontWeight: 600,
+          letterSpacing: "-0.01em",
+        }}
+      >
         {tier.cta}
       </a>
     </div>
@@ -298,10 +503,7 @@ function BigCard({ tier }: { tier: Tier }) {
         <div className="text-[15px] tracking-tight font-bold" style={{ color: "var(--accent-light)" }}>
           {tier.name}
         </div>
-        <div
-          className="mt-1.5 text-[12.5px] leading-snug"
-          style={{ color: "var(--text-2)" }}
-        >
+        <div className="mt-1.5 text-[12.5px] leading-snug" style={{ color: "var(--text-2)" }}>
           {tier.note}
         </div>
         <div className="mt-3 flex items-baseline gap-2 flex-wrap">
@@ -332,10 +534,7 @@ function BigCard({ tier }: { tier: Tier }) {
             <ComingSoonBadge />
           )}
         </div>
-        <p
-          className="mt-3 text-[13px] leading-relaxed"
-          style={{ color: "var(--text)" }}
-        >
+        <p className="mt-3 text-[13px] leading-relaxed" style={{ color: "var(--text)" }}>
           {tier.description}
         </p>
         <ul className="mt-5 space-y-3 flex-1">
@@ -371,7 +570,7 @@ function AgencyCard({ tier }: { tier: Tier }) {
       <div className="grid md:grid-cols-[1fr_1.4fr_auto] gap-8 md:gap-12 items-start">
         <div>
           <div className="num text-[11px] tracking-[0.14em]" style={{ color: "var(--accent)" }}>
-            FOR TEAMS
+            {tier.badge ?? "FOR TEAMS"}
           </div>
           <div className="mt-2 text-[20px] font-bold tracking-tight" style={{ color: "var(--text)" }}>
             {tier.name}
@@ -432,6 +631,20 @@ function Tick() {
       <path
         d="M3 8.5L6 11.5L13 4.5"
         stroke="var(--accent)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FeedTick() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true" className="mt-1">
+      <path
+        d="M3 8.5L6 11.5L13 4.5"
+        stroke={AMBER}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

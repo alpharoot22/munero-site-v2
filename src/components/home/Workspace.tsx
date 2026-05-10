@@ -24,7 +24,7 @@ const WORKSPACE_STATS = [
     display: "\u221E",
     unit: "briefs on Agency",
     description:
-      "Cross-brand pattern detection, monitoring, and refresh loops live on the monthly Agency Workspace. One-time tiers keep your first brief and intelligence archive in the workspace.",
+      "Unlimited briefs on Agency Workspace. Intelligence Feed delivers weekly signals from $49/mo. One-time tiers keep your first brief and intelligence archive in the workspace.",
   },
 ];
 

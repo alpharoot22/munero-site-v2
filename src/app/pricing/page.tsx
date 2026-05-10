@@ -9,25 +9,48 @@ export const metadata: Metadata = {
     "Pay per brief at $99, $149, or $299. Or run unlimited briefs on the $499 Agency plan.",
 };
 
-const matrix = [
-  { feature: "16 intelligence squads", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "Audience + pain point library", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "Competitor analysis (10)", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "Final strategy + opportunity score", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "30-day campaign plan", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "SHA-256 audit hash", brief: true, enhanced: true, full: true, agency: true },
-  { feature: "Deep research module", brief: false, enhanced: true, full: true, agency: true },
-  { feature: "Extended competitor deep dive", brief: false, enhanced: true, full: true, agency: true },
-  { feature: "Cross-brand pattern detection", brief: false, enhanced: true, full: true, agency: true },
-  { feature: "46 creative assets", brief: false, enhanced: false, full: true, agency: true },
-  { feature: "Video + image generation", brief: false, enhanced: false, full: true, agency: true },
-  { feature: "Direct-import ad files", brief: false, enhanced: false, full: true, agency: true },
-  { feature: "Compliance review", brief: false, enhanced: false, full: true, agency: true },
-  { feature: "Unlimited briefs", brief: false, enhanced: false, full: false, agency: true },
-  { feature: "White-label reports", brief: false, enhanced: false, full: false, agency: true },
-  { feature: "Multi-client workspace", brief: false, enhanced: false, full: false, agency: true },
-  { feature: "Team seats", brief: false, enhanced: false, full: false, agency: true },
-  { feature: "Slack / Notion / Drive / Canva", brief: false, enhanced: false, full: false, agency: true },
+interface MatrixRow {
+  feature: string;
+  starter: boolean;
+  feed: boolean;
+  creative: boolean;
+  agency: boolean;
+}
+
+const matrix: MatrixRow[] = [
+  // Brief + workspace features
+  { feature: "Workspace opens immediately",          starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "First brief included",                 starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "16 intelligence squads (per brief)",   starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "Audience + pain point library",        starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "Competitor analysis (10 deep dives)",  starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "Final strategy + opportunity score",   starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "30-day campaign plan + kill rules",    starter: true,  feed: false, creative: true,  agency: true },
+  { feature: "SHA-256 audit hash",                   starter: true,  feed: false, creative: true,  agency: true },
+
+  // Intelligence Feed (recurring signals)
+  { feature: "Weekly intelligence digest",           starter: false, feed: true,  creative: false, agency: true },
+  { feature: "Competitor ad change alerts (real-time)", starter: false, feed: true, creative: false, agency: true },
+  { feature: "Rising pain point detection",          starter: false, feed: true,  creative: false, agency: true },
+  { feature: "Buy alerts when demand spikes",        starter: false, feed: true,  creative: false, agency: true },
+  { feature: "Market gap notifications",             starter: false, feed: true,  creative: false, agency: true },
+  { feature: "Cancel anytime",                       starter: false, feed: true,  creative: false, agency: true },
+
+  // Creative production
+  { feature: "Deep research module",                 starter: false, feed: false, creative: true,  agency: true },
+  { feature: "Extended competitor deep dive",        starter: false, feed: false, creative: true,  agency: true },
+  { feature: "46 creative assets",                   starter: false, feed: false, creative: true,  agency: true },
+  { feature: "Auto image generation",                starter: false, feed: false, creative: true,  agency: true },
+  { feature: "Video credits (Higgsfield AI)",        starter: false, feed: false, creative: true,  agency: true },
+  { feature: "Direct-import ad files",               starter: false, feed: false, creative: true,  agency: true },
+  { feature: "Compliance review",                    starter: false, feed: false, creative: true,  agency: true },
+
+  // Agency-only
+  { feature: "Unlimited briefs",                     starter: false, feed: false, creative: false, agency: true },
+  { feature: "White-label reports",                  starter: false, feed: false, creative: false, agency: true },
+  { feature: "Multi-client command center",          starter: false, feed: false, creative: false, agency: true },
+  { feature: "Team seats + role permissions",        starter: false, feed: false, creative: false, agency: true },
+  { feature: "Slack / Notion / Drive / Canva",       starter: false, feed: false, creative: false, agency: true },
 ];
 
 type SearchParams = Promise<{ registered?: string; name?: string }>;
@@ -76,8 +99,8 @@ export default async function PricingPage({
         <Eyebrow>Pricing</Eyebrow>
         <H2 className="max-w-[22ch]">No subscription unless you want one.</H2>
         <Lede>
-          Brief, Enhanced, and Full creative are one-time payments. Agency is monthly and built
-          for shops running multiple client briefs per week.
+          Starter and Creative Workspaces are one-time payments. Intelligence Feed and Agency
+          Workspace are monthly subscriptions. Mix and match as you scale.
         </Lede>
       </Section>
 
@@ -91,11 +114,48 @@ export default async function PricingPage({
           <table className="w-full text-left text-[14px]">
             <thead className="hairline-b">
               <tr>
-                <th className="py-4 px-5 font-medium" style={{ color: "var(--text-3)" }}>Feature</th>
-                <th className="py-4 px-5 font-medium">Brief</th>
-                <th className="py-4 px-5 font-medium">Enhanced</th>
-                <th className="py-4 px-5 font-medium">Full creative</th>
-                <th className="py-4 px-5 font-medium">Agency</th>
+                <th
+                  className="py-4 px-5 font-medium num text-[10.5px] tracking-[0.12em]"
+                  style={{ color: "var(--text-3)" }}
+                >
+                  FEATURE
+                </th>
+                <th className="py-4 px-5 font-semibold text-left">
+                  Starter
+                  <div
+                    className="num text-[10px]"
+                    style={{ color: "var(--text-3)", letterSpacing: "0.04em" }}
+                  >
+                    $99 one-time
+                  </div>
+                </th>
+                <th className="py-4 px-5 font-semibold text-left" style={{ color: "#FFB547" }}>
+                  Feed
+                  <div
+                    className="num text-[10px]"
+                    style={{ color: "rgba(255,183,71,0.7)", letterSpacing: "0.04em" }}
+                  >
+                    $49 / mo
+                  </div>
+                </th>
+                <th className="py-4 px-5 font-semibold text-left" style={{ color: "var(--accent-light)" }}>
+                  Creative
+                  <div
+                    className="num text-[10px]"
+                    style={{ color: "var(--text-3)", letterSpacing: "0.04em" }}
+                  >
+                    $299 one-time
+                  </div>
+                </th>
+                <th className="py-4 px-5 font-semibold text-left">
+                  Agency
+                  <div
+                    className="num text-[10px]"
+                    style={{ color: "var(--score-mid)", letterSpacing: "0.04em" }}
+                  >
+                    $499 / mo
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -104,9 +164,9 @@ export default async function PricingPage({
                   <td className="py-3.5 px-5" style={{ color: "var(--text-2)" }}>
                     {row.feature}
                   </td>
-                  <td className="py-3.5 px-5">{row.brief ? <Tick /> : <Dash />}</td>
-                  <td className="py-3.5 px-5">{row.enhanced ? <Tick /> : <Dash />}</td>
-                  <td className="py-3.5 px-5">{row.full ? <Tick /> : <Dash />}</td>
+                  <td className="py-3.5 px-5">{row.starter ? <Tick /> : <Dash />}</td>
+                  <td className="py-3.5 px-5">{row.feed ? <FeedTick /> : <Dash />}</td>
+                  <td className="py-3.5 px-5">{row.creative ? <Tick /> : <Dash />}</td>
                   <td className="py-3.5 px-5">{row.agency ? <Tick /> : <Dash />}</td>
                 </tr>
               ))}
@@ -126,6 +186,20 @@ function Tick() {
       <path
         d="M3 8.5L6 11.5L13 4.5"
         stroke="var(--accent)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FeedTick() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path
+        d="M3 8.5L6 11.5L13 4.5"
+        stroke="#FFB547"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

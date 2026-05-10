@@ -64,10 +64,10 @@ const campaign: Feature[] = [
 ];
 
 const flywheel: Feature[] = [
+  ["Intelligence Feed (from $49 / mo)", "Weekly vertical digest covering competitor changes, rising pain points, buy alerts, and market gaps. Delivered every Monday. Cancel anytime."],
   ["Outcome tracking", "Submit actual ROAS after a campaign concludes. Feeds the engine."],
   ["Recommendation accuracy tracker", "Shows percent of angle predictions confirmed by results."],
-  ["Month 2 auto-refresh", "After 45 days Munero re-checks the market on its own. New brief queued."],
-  ["Weekly market update email", "Automated digest of what changed in your category this week."],
+  ["Month 2 auto-refresh (Feed and Agency tiers)", "After 45 days Munero re-checks the market on its own. New brief queued."],
   ["Cross-brand pattern recognition", "Patterns across briefs surface as priors for the next one."],
   ["Portfolio benchmarks", "Your performance vs vertical benchmarks. Updated each cycle."],
 ];

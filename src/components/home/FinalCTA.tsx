@@ -98,8 +98,8 @@ export function FinalCTA() {
             className="num mt-8"
             style={{ fontSize: 11, color: "var(--text-3)" }}
           >
-            28 workspaces opened this month · 16 intelligence squads · 9 AI
-            assistants · First brief ready in 35 min
+            28 workspaces opened · 16 intelligence squads · Intelligence Feed
+            from $49/mo · 9 AI assistants
           </p>
         </div>
       </div>
