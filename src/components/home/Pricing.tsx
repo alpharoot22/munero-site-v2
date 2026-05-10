@@ -5,10 +5,10 @@ import { Section, Eyebrow, H2 } from "../Section";
  * route to /register?upgrade=… until per-SKU Stripe links are provisioned.
  */
 const STRIPE_LINKS = {
-  starter:  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter",
-  feed:     "/register?upgrade=feed",
-  creative: "/register?upgrade=creative",
-  agency:   "/register?upgrade=agency",
+  starter:  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00",
+  feed:     "https://buy.stripe.com/cNi4gA3i37rQdsN4SF5ZC01",
+  creative: "https://buy.stripe.com/dRm5kE05RbI674p98V5ZC03",
+  agency:   "https://buy.stripe.com/6oU3cw8Cn13s74pacZ5ZC02",
 };
 export { STRIPE_LINKS };
 
@@ -66,7 +66,7 @@ const feedTier: Tier = {
   recurring: true,
   feed: true,
   badge: "BEST FOR RETENTION",
-  checkoutAvailable: false,
+  checkoutAvailable: true,
   bullets: [
     "Weekly vertical intelligence digest",
     "Competitor ad change alerts (real-time)",
@@ -90,7 +90,7 @@ const creativeTier: Tier = {
   cadence: "one-time",
   recurring: false,
   popular: true,
-  checkoutAvailable: false,
+  checkoutAvailable: true,
   bullets: [
     "Everything in Starter Workspace",
     "Deep research module",
@@ -101,7 +101,7 @@ const creativeTier: Tier = {
     "Direct-import files for ad managers",
     "Compliance review",
   ],
-  cta: "Reserve creative workspace · $299",
+  cta: "Open Creative Workspace · $299",
   href: STRIPE_LINKS.creative,
 };
 
@@ -115,7 +115,7 @@ const agencyTier: Tier = {
   cadence: "per month",
   recurring: true,
   badge: "FOR TEAMS",
-  checkoutAvailable: false,
+  checkoutAvailable: true,
   bullets: [
     "Unlimited briefs across clients",
     "White-label reports with your branding",
@@ -124,7 +124,7 @@ const agencyTier: Tier = {
     "10 video credits per month",
     "Slack, Notion, Drive, Canva integrations",
   ],
-  cta: "Reserve agency workspace · $499/mo",
+  cta: "Start Agency Workspace · $499/mo",
   href: STRIPE_LINKS.agency,
 };
 
