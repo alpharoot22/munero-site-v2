@@ -63,7 +63,10 @@ export async function POST(req: NextRequest) {
           company,
           role,
           source: "site_register",
-          tier: monthly_ad_spend,
+          // tier column has a CHECK constraint (enum: strategy_kit, etc).
+          // Default to "strategy_kit" to match existing rows. The user's
+          // monthly_ad_spend is preserved in the n8n payload + admin email.
+          tier: "strategy_kit",
         }),
       });
       if (!r.ok && r.status !== 409) {
