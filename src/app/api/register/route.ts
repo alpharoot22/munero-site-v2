@@ -117,6 +117,16 @@ export async function POST(req: NextRequest) {
     const adminSubject = `New Munero registration: ${name} - ${email}`;
     const adminHtml = `
       <div style="font-family:-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:32px 24px;background:#0A0A0F;color:#E8E8F0;">
+        <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 24px;border-collapse:collapse;">
+          <tr>
+            <td style="vertical-align:middle;padding-right:10px;">
+              <img src="https://munero.ai/favicon.png" alt="Munero" width="28" height="28" style="display:block;border:0;outline:none;text-decoration:none;border-radius:6px;" />
+            </td>
+            <td style="vertical-align:middle;">
+              <span style="font-size:18px;font-weight:700;color:#1D9E75;letter-spacing:-0.04em;line-height:1;">munero</span>
+            </td>
+          </tr>
+        </table>
         <p style="font-size:11px;color:#1D9E75;text-transform:uppercase;letter-spacing:0.14em;margin:0 0 16px;">New registration</p>
         <h1 style="font-size:22px;font-weight:600;color:#E8E8F0;margin:0 0 24px;letter-spacing:-0.02em;">${escapeHtml(name)}</h1>
         <table style="border-collapse:collapse;width:100%;font-size:13px;">
