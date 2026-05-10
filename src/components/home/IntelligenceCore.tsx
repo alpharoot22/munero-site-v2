@@ -21,6 +21,7 @@ const OUTPUTS = [
   { Icon: PageIcon,       title: "Landing Page Direction", desc: "Message hierarchy and page structure guidance" },
   { Icon: TrendIcon,      title: "KPI Targets",           desc: "Benchmarks and targets based on real market data" },
   { Icon: ScaleIcon,      title: "Kill / Scale Rules",    desc: "Clear rules for what to cut, what to scale and why" },
+  { Icon: FilmIcon,       title: "Creative & Video Kit",   desc: "Image concepts, video scripts, UGC briefs, and hook formats, ready to produce" },
 ];
 
 export function IntelligenceCore() {
@@ -858,6 +859,16 @@ function ScaleIcon() {
       <path d="M5 15h8" />
       <path d="M3 7l3-2 3 2-3 4z" />
       <path d="M9 7l3-2 3 2-3 4z" />
+    </svg>
+  );
+}
+function FilmIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="3" width="14" height="12" rx="1.5" />
+      <path d="M2 7h14" />
+      <path d="M5.5 3v4M9 3v4M12.5 3v4" />
+      <path d="M7.5 9.5l3.5 2-3.5 2z" fill="currentColor" stroke="none" />
     </svg>
   );
 }
