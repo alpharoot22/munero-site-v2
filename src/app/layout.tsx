@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "../components/Nav";
 import { TopBanner } from "../components/TopBanner";
 import { Footer } from "../components/Footer";
+import { IntercomWidget } from "../components/IntercomWidget";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <IntercomWidget />
       </body>
     </html>
   );
