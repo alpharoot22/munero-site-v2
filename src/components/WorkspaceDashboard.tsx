@@ -55,7 +55,7 @@ export function WorkspaceDashboard() {
         border: "0.5px solid var(--border-2)",
         borderRadius: 10,
         overflow: "hidden",
-        maxWidth: 480,
+        maxWidth: 520,
         margin: "0 auto",
         boxShadow: "0 0 40px -12px rgba(29, 158, 117, 0.25)",
       }}

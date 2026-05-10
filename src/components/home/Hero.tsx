@@ -32,7 +32,7 @@ export function Hero() {
         35
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-14 md:pt-20 pb-20 md:pb-28 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-center">
+      <div className="relative mx-auto max-w-6xl px-6 pt-14 md:pt-20 pb-20 md:pb-28 grid md:grid-cols-[55fr_45fr] gap-10 md:gap-14 items-start">
         {/* Left 55% */}
         <div className="relative z-10">
           <div
@@ -50,10 +50,10 @@ export function Hero() {
           </div>
 
           <h1
-            className="font-bold tracking-[-0.04em] leading-[1.0] animate-on-load"
+            className="font-bold tracking-[-0.035em] leading-[1.05] animate-on-load"
             style={{
               color: "var(--text)",
-              fontSize: "clamp(48px, 7vw, 84px)",
+              fontSize: "clamp(40px, 5.4vw, 68px)",
               fontWeight: 800,
               ["--delay" as string]: "1",
             }}
@@ -135,7 +135,7 @@ export function Hero() {
         </div>
 
         {/* Right 45% — Workspace dashboard mockup (what you get after paying) */}
-        <div className="relative z-10 octo-mount">
+        <div className="relative z-10 octo-mount md:mt-6">
           <WorkspaceDashboard />
         </div>
       </div>
