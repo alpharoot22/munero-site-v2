@@ -25,9 +25,9 @@ export function TopBanner() {
           style={{ color: "var(--text-2)" }}
         >
           <span className="hidden sm:inline">
-            See a real Munero sample brief before you commit
+            See a real Munero sample brief from inside the workspace
           </span>
-          <span className="sm:hidden">See a sample brief first</span>
+          <span className="sm:hidden">See a sample brief inside the workspace</span>
         </span>
         <Link
           href="/sample"

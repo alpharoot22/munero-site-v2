@@ -13,18 +13,18 @@ const WORKSPACE_STATS = [
       "Intelligence Analyst, Competitor Analyst, Creative Director, Media Buyer, Landing Advisor, Compliance Reviewer, Weekly Update, Board Report. Plus a global navigator on every page.",
   },
   {
-    number: 60,
-    display: "60",
-    unit: "day intelligence loop",
+    number: 16,
+    display: "16",
+    unit: "intelligence squads",
     description:
-      "Day 7, 14, and 30 review engines return kill, scale, hold, or watch decisions per creative. Outcomes feed the accuracy tracker. Month 2 auto-refresh triggers automatically.",
+      "Reddit, Trustpilot, Meta Ad Library, TikTok, YouTube, Google Trends, LinkedIn, Amazon, and 8 more sources run in parallel on every brief.",
   },
   {
     number: null as number | null,
     display: "\u221E",
-    unit: "briefs compound",
+    unit: "briefs on Agency",
     description:
-      "Every brief makes the next one sharper. Cross-brand patterns accumulate. Market memory builds. Your portfolio benchmarks update each cycle.",
+      "Cross-brand pattern detection, monitoring, and refresh loops live on the monthly Agency Workspace. One-time tiers keep your first brief and intelligence archive in the workspace.",
   },
 ];
 
@@ -312,6 +312,9 @@ export function Workspace() {
         </div>
       </div>
 
+      {/* Performance Layer — coming Q3 2026 */}
+      <PerformanceLayer />
+
       {/* Closing CTA line */}
       <div className="mt-16 text-center">
         <p
@@ -345,5 +348,126 @@ export function Workspace() {
         </a>
       </div>
     </Section>
+  );
+}
+
+/* ----------------- Performance Layer (coming Q3 2026) ----------------- */
+
+const AMBER = "#FFB547";
+
+const PERFORMANCE_INTEGRATIONS = [
+  { name: "GA4",         detail: "Google Analytics 4" },
+  { name: "Google Ads",  detail: "Campaign performance" },
+  { name: "Meta Ads",    detail: "Facebook + Instagram" },
+  { name: "TikTok Ads",  detail: "TikTok for Business" },
+];
+
+function PerformanceLayer() {
+  return (
+    <div
+      className="mt-12 rounded-lg"
+      style={{
+        background: "var(--surface-2)",
+        border: `0.5px dashed ${AMBER}55`,
+        padding: 24,
+      }}
+    >
+      <div className="grid md:grid-cols-[1fr_auto] gap-4 items-start mb-4">
+        <div>
+          <div
+            className="num"
+            style={{
+              fontSize: 10,
+              color: AMBER,
+              textTransform: "uppercase",
+              letterSpacing: "0.16em",
+              fontWeight: 700,
+            }}
+          >
+            COMING SOON · Q3 2026
+          </div>
+          <h3
+            className="mt-2"
+            style={{
+              fontSize: 18,
+              fontWeight: 600,
+              color: "var(--text)",
+              letterSpacing: "-0.01em",
+              lineHeight: 1.3,
+            }}
+          >
+            Connect your ad accounts. Munero reads your performance.
+          </h3>
+          <p
+            className="mt-2 leading-relaxed"
+            style={{
+              fontSize: 14,
+              color: "var(--text-2)",
+              maxWidth: 560,
+            }}
+          >
+            Read-only connections to GA4, Google Ads, Meta Ads, and TikTok
+            Ads. Munero will compare your market signals against actual
+            campaign results and tell you exactly what to do next, before you
+            waste another dollar.
+          </p>
+        </div>
+        <a
+          href="mailto:hello@munero.ai?subject=Performance Layer Waitlist"
+          className="num shrink-0"
+          style={{
+            fontSize: 11,
+            color: "var(--accent)",
+            textDecoration: "none",
+            letterSpacing: "0.04em",
+          }}
+        >
+          Notify me when live <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div className="flex flex-wrap gap-2 mt-5">
+        {PERFORMANCE_INTEGRATIONS.map((it) => (
+          <span
+            key={it.name}
+            className="inline-flex items-center gap-2"
+            style={{
+              background: "var(--surface)",
+              border: "0.5px dashed var(--border-2)",
+              borderRadius: 20,
+              padding: "6px 14px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: 12,
+                fontWeight: 500,
+                color: "var(--text-2)",
+              }}
+            >
+              {it.name}
+            </span>
+            <span className="num" style={{ fontSize: 10, color: "var(--text-3)" }}>
+              {it.detail}
+            </span>
+            <span
+              className="num"
+              style={{
+                fontSize: 9,
+                color: AMBER,
+                background: `${AMBER}15`,
+                border: `0.5px solid ${AMBER}45`,
+                borderRadius: 4,
+                padding: "1px 5px",
+                letterSpacing: "0.08em",
+                fontWeight: 700,
+              }}
+            >
+              SOON
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -46,9 +46,13 @@ export function Compare() {
   return (
     <Section bordered id="compare">
       <Eyebrow>Compare</Eyebrow>
-      <H2 className="max-w-[24ch]">Munero replaces the stack, not a tile in it.</H2>
+      <H2 className="max-w-[28ch]">
+        Munero replaces the manual strategy layer between your tools.
+      </H2>
       <Lede>
-        Side by side against the tools you'd otherwise stitch together.
+        Side by side against the tools you&apos;d otherwise stitch together.
+        Munero does not replace every data tool, it replaces the manual work
+        of turning scattered signals into a campaign-ready plan.
       </Lede>
 
       {/* Cost callout — full border is OK on a callout box */}

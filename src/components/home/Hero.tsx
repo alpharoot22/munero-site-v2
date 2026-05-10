@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Octopus } from "../Octopus";
+import { WorkspaceDashboard } from "../WorkspaceDashboard";
 
 const STRIPE_BRIEF =
   "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
@@ -134,9 +134,9 @@ export function Hero() {
           </p>
         </div>
 
-        {/* Right 45% — Octopus */}
+        {/* Right 45% — Workspace dashboard mockup (what you get after paying) */}
         <div className="relative z-10 octo-mount">
-          <Octopus />
+          <WorkspaceDashboard />
         </div>
       </div>
     </section>

@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Do I need a subscription?",
-    a: "No. The Brief, Enhanced, and Full creative tiers are one-time purchases. Agency is the only monthly tier and is purpose-built for shops running multiple client briefs per week.",
+    a: "Starter Workspace, Intelligence Workspace, and Creative Workspace are one-time purchases. Agency Workspace is the monthly tier for teams running multiple client briefs per week.",
   },
   {
     q: "What if I'm not happy with the brief?",

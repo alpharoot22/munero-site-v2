@@ -30,8 +30,14 @@ const DELIVERS = [
 ];
 
 export function ReplaceDeliverMarquee() {
-  const replaces = [...REPLACES, ...REPLACES];
-  const delivers = [...DELIVERS, ...DELIVERS];
+  // First copy is read by screen readers + crawlers. The duplicated copy is
+  // for seamless visual loop only and is marked aria-hidden.
+  const replaces = REPLACES.map((r) => ({ ...r, dup: false })).concat(
+    REPLACES.map((r) => ({ ...r, dup: true }))
+  );
+  const delivers = DELIVERS.map((d) => ({ ...d, dup: false })).concat(
+    DELIVERS.map((d) => ({ ...d, dup: true }))
+  );
 
   return (
     <section
@@ -65,7 +71,7 @@ export function ReplaceDeliverMarquee() {
           style={{ animation: "scroll-left 40s linear infinite" }}
         >
           {replaces.map((r, i) => (
-            <ReplaceItem key={`r-${i}`} item={r} />
+            <ReplaceItem key={`r-${i}`} item={r} ariaHidden={r.dup} />
           ))}
         </div>
       </div>
@@ -89,7 +95,7 @@ export function ReplaceDeliverMarquee() {
           style={{ animation: "scroll-right 35s linear infinite" }}
         >
           {delivers.map((d, i) => (
-            <DeliverItem key={`d-${i}`} item={d} />
+            <DeliverItem key={`d-${i}`} item={d} ariaHidden={d.dup} />
           ))}
         </div>
       </div>
@@ -97,9 +103,18 @@ export function ReplaceDeliverMarquee() {
   );
 }
 
-function ReplaceItem({ item }: { item: { name: string; detail: string } }) {
+function ReplaceItem({
+  item,
+  ariaHidden,
+}: {
+  item: { name: string; detail: string };
+  ariaHidden?: boolean;
+}) {
   return (
-    <div className="flex items-center gap-2.5 whitespace-nowrap shrink-0">
+    <div
+      className="flex items-center gap-2.5 whitespace-nowrap shrink-0"
+      aria-hidden={ariaHidden ? "true" : undefined}
+    >
       <span
         className="text-[12px] font-medium tracking-tight"
         style={{ color: "var(--text-2)" }}
@@ -114,9 +129,18 @@ function ReplaceItem({ item }: { item: { name: string; detail: string } }) {
   );
 }
 
-function DeliverItem({ item }: { item: { name: string; icon: string } }) {
+function DeliverItem({
+  item,
+  ariaHidden,
+}: {
+  item: { name: string; icon: string };
+  ariaHidden?: boolean;
+}) {
   return (
-    <div className="flex items-center gap-2.5 whitespace-nowrap shrink-0">
+    <div
+      className="flex items-center gap-2.5 whitespace-nowrap shrink-0"
+      aria-hidden={ariaHidden ? "true" : undefined}
+    >
       <span
         className="text-[14px] leading-none"
         style={{ color: "var(--accent)", fontFamily: "var(--font-jetbrains), monospace" }}

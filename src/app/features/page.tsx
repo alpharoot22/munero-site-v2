@@ -101,6 +101,8 @@ export default function FeaturesPage() {
 
       <FeatureGroup title="Brief output" eyebrow="What lands in every brief" features={briefOutput} />
       <FeatureGroup title="Intelligence layer" eyebrow="What runs in parallel" features={intelligence} />
+
+      <PerformanceLayerStrip />
       <FeatureGroup title="Creative production" eyebrow="46 assets per Full Creative" features={creative} />
       <FeatureGroup title="Campaign management" eyebrow="After the brief is delivered" features={campaign} />
 
@@ -162,6 +164,83 @@ function FeatureGroup({
           </li>
         ))}
       </ul>
+    </Section>
+  );
+}
+
+const AMBER = "#FFB547";
+
+function PerformanceLayerStrip() {
+  return (
+    <Section bordered>
+      <div
+        className="rounded-lg flex flex-col md:flex-row md:items-center gap-4 md:gap-8"
+        style={{
+          background: "var(--surface-2)",
+          border: `0.5px dashed ${AMBER}55`,
+          padding: 24,
+        }}
+      >
+        <div className="flex-1">
+          <div className="flex items-center gap-3 mb-2">
+            <span
+              className="num"
+              style={{
+                fontSize: 9,
+                fontWeight: 700,
+                color: "#3a2a00",
+                background: AMBER,
+                padding: "2px 7px",
+                borderRadius: 4,
+                letterSpacing: "0.12em",
+              }}
+            >
+              COMING SOON
+            </span>
+            <span
+              className="num"
+              style={{
+                fontSize: 10,
+                color: AMBER,
+                letterSpacing: "0.16em",
+                fontWeight: 700,
+              }}
+            >
+              Q3 2026
+            </span>
+          </div>
+          <h3
+            style={{
+              fontSize: 18,
+              fontWeight: 600,
+              color: "var(--text)",
+              letterSpacing: "-0.01em",
+              lineHeight: 1.3,
+            }}
+          >
+            Performance Layer
+          </h3>
+          <p
+            className="mt-2 leading-relaxed"
+            style={{ fontSize: 14, color: "var(--text-2)", maxWidth: 560 }}
+          >
+            GA4 · Google Ads · Meta Ads · TikTok Ads, read-only. Munero
+            compares market signals against actual campaign results.
+          </p>
+        </div>
+        <a
+          href="mailto:hello@munero.ai?subject=Performance Layer Waitlist"
+          className="num shrink-0"
+          style={{
+            fontSize: 11,
+            color: "var(--accent)",
+            textDecoration: "none",
+            letterSpacing: "0.04em",
+          }}
+        >
+          Notify me when live <span aria-hidden="true">→</span>
+        </a>
+      </div>
     </Section>
   );
 }
