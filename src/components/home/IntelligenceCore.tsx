@@ -175,11 +175,11 @@ export function IntelligenceCore() {
               >
                 SIGNAL SOURCES
               </div>
-              <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+              <ul className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-1 gap-2.5">
                 {SOURCES.map(({ Icon, title, desc }, i) => (
                   <li
                     key={title}
-                    className="hover-lift relative grid grid-cols-[36px_1fr_auto] items-center gap-3 p-3 pr-2"
+                    className="hover-lift relative flex flex-col items-start gap-2 p-3 lg:grid lg:grid-cols-[36px_1fr_auto] lg:items-center lg:gap-3 lg:pr-2"
                     style={{
                       background: "var(--surface)",
                       border: "0.5px solid var(--border-2)",
@@ -313,11 +313,11 @@ export function IntelligenceCore() {
               >
                 CAMPAIGN-READY OUTPUTS
               </div>
-              <ul className="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+              <ul className="grid grid-cols-1 min-[480px]:grid-cols-2 lg:grid-cols-1 gap-2.5">
                 {OUTPUTS.map(({ Icon, title, desc }, i) => (
                   <li
                     key={title}
-                    className="hover-lift relative grid grid-cols-[auto_36px_1fr] items-center gap-3 p-3 pl-2"
+                    className="hover-lift relative flex flex-col items-start gap-2 p-3 lg:grid lg:grid-cols-[auto_36px_1fr] lg:items-center lg:gap-3 lg:pl-2"
                     style={{
                       background: "var(--surface)",
                       border: "0.5px solid var(--border-2)",

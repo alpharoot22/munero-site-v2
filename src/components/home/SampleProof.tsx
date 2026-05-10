@@ -108,7 +108,7 @@ export function SampleProof() {
 
         {/* Outputs grid */}
         <ul
-          className="grid grid-cols-2 md:grid-cols-3 gap-px"
+          className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 gap-px"
           style={{ background: "var(--border)" }}
         >
           {OUTPUTS.map((o) => (

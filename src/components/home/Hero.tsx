@@ -127,7 +127,7 @@ export function Hero() {
                 Open your workspace · $99
                 <Arrow />
               </a>
-              <a href="#what-you-get" className="btn-secondary">
+              <a href="#intelligence-core" className="btn-secondary">
                 See what you get
                 <Arrow />
               </a>

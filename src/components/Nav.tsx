@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
+import { MobileMenu } from "./MobileMenu";
 
 const STRIPE_BRIEF = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
@@ -34,10 +35,10 @@ export function Nav() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-2">
           <Link
             href="/register"
-            className="btn-secondary !h-11 !px-3.5 !text-[13px] hidden sm:inline-flex"
+            className="btn-secondary !h-11 !px-3.5 !text-[13px]"
           >
             Get started free
           </Link>
@@ -45,6 +46,7 @@ export function Nav() {
             Open workspace · $99
           </a>
         </div>
+        <MobileMenu />
       </div>
     </header>
   );

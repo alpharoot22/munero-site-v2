@@ -45,8 +45,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased overflow-x-hidden`}>
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <TopBanner />
         <Nav />
         <main className="flex-1">{children}</main>

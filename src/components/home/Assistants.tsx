@@ -94,7 +94,7 @@ export function Assistants() {
         </div>
 
         {/* 8 specialists */}
-        <ul className="grid grid-cols-2 gap-px hairline rounded-md overflow-hidden">
+        <ul className="grid grid-cols-1 min-[480px]:grid-cols-2 gap-px hairline rounded-md overflow-hidden">
           {specialists.map((s, i) => (
             <li
               key={s.name}
