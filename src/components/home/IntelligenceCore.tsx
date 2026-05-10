@@ -21,7 +21,7 @@ const OUTPUTS = [
   { Icon: PageIcon,       title: "Landing Page Direction", desc: "Message hierarchy and page structure guidance" },
   { Icon: TrendIcon,      title: "KPI Targets",           desc: "Benchmarks and targets based on real market data" },
   { Icon: ScaleIcon,      title: "Kill / Scale Rules",    desc: "Clear rules for what to cut, what to scale and why" },
-  { Icon: FilmIcon,       title: "Creative & Video Kit",   desc: "Image concepts, video scripts, UGC briefs, and hook formats, ready to produce" },
+  { Icon: FilmIcon,       title: "Creative & Video Kit",   desc: "Auto-generated images for every asset. Video scripts, hook formats, and UGC briefs. Videos via Higgsfield credits." },
 ];
 
 export function IntelligenceCore() {
