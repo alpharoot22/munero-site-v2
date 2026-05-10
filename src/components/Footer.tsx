@@ -25,6 +25,7 @@ export function Footer() {
           links={[
             { href: "/how-it-works", label: "How it works" },
             { href: "/sample", label: "Sample brief" },
+            { href: "/blog", label: "Blog" },
             { href: "/guides", label: "All guides" },
             { href: "/guides/meta-ads", label: "Meta Ads guide" },
             { href: "/guides/tiktok-ads", label: "TikTok Ads guide" },
