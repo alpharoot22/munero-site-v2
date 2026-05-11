@@ -7,6 +7,7 @@ interface Plan {
   href: string;
   color: string;
   cta: string;
+  badge?: string;
 }
 
 const PLANS: Plan[] = [
@@ -14,7 +15,7 @@ const PLANS: Plan[] = [
     name: "Starter Workspace",
     price: "$99",
     cadence: "one-time",
-    useCase: "For one campaign brief and market clarity.",
+    useCase: "For founders who need market clarity before spending.",
     bullets: [
       "Workspace opens immediately",
       "First brief in 35 minutes",
@@ -28,7 +29,7 @@ const PLANS: Plan[] = [
     name: "Intelligence Feed",
     price: "$49",
     cadence: "/mo",
-    useCase: "For weekly market signals and alerts.",
+    useCase: "For ongoing signals and market alerts.",
     bullets: [
       "Weekly signals + alerts",
       "Pain point & trend tracking",
@@ -42,7 +43,7 @@ const PLANS: Plan[] = [
     name: "Creative Workspace",
     price: "$299",
     cadence: "one-time",
-    useCase: "For campaign assets and creative production.",
+    useCase: "For teams turning insights into campaign assets.",
     bullets: [
       "Everything in Starter",
       "750 creative credits",
@@ -51,6 +52,7 @@ const PLANS: Plan[] = [
     href: "https://buy.stripe.com/6oU3cw8Cn13s74pacZ5ZC02",
     color: "#8B5CF6",
     cta: "Start creative",
+    badge: "Most popular",
   },
   {
     name: "Agency Workspace",
@@ -65,6 +67,7 @@ const PLANS: Plan[] = [
     href: "https://buy.stripe.com/fZu9AUdWH5jI3Sd1Gt5ZC04",
     color: "#3B82F6",
     cta: "Start agency plan",
+    badge: "Best for agencies",
   },
 ];
 
@@ -128,111 +131,6 @@ export function PricingClose() {
           .plan-card .plan-cta:hover { background: var(--plan-color) !important; color: #FFFFFF !important; }
         `}</style>
       </section>
-
-      {/* Final CTA strip */}
-      <section
-        style={{
-          background: "#0A0A12",
-          borderTop: "0.5px solid #1E1E2E",
-          padding: "32px 0",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "0 24px",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: 24,
-            justifyContent: "space-between",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <img
-              src="/favicon.png"
-              alt=""
-              width={42}
-              height={42}
-              style={{ borderRadius: 8, display: "block" }}
-              aria-hidden="true"
-            />
-            <div>
-              <div
-                style={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: "clamp(20px, 2vw, 26px)",
-                  color: "#E8E8F0",
-                  fontWeight: 500,
-                  letterSpacing: "-0.022em",
-                  lineHeight: 1.2,
-                }}
-              >
-                Your market. Your workspace. Your edge.
-              </div>
-              <div
-                style={{
-                  marginTop: 4,
-                  fontSize: 13.5,
-                  color: "#9898A8",
-                  lineHeight: 1.4,
-                }}
-              >
-                First brief in 35 minutes. Built on real buyer behavior. Ready before you spend.
-              </div>
-            </div>
-          </div>
-
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <a
-              href={STRIPE_STARTER}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: 48,
-                padding: "0 22px",
-                background: "#1D9E75",
-                color: "#FFFFFF",
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 500,
-                fontSize: 14.5,
-                borderRadius: 8,
-                textDecoration: "none",
-              }}
-            >
-              Start for $99
-            </a>
-            <a
-              href="/sample"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                justifyContent: "center",
-                height: 48,
-                padding: "0 22px",
-                background: "transparent",
-                color: "#E8E8F0",
-                fontFamily: "var(--font-inter), sans-serif",
-                fontWeight: 500,
-                fontSize: 14.5,
-                border: "0.5px solid #1E1E2E",
-                borderRadius: 8,
-                textDecoration: "none",
-              }}
-            >
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-                <path d="M3 2 L10 6 L3 10 Z" />
-              </svg>
-              View sample brief
-            </a>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
@@ -267,6 +165,28 @@ function PlanCard({ plan }: { plan: Plan }) {
           background: plan.color,
         }}
       />
+
+      {plan.badge ? (
+        <span
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            fontFamily: "var(--font-jetbrains), monospace",
+            fontSize: 9.5,
+            color: plan.color,
+            background: `${plan.color}1A`,
+            border: `0.5px solid ${plan.color}55`,
+            padding: "3px 8px",
+            borderRadius: 999,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            fontWeight: 600,
+          }}
+        >
+          {plan.badge}
+        </span>
+      ) : null}
 
       <div
         style={{

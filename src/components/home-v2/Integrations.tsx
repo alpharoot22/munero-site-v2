@@ -25,6 +25,7 @@ interface Brand {
 
 interface Group {
   label: string;
+  helper: string;
   color: string;
   brands: Brand[];
 }
@@ -34,6 +35,7 @@ interface Group {
 const GROUPS: Group[] = [
   {
     label: "DATA IN",
+    helper: "Pulls in market and performance signals",
     color: "#1D9E75",
     brands: [
       { label: "Meta", icon: siMeta as SimpleIconShape },
@@ -46,6 +48,7 @@ const GROUPS: Group[] = [
   },
   {
     label: "CREATIVE",
+    helper: "Powers copy, image, and video generation",
     color: "#8B5CF6",
     brands: [
       { label: "Gemini", icon: siGooglegemini as SimpleIconShape },
@@ -58,6 +61,7 @@ const GROUPS: Group[] = [
   },
   {
     label: "OUTPUT",
+    helper: "Exports strategy, reports, and assets",
     color: "#3B82F6",
     brands: [
       { label: "Slack", icon: null },
@@ -145,12 +149,24 @@ function Group({ group }: { group: Group }) {
           fontSize: 11,
           color: group.color,
           letterSpacing: "0.16em",
-          marginBottom: 18,
+          marginBottom: 4,
           textAlign: "center",
         }}
       >
         {group.label}
       </div>
+      <p
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 12.5,
+          color: "#9898A8",
+          textAlign: "center",
+          marginBottom: 18,
+          lineHeight: 1.4,
+        }}
+      >
+        {group.helper}
+      </p>
       <ul
         style={{
           display: "flex",

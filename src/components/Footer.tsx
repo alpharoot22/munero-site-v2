@@ -1,66 +1,161 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="hairline-t mt-24" style={{ background: "var(--surface)" }}>
-      <div className="mx-auto max-w-6xl px-6 py-14 grid grid-cols-2 md:grid-cols-4 gap-10 text-[13px]">
-        <div className="col-span-2 md:col-span-1">
-          <Logo />
-          <p className="mt-3 max-w-[28ch] text-[12.5px]" style={{ color: "var(--text-3)" }}>
-            One-time briefs from $99. Weekly intelligence from $49/mo.
+    <footer
+      style={{
+        background: "#0A0A12",
+        borderTop: "0.5px solid #1E1E2E",
+        marginTop: 0,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: 1280,
+          margin: "0 auto",
+          padding: "64px 24px 48px",
+        }}
+      >
+        <div className="footer-grid">
+          {/* Brand column */}
+          <div>
+            <Link
+              href="/"
+              aria-label="Munero home"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                textDecoration: "none",
+              }}
+            >
+              <img
+                src="/favicon.png"
+                alt=""
+                width={32}
+                height={32}
+                style={{ display: "block", borderRadius: 7 }}
+                aria-hidden="true"
+              />
+              <span
+                style={{
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontWeight: 600,
+                  fontSize: 20,
+                  color: "#1D9E75",
+                  letterSpacing: "-0.03em",
+                  lineHeight: 1,
+                }}
+              >
+                munero
+              </span>
+            </Link>
+            <p
+              style={{
+                marginTop: 16,
+                maxWidth: "28ch",
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: 13,
+                color: "#9898A8",
+                lineHeight: 1.55,
+              }}
+            >
+              Marketing intelligence workspace. One-time briefs from $99.
+              Weekly intelligence from $49 a month.
+            </p>
+          </div>
+
+          <FooterCol
+            title="Product"
+            links={[
+              { href: "/features", label: "Features" },
+              { href: "/pricing", label: "Pricing" },
+              { href: "/sample", label: "Sample brief" },
+              { href: "/agency", label: "Agency" },
+            ]}
+          />
+
+          <FooterCol
+            title="Resources"
+            links={[
+              { href: "/how-it-works", label: "How it works" },
+              { href: "/blog", label: "Blog" },
+              { href: "/guides", label: "All guides" },
+              { href: "/guides/meta-ads", label: "Meta Ads guide" },
+              { href: "/guides/tiktok-ads", label: "TikTok Ads guide" },
+            ]}
+          />
+
+          <FooterCol
+            title="Legal"
+            links={[
+              { href: "/privacy", label: "Privacy Policy" },
+              { href: "/terms", label: "Terms of Service" },
+              { href: "/data-deletion", label: "Data Deletion" },
+              { href: "mailto:hello@munero.ai", label: "hello@munero.ai" },
+            ]}
+          />
+        </div>
+      </div>
+
+      <div style={{ borderTop: "0.5px solid #1E1E2E" }}>
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "20px 24px",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 11.5,
+              color: "#505068",
+              letterSpacing: "0.04em",
+              flexWrap: "wrap",
+            }}
+          >
+            <span style={{ color: "#9898A8" }}>Works with</span>
+            {["Slack", "Notion", "Google Drive", "Google Sheets", "Canva", "Higgsfield"].map(
+              (name, i, arr) => (
+                <span key={name} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                  <span style={{ color: "#9898A8" }}>{name}</span>
+                  {i < arr.length - 1 ? <span aria-hidden="true">·</span> : null}
+                </span>
+              )
+            )}
+          </div>
+          <p
+            style={{
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 11.5,
+              color: "#505068",
+              letterSpacing: "0.04em",
+            }}
+          >
+            © {new Date().getFullYear()} Munero  ·  hello@munero.ai
           </p>
         </div>
-        <FooterCol
-          title="Product"
-          links={[
-            { href: "/features", label: "Features" },
-            { href: "/pricing", label: "Pricing" },
-            { href: "/sample", label: "Sample brief" },
-            { href: "/agency", label: "Agency" },
-          ]}
-        />
-        <FooterCol
-          title="Resources"
-          links={[
-            { href: "/how-it-works", label: "How it works" },
-            { href: "/sample", label: "Sample brief" },
-            { href: "/blog", label: "Blog" },
-            { href: "/guides", label: "All guides" },
-            { href: "/guides/meta-ads", label: "Meta Ads guide" },
-            { href: "/guides/tiktok-ads", label: "TikTok Ads guide" },
-            { href: "/guides/google-ads", label: "Google Ads guide" },
-            { href: "/guides/linkedin-ads", label: "LinkedIn Ads guide" },
-            { href: "/guides/email-marketing", label: "Email marketing guide" },
-            { href: "/#faq", label: "FAQ" },
-          ]}
-        />
-        <FooterCol
-          title="Legal"
-          links={[
-            { href: "/privacy", label: "Privacy Policy" },
-            { href: "/terms", label: "Terms of Service" },
-            { href: "/data-deletion", label: "Data Deletion" },
-            { href: "mailto:hello@munero.ai", label: "hello@munero.ai" },
-          ]}
-        />
       </div>
-      <div className="hairline-t">
-        <div className="mx-auto max-w-6xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-          <p
-            className="num text-[12px]"
-            style={{ color: "var(--text-3)" }}
-          >
-            Works with: Slack · Notion · Google Drive · Canva · Google Sheets · Higgsfield
-          </p>
-          <p
-            className="text-[12px]"
-            style={{ color: "var(--text-3)" }}
-          >
-            © {new Date().getFullYear()} Munero · hello@munero.ai
-          </p>
-        </div>
-      </div>
+
+      <style>{`
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 32px 32px;
+        }
+        @media (min-width: 720px) {
+          .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+        }
+      `}</style>
     </footer>
   );
 }
@@ -75,24 +170,40 @@ function FooterCol({
   return (
     <div>
       <div
-        className="text-[10.5px] uppercase tracking-[0.16em] num mb-3"
-        style={{ color: "var(--text-3)" }}
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 10.5,
+          color: "#505068",
+          letterSpacing: "0.18em",
+          textTransform: "uppercase",
+          marginBottom: 16,
+        }}
       >
         {title}
       </div>
-      <ul className="space-y-2">
+      <ul style={{ display: "flex", flexDirection: "column", gap: 10, listStyle: "none", padding: 0, margin: 0 }}>
         {links.map((l) => (
           <li key={l.label}>
             <Link
               href={l.href}
-              style={{ color: "var(--text-2)" }}
-              className="hover:text-[var(--text)] transition-colors"
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: 13,
+                color: "#9898A8",
+                textDecoration: "none",
+                transition: "color 150ms ease-out",
+              }}
+              className="footer-link"
             >
               {l.label}
             </Link>
           </li>
         ))}
       </ul>
+
+      <style>{`
+        .footer-link:hover { color: #E8E8F0 !important; }
+      `}</style>
     </div>
   );
 }
