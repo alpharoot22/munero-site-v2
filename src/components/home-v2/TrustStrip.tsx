@@ -1,13 +1,12 @@
-interface Stat {
-  value: string;
-  label: string;
-}
-
-const STATS: Stat[] = [
-  { value: "35 min",     label: "First brief ready" },
-  { value: "16 squads",  label: "Intelligence sources" },
-  { value: "46 assets",  label: "Per Creative brief" },
-  { value: "100%",       label: "Built on real buyer behavior" },
+const SOURCES = [
+  "Reddit",
+  "Trustpilot",
+  "Meta Ad Library",
+  "Google Trends",
+  "TikTok Creative Center",
+  "YouTube",
+  "Amazon reviews",
+  "LinkedIn",
 ];
 
 const AUDIENCES = [
@@ -20,129 +19,208 @@ export function TrustStrip() {
   return (
     <section
       style={{
+        position: "relative",
         background: "#050508",
         borderTop: "0.5px solid #1E1E2E",
-        padding: "56px 0",
+        padding: "88px 0",
+        overflow: "hidden",
       }}
     >
       <div
+        aria-hidden="true"
         style={{
-          maxWidth: 1280,
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: 800,
+          height: 400,
+          transform: "translate(-50%, -50%)",
+          background:
+            "radial-gradient(ellipse at center, rgba(29,158,117,0.05) 0%, transparent 60%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div
+        style={{
+          position: "relative",
+          maxWidth: 1100,
           margin: "0 auto",
           padding: "0 24px",
         }}
       >
+        {/* Eyebrow row */}
         <div
           style={{
-            textAlign: "center",
-            marginBottom: 28,
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            marginBottom: 24,
           }}
         >
+          <span
+            aria-hidden="true"
+            style={{
+              display: "inline-block",
+              width: 24,
+              height: 1,
+              background: "#1D9E75",
+              boxShadow: "0 0 6px #1D9E75",
+            }}
+          />
           <span
             style={{
               fontFamily: "var(--font-jetbrains), monospace",
               fontSize: 11,
-              color: "#505068",
+              color: "#1D9E75",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
             }}
           >
-            Trusted by marketers building real campaigns
+            Built on real buyer behavior
           </span>
         </div>
 
-        <div
-          className="trust-stats"
+        {/* Anchor statement */}
+        <p
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: 0,
-            border: "0.5px solid #1E1E2E",
-            borderRadius: 18,
-            background: "#0A0A12",
-            overflow: "hidden",
+            fontFamily: "var(--font-inter), sans-serif",
+            fontWeight: 400,
+            fontSize: "clamp(26px, 3.2vw, 38px)",
+            color: "#E8E8F0",
+            letterSpacing: "-0.025em",
+            lineHeight: 1.25,
+            margin: 0,
+            maxWidth: "30ch",
           }}
         >
-          {STATS.map((s, i) => (
-            <div
-              key={s.label}
-              style={{
-                padding: "22px 20px",
-                borderRight: i === STATS.length - 1 ? "none" : "0.5px solid #1E1E2E",
-                borderBottom: i < STATS.length - 2 ? "0.5px solid #1E1E2E" : "none",
-                textAlign: "center",
-              }}
-              className="trust-stat-cell"
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontWeight: 500,
-                  fontSize: "clamp(22px, 2.4vw, 28px)",
-                  color: "#1D9E75",
-                  letterSpacing: "-0.025em",
-                  lineHeight: 1,
-                }}
-              >
-                {s.value}
-              </div>
-              <div
-                style={{
-                  marginTop: 6,
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: 12.5,
-                  color: "#9898A8",
-                  letterSpacing: "-0.005em",
-                }}
-              >
-                {s.label}
-              </div>
-            </div>
+          Every brief cites its sources. We pull from the places your
+          buyers <span style={{ color: "#1D9E75" }}>actually live.</span>
+        </p>
+
+        {/* Source flow */}
+        <div
+          style={{
+            marginTop: 36,
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "12px 8px",
+          }}
+        >
+          {SOURCES.map((s, i) => (
+            <SourceChip key={s} label={s} delay={i * 60} />
           ))}
         </div>
 
+        {/* Divider with audience */}
         <div
           style={{
-            marginTop: 22,
+            marginTop: 48,
+            paddingTop: 24,
+            borderTop: "0.5px solid #1E1E2E",
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "center",
             alignItems: "center",
-            gap: "10px 16px",
+            justifyContent: "space-between",
+            gap: 16,
           }}
         >
-          {AUDIENCES.map((a, i) => (
-            <span
-              key={a}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 12,
-                fontFamily: "var(--font-inter), sans-serif",
-                fontSize: 13,
-                color: "#9898A8",
-              }}
-            >
-              {a}
-              {i < AUDIENCES.length - 1 ? (
-                <span
-                  aria-hidden="true"
-                  style={{ color: "#505068", fontFamily: "var(--font-jetbrains), monospace" }}
-                >
-                  ·
-                </span>
-              ) : null}
-            </span>
-          ))}
+          <div
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 14,
+              color: "#9898A8",
+            }}
+          >
+            Currently running for{" "}
+            {AUDIENCES.map((a, i) => (
+              <span key={a}>
+                <span style={{ color: "#E8E8F0", fontWeight: 500 }}>{a}</span>
+                {i < AUDIENCES.length - 1 ? (
+                  <span style={{ color: "#505068" }}>
+                    {i === AUDIENCES.length - 2 ? ", and " : ", "}
+                  </span>
+                ) : (
+                  "."
+                )}
+              </span>
+            ))}
+          </div>
+
+          <a
+            href="/sample"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 13,
+              color: "#1D9E75",
+              textDecoration: "none",
+              fontWeight: 500,
+              letterSpacing: "-0.005em",
+              transition: "color 150ms ease-out",
+            }}
+            className="trust-link"
+          >
+            See a real brief
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path
+                d="M3 6 H9 M7 4 L9 6 L7 8"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
         </div>
       </div>
 
       <style>{`
-        @media (min-width: 720px) {
-          .trust-stats { grid-template-columns: repeat(4, 1fr) !important; }
-          .trust-stat-cell { border-bottom: none !important; }
-        }
+        .trust-link:hover { color: #25B889 !important; }
       `}</style>
     </section>
+  );
+}
+
+function SourceChip({ label, delay }: { label: string; delay: number }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "8px 16px",
+        background: "#0E0E18",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 999,
+        fontFamily: "var(--font-inter), sans-serif",
+        fontSize: 13,
+        color: "#9898A8",
+        animation: `chip-in 500ms ${delay}ms cubic-bezier(0.16, 1, 0.3, 1) both`,
+      }}
+      className="source-chip"
+    >
+      <span
+        style={{
+          display: "inline-block",
+          width: 5,
+          height: 5,
+          borderRadius: "50%",
+          background: "#1D9E75",
+          boxShadow: "0 0 4px #1D9E75",
+        }}
+        aria-hidden="true"
+      />
+      {label}
+      <style>{`
+        @keyframes chip-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+    </span>
   );
 }
