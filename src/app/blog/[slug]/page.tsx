@@ -1,10 +1,41 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPost } from "@/data/blog/posts";
+import { getAllPosts, getPost, type CtaTier } from "@/data/blog/posts";
 
-const STRIPE_BRIEF =
-  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=starter";
+const CTA_BY_TIER: Record<
+  CtaTier,
+  { href: string; eyebrow: string; headline: string; sub: string; button: string }
+> = {
+  starter: {
+    href: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00",
+    eyebrow: "Run your own brief",
+    headline: "Know what message will work before you spend a dollar.",
+    sub: "16 intelligence squads. 35 minutes. Starting at $99.",
+    button: "Open workspace · $99",
+  },
+  feed: {
+    href: "https://buy.stripe.com/cNi4gA3i37rQdsN4SF5ZC01",
+    eyebrow: "Keep the signals running",
+    headline: "Know when your market moves, automatically.",
+    sub: "Weekly intelligence digest. Competitor change alerts. $49 / mo.",
+    button: "Start Intelligence Feed · $49/mo",
+  },
+  creative: {
+    href: "https://buy.stripe.com/dRm5kE05RbI674p98V5ZC03",
+    eyebrow: "Run your own brief + assets",
+    headline: "From intelligence brief to creative assets.",
+    sub: "Hooks, scripts, images, video credits, ads manager files. $299 one-time.",
+    button: "Open Creative Workspace · $299",
+  },
+  agency: {
+    href: "https://buy.stripe.com/6oU3cw8Cn13s74pacZ5ZC02",
+    eyebrow: "Scale across clients",
+    headline: "One workspace. Every client. Unlimited briefs.",
+    sub: "Multi-client command center, white-label, team seats. $499 / mo.",
+    button: "Start Agency Workspace · $499/mo",
+  },
+};
 
 type Params = Promise<{ slug: string }>;
 
@@ -36,6 +67,7 @@ export default async function BlogPost({ params }: { params: Params }) {
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) notFound();
+  const cta = CTA_BY_TIER[post.ctaTier ?? "starter"];
 
   return (
     <main
@@ -156,7 +188,7 @@ export default async function BlogPost({ params }: { params: Params }) {
               marginBottom: 12,
             }}
           >
-            Run your own brief
+            {cta.eyebrow}
           </p>
           <h3
             style={{
@@ -167,7 +199,7 @@ export default async function BlogPost({ params }: { params: Params }) {
               letterSpacing: "-0.03em",
             }}
           >
-            Know what message will work before you spend a dollar.
+            {cta.headline}
           </h3>
           <p
             style={{
@@ -177,10 +209,10 @@ export default async function BlogPost({ params }: { params: Params }) {
               lineHeight: 1.6,
             }}
           >
-            16 intelligence squads. 35 minutes. Starting at $99.
+            {cta.sub}
           </p>
           <a
-            href={STRIPE_BRIEF}
+            href={cta.href}
             style={{
               display: "inline-block",
               background: "var(--accent)",
@@ -192,7 +224,7 @@ export default async function BlogPost({ params }: { params: Params }) {
               textDecoration: "none",
             }}
           >
-            Open workspace · $99
+            {cta.button}
           </a>
         </div>
       </div>
