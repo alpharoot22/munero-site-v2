@@ -4,11 +4,11 @@ import { MobileMenu } from "./MobileMenu";
 const STRIPE_STARTER = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
 
 const NAV_LINKS = [
-  { href: "/features",     label: "Product" },
-  { href: "/how-it-works", label: "How it works" },
+  { href: "/features",     label: "Product",   hasDropdown: true },
+  { href: "/how-it-works", label: "Solutions", hasDropdown: true },
+  { href: "/guides",       label: "Resources", hasDropdown: true },
   { href: "/pricing",      label: "Pricing" },
-  { href: "/sample",       label: "Sample brief" },
-  { href: "/blog",         label: "Blog" },
+  { href: "/blog",         label: "About" },
 ];
 
 export function Nav() {
@@ -16,36 +16,20 @@ export function Nav() {
     <header
       className="sticky top-0 z-40 backdrop-blur-md"
       style={{
-        background: "rgba(5, 5, 8, 0.78)",
+        background: "rgba(5, 5, 8, 0.8)",
         borderBottom: "0.5px solid #1E1E2E",
       }}
     >
       <div
         className="mx-auto flex items-center justify-between"
-        style={{
-          maxWidth: 1280,
-          padding: "0 24px",
-          height: 64,
-        }}
+        style={{ maxWidth: 1280, padding: "0 24px", height: 64 }}
       >
         <Link
           href="/"
           aria-label="Munero home"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            textDecoration: "none",
-          }}
+          style={{ display: "inline-flex", alignItems: "center", gap: 10, textDecoration: "none" }}
         >
-          <img
-            src="/favicon.png"
-            alt=""
-            width={32}
-            height={32}
-            style={{ display: "block", borderRadius: 7 }}
-            aria-hidden="true"
-          />
+          <img src="/favicon.png" alt="" width={30} height={30} style={{ borderRadius: 7 }} aria-hidden="true" />
           <span
             style={{
               fontFamily: "var(--font-inter), sans-serif",
@@ -60,10 +44,7 @@ export function Nav() {
           </span>
         </Link>
 
-        <nav
-          className="hidden md:flex items-center"
-          style={{ gap: 28 }}
-        >
+        <nav className="hidden md:flex items-center" style={{ gap: 30 }}>
           {NAV_LINKS.map((l) => (
             <Link
               key={l.href}
@@ -83,11 +64,16 @@ export function Nav() {
               className="nav-link"
             >
               {l.label}
+              {l.hasDropdown ? (
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style={{ marginTop: 1, opacity: 0.55 }}>
+                  <path d="M2.5 4 L5 6.5 L7.5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : null}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center" style={{ gap: 16 }}>
+        <div className="hidden md:flex items-center" style={{ gap: 18 }}>
           <Link
             href="/register"
             style={{
@@ -95,7 +81,6 @@ export function Nav() {
               fontSize: 14,
               color: "#E8E8F0",
               textDecoration: "none",
-              fontWeight: 400,
             }}
             className="nav-link"
           >
@@ -123,7 +108,7 @@ export function Nav() {
             }}
             className="nav-cta"
           >
-            Start for $99
+            Open workspace
           </a>
         </div>
 

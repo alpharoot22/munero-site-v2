@@ -7,33 +7,13 @@ import {
   siShopify,
   siGooglegemini,
   siClaude,
-  siElevenlabs,
   siNotion,
   siGoogledrive,
   siGooglesheets,
   siZapier,
 } from "simple-icons";
 
-interface SimpleIconShape {
-  path: string;
-  hex: string;
-}
-
-interface Brand {
-  label: string;
-  /** Either a simple-icons object OR a custom inline SVG. */
-  icon: SimpleIconShape | { custom: ReactNode } | null;
-}
-
-interface Group {
-  label: string;
-  helper: string;
-  color: string;
-  brands: Brand[];
-}
-
-// LinkedIn, OpenAI, Slack, Higgsfield, HeyGen were removed from simple-icons
-// over brand-policy disputes. Rendered as custom inline SVGs below.
+interface SimpleIconShape { path: string; hex: string }
 
 const SlackIcon = (
   <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
@@ -50,53 +30,63 @@ const OpenAIIcon = (
   </svg>
 );
 
-const LinkedInIcon = (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2" aria-hidden="true">
-    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.45zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-  </svg>
-);
-
-// Higgsfield: their mark is a stylized "H" with a connecting motion line.
-// Approximating a distinctive geometric H + spark.
 const HiggsfieldIcon = (
   <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="4" fill="#1A1A28" />
-    <path d="M7.5 7v10 M16.5 7v10 M7.5 12 H16.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
-    <circle cx="12" cy="12" r="1.4" fill="#1D9E75" />
+    <defs>
+      <linearGradient id="hgs" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stopColor="#F97316" />
+        <stop offset="100%" stopColor="#EF4444" />
+      </linearGradient>
+    </defs>
+    <circle cx="12" cy="12" r="9" fill="url(#hgs)" />
+    <circle cx="12" cy="12" r="2.5" fill="#FFFFFF" />
+    {Array.from({ length: 8 }).map((_, i) => {
+      const a = (i / 8) * Math.PI * 2;
+      const x1 = 12 + Math.cos(a) * 4;
+      const y1 = 12 + Math.sin(a) * 4;
+      const x2 = 12 + Math.cos(a) * 7;
+      const y2 = 12 + Math.sin(a) * 7;
+      return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#FFFFFF" strokeWidth="1.4" strokeLinecap="round" />;
+    })}
   </svg>
 );
 
-// HeyGen: stylized "HG" tile in their signature gradient feel.
 const HeyGenIcon = (
   <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-    <rect x="3" y="3" width="18" height="18" rx="4" fill="#5B5BF9" />
-    <path
-      d="M7 7.5 L7 16.5 M7 12 L11 12 M11 7.5 L11 16.5 M14 16.5 L14 9 C14 8 14.8 7.5 15.6 7.5 L17 7.5 M14 12 L17 12"
-      stroke="#FFFFFF"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      fill="none"
-    />
+    <rect x="2" y="2" width="20" height="20" rx="5" fill="#1A1A28" />
+    <circle cx="9" cy="11" r="1.4" fill="#E8E8F0" />
+    <circle cx="15" cy="11" r="1.4" fill="#E8E8F0" />
+    <path d="M9 16 Q12 18 15 16" stroke="#E8E8F0" strokeWidth="1.4" strokeLinecap="round" fill="none" />
   </svg>
 );
+
+interface Brand {
+  label: string;
+  icon: SimpleIconShape | { custom: ReactNode } | null;
+}
+
+interface Group {
+  label: string;
+  color: string;
+  brands: Brand[];
+  hasMore?: boolean;
+}
+
 const GROUPS: Group[] = [
   {
     label: "DATA IN",
-    helper: "Pulls in market and performance signals",
     color: "#1D9E75",
+    hasMore: true,
     brands: [
-      { label: "Meta", icon: siMeta as SimpleIconShape },
+      { label: "Meta Ads", icon: siMeta as SimpleIconShape },
       { label: "Google Ads", icon: siGoogleads as SimpleIconShape },
       { label: "GA4", icon: siGoogleanalytics as SimpleIconShape },
-      { label: "TikTok", icon: siTiktok as SimpleIconShape },
+      { label: "TikTok Ads", icon: siTiktok as SimpleIconShape },
       { label: "Shopify", icon: siShopify as SimpleIconShape },
-      { label: "LinkedIn", icon: { custom: LinkedInIcon } },
     ],
   },
   {
     label: "CREATIVE",
-    helper: "Powers copy, image, and video generation",
     color: "#8B5CF6",
     brands: [
       { label: "Gemini", icon: siGooglegemini as SimpleIconShape },
@@ -104,12 +94,10 @@ const GROUPS: Group[] = [
       { label: "Claude", icon: siClaude as SimpleIconShape },
       { label: "Higgsfield", icon: { custom: HiggsfieldIcon } },
       { label: "HeyGen", icon: { custom: HeyGenIcon } },
-      { label: "ElevenLabs", icon: siElevenlabs as SimpleIconShape },
     ],
   },
   {
     label: "OUTPUT",
-    helper: "Exports strategy, reports, and assets",
     color: "#3B82F6",
     brands: [
       { label: "Slack", icon: { custom: SlackIcon } },
@@ -123,65 +111,81 @@ const GROUPS: Group[] = [
 
 export function Integrations() {
   return (
-    <section
-      style={{
-        background: "#050508",
-        borderTop: "0.5px solid #1E1E2E",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "64px 24px",
-        }}
-      >
-        <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
-          <h2
+    <section style={{ background: "#050508", borderTop: "0.5px solid #1E1E2E", padding: "72px 0" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <span
             style={{
-              fontFamily: "var(--font-inter), sans-serif",
-              fontWeight: 500,
-              fontSize: "clamp(24px, 3vw, 34px)",
-              color: "#E8E8F0",
-              letterSpacing: "-0.022em",
-              lineHeight: 1.2,
-              margin: 0,
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 11,
+              color: "#8B5CF6",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
             }}
           >
-            Connect the tools. Keep the strategy in{" "}
-            <span style={{ color: "#1D9E75" }}>one place.</span>
-          </h2>
+            Connect your stack
+          </span>
+          <p
+            style={{
+              marginTop: 12,
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 17,
+              color: "#9898A8",
+            }}
+          >
+            Bring your data in. Push results out.
+          </p>
         </div>
 
-        <div className="integrations-grid">
-          {GROUPS.map((g) => (
-            <Group key={g.label} group={g} />
-          ))}
+        <div className="int-flow">
+          <GroupCard group={GROUPS[0]} />
+          <FlowDots />
+          <GroupCard group={GROUPS[1]} />
+          <FlowDots />
+          <GroupCard group={GROUPS[2]} />
         </div>
       </div>
 
       <style>{`
-        .integrations-grid {
-          margin-top: 32px;
+        .int-flow {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 32px;
+          gap: 16px;
+          align-items: center;
         }
-        @media (min-width: 768px) {
-          .integrations-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-          }
+        .int-dots { display: none; }
+        @media (min-width: 1024px) {
+          .int-flow { grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; }
+          .int-dots { display: inline-flex; }
         }
-        .brand-tile .brand-icon { opacity: 0.7; transition: opacity 150ms ease-out; }
-        .brand-tile:hover .brand-tile-icon { border-color: var(--group-color); transform: translateY(-1px); }
-        .brand-tile:hover .brand-icon { opacity: 1; }
       `}</style>
     </section>
   );
 }
 
-function Group({ group }: { group: Group }) {
+function FlowDots() {
+  return (
+    <span
+      className="int-dots"
+      aria-hidden="true"
+      style={{ alignItems: "center", gap: 6, padding: "0 4px" }}
+    >
+      {[0, 1, 2, 3].map((i) => (
+        <span
+          key={i}
+          style={{
+            width: 4,
+            height: 4,
+            borderRadius: "50%",
+            background: "#1E1E2E",
+          }}
+        />
+      ))}
+    </span>
+  );
+}
+
+function GroupCard({ group }: { group: Group }) {
   return (
     <div
       style={{
@@ -196,83 +200,110 @@ function Group({ group }: { group: Group }) {
           fontFamily: "var(--font-jetbrains), monospace",
           fontSize: 11,
           color: group.color,
-          letterSpacing: "0.16em",
-          marginBottom: 4,
+          letterSpacing: "0.18em",
           textAlign: "center",
+          marginBottom: 18,
         }}
       >
         {group.label}
       </div>
-      <p
-        style={{
-          fontFamily: "var(--font-inter), sans-serif",
-          fontSize: 12.5,
-          color: "#9898A8",
-          textAlign: "center",
-          marginBottom: 18,
-          lineHeight: 1.4,
-        }}
-      >
-        {group.helper}
-      </p>
-      <ul
+      <div
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 12,
-          margin: 0,
-          padding: 0,
-          listStyle: "none",
           justifyContent: "center",
+          alignItems: "flex-start",
+          gap: 14,
         }}
       >
-        {group.brands.slice(0, 6).map((b) => (
-          <li key={b.label}>
-            <div
-              className="brand-tile"
-              style={
-                {
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 6,
-                  width: 64,
-                  paddingTop: 4,
-                  ["--group-color" as string]: group.color,
-                } as React.CSSProperties
-              }
-            >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 44,
-                  height: 44,
-                  background: "#111118",
-                  border: "0.5px solid #1E1E2E",
-                  borderRadius: 10,
-                  transition: "border-color 150ms ease-out, transform 150ms ease-out",
-                }}
-                className="brand-tile-icon"
-              >
-                <BrandIcon icon={b.icon} />
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontSize: 11.5,
-                  color: "#9898A8",
-                  textAlign: "center",
-                  letterSpacing: "-0.005em",
-                }}
-              >
-                {b.label}
-              </span>
-            </div>
-          </li>
+        {group.brands.map((b) => (
+          <BrandTile key={b.label} brand={b} groupColor={group.color} />
         ))}
-      </ul>
+        {group.hasMore ? (
+          <span
+            style={{
+              display: "inline-flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 6,
+              width: 60,
+              paddingTop: 4,
+            }}
+          >
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 42,
+                height: 42,
+                background: "#111118",
+                border: "0.5px dashed #1E1E2E",
+                borderRadius: 10,
+                color: "#505068",
+                fontFamily: "var(--font-jetbrains), monospace",
+                fontSize: 14,
+              }}
+              aria-hidden="true"
+            >
+              +
+            </span>
+            <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 11, color: "#505068" }}>
+              more
+            </span>
+          </span>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function BrandTile({ brand, groupColor }: { brand: Brand; groupColor: string }) {
+  return (
+    <div
+      className="brand-tile"
+      style={
+        {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 6,
+          width: 60,
+          paddingTop: 4,
+          ["--group-color" as string]: groupColor,
+        } as React.CSSProperties
+      }
+    >
+      <span
+        className="brand-tile-icon"
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 42,
+          height: 42,
+          background: "#111118",
+          border: "0.5px solid #1E1E2E",
+          borderRadius: 10,
+          transition: "border-color 150ms ease-out, transform 150ms ease-out",
+        }}
+      >
+        <BrandIcon icon={brand.icon} />
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 11,
+          color: "#9898A8",
+          textAlign: "center",
+          letterSpacing: "-0.005em",
+        }}
+      >
+        {brand.label}
+      </span>
+      <style>{`
+        .brand-tile:hover .brand-tile-icon { border-color: var(--group-color); transform: translateY(-1px); }
+      `}</style>
     </div>
   );
 }
@@ -280,30 +311,16 @@ function Group({ group }: { group: Group }) {
 function BrandIcon({ icon }: { icon: Brand["icon"] }) {
   if (!icon) {
     return (
-      <svg
-        className="brand-icon"
-        width="22"
-        height="22"
-        viewBox="0 0 22 22"
-        fill="none"
-        aria-hidden="true"
-      >
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
         <circle cx="11" cy="11" r="9" stroke="#9898A8" strokeWidth="1.1" />
       </svg>
     );
   }
   if ("custom" in icon) {
-    return <span className="brand-icon">{icon.custom}</span>;
+    return <>{icon.custom}</>;
   }
   return (
-    <svg
-      className="brand-icon"
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill={`#${icon.hex}`}
-      aria-hidden="true"
-    >
+    <svg width="22" height="22" viewBox="0 0 24 24" fill={`#${icon.hex}`} aria-hidden="true">
       <path d={icon.path} />
     </svg>
   );
