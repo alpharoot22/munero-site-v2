@@ -1,35 +1,17 @@
-import { Hero } from "../components/home/Hero";
-import { ReplaceDeliverMarquee } from "../components/home/ReplaceDeliverMarquee";
-import { Problem } from "../components/home/Problem";
-import { Personas } from "../components/home/Personas";
-import { IntelligenceCore } from "../components/home/IntelligenceCore";
-import { SampleProof } from "../components/home/SampleProof";
-import { TraditionalVsMunero } from "../components/home/TraditionalVsMunero";
-import { Workspace } from "../components/home/Workspace";
-import { Compare } from "../components/home/Compare";
-import { CreativeWorkspace } from "../components/home/CreativeWorkspace";
-import { Pricing } from "../components/home/Pricing";
-import { AgencyTease } from "../components/home/AgencyTease";
-import { FAQ } from "../components/home/FAQ";
-import { FinalCTA } from "../components/home/FinalCTA";
+import { Hero } from "../components/home-v2/Promise";
+import { HowItWorks } from "../components/home-v2/HowItWorks";
+import { Integrations } from "../components/home-v2/Integrations";
+import { PricingClose } from "../components/home-v2/PricingClose";
+import { MinimalFooter } from "../components/home-v2/MinimalFooter";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <ReplaceDeliverMarquee />
-      <Problem />
-      <Personas />
-      <IntelligenceCore />
-      <SampleProof />
-      <TraditionalVsMunero />
-      <Workspace />
-      <Compare />
-      <CreativeWorkspace />
-      <Pricing />
-      <AgencyTease />
-      <FAQ />
-      <FinalCTA />
+      <HowItWorks />
+      <Integrations />
+      <PricingClose />
+      <MinimalFooter />
     </>
   );
 }

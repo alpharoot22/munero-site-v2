@@ -1,0 +1,24 @@
+/*
+ * Munero brand token system.
+ * Loaded after globals.css so these tokens are available globally to any new
+ * component built against the upcoming redesign. Existing components continue
+ * to read from the legacy tokens in globals.css; both layers coexist until the
+ * redesign is complete.
+ */
+
+:root {
+  --bg:           #050508;
+  --surface:      #111118;
+  --surface2:     #0D0D18;
+  --border:       #1E1E2E;
+  --accent:       #1D9E75;
+  --accent-dim:   #0F6E56;
+  --purple:       #8B5CF6;
+  --indigo:       #6366F1;
+  --blue:         #3B82F6;
+  --text-primary: #E8E8F0;
+  --text-muted:   #9898A8;
+  --text-dim:     #505068;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}

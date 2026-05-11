@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
 import { TopBanner } from "../components/TopBanner";
 import { Footer } from "../components/Footer";
 import { IntercomWidget } from "../components/IntercomWidget";
+import { RouteGuard } from "../components/RouteGuard";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -61,7 +62,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased overflow-x-hidden`}>
+    <html lang="en" className={`${dmSans.variable} ${jetbrains.variable} h-full antialiased overflow-x-hidden`}>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
@@ -103,10 +104,14 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <TopBanner />
-        <Nav />
+        <RouteGuard hideOn={["/"]}>
+          <TopBanner />
+          <Nav />
+        </RouteGuard>
         <main className="flex-1">{children}</main>
-        <Footer />
+        <RouteGuard hideOn={["/"]}>
+          <Footer />
+        </RouteGuard>
         <IntercomWidget />
       </body>
     </html>
