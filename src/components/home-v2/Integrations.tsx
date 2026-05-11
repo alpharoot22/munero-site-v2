@@ -15,6 +15,7 @@ import {
 
 interface SimpleIconShape {
   path: string;
+  hex: string;
 }
 
 interface Brand {
@@ -83,18 +84,22 @@ export function Integrations() {
           padding: "64px 24px",
         }}
       >
-        <h2
-          style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 500,
-            fontSize: 24,
-            color: "#E8E8F0",
-            letterSpacing: "-0.02em",
-            margin: 0,
-          }}
-        >
-          Connects to your stack.
-        </h2>
+        <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(24px, 3vw, 34px)",
+              color: "#E8E8F0",
+              letterSpacing: "-0.022em",
+              lineHeight: 1.2,
+              margin: 0,
+            }}
+          >
+            Connect the tools. Keep the strategy in{" "}
+            <span style={{ color: "#1D9E75" }}>one place.</span>
+          </h2>
+        </div>
 
         <div className="integrations-grid">
           {GROUPS.map((g) => (
@@ -116,16 +121,9 @@ export function Integrations() {
             gap: 32px;
           }
         }
-        .brand-pill {
-          transition: border-color 150ms ease-out, opacity 150ms ease-out;
-        }
-        .brand-pill .brand-icon {
-          opacity: 0.55;
-          transition: opacity 150ms ease-out;
-        }
-        .brand-pill:hover .brand-icon {
-          opacity: 1;
-        }
+        .brand-tile .brand-icon { opacity: 0.7; transition: opacity 150ms ease-out; }
+        .brand-tile:hover .brand-tile-icon { border-color: var(--group-color); transform: translateY(-1px); }
+        .brand-tile:hover .brand-icon { opacity: 1; }
       `}</style>
     </section>
   );
@@ -133,14 +131,22 @@ export function Integrations() {
 
 function Group({ group }: { group: Group }) {
   return (
-    <div>
+    <div
+      style={{
+        background: "#0A0A12",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 14,
+        padding: 24,
+      }}
+    >
       <div
         style={{
           fontFamily: "var(--font-jetbrains), monospace",
           fontSize: 11,
           color: group.color,
-          letterSpacing: "0.14em",
-          marginBottom: 14,
+          letterSpacing: "0.16em",
+          marginBottom: 18,
+          textAlign: "center",
         }}
       >
         {group.label}
@@ -149,41 +155,57 @@ function Group({ group }: { group: Group }) {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 8,
+          gap: 12,
           margin: 0,
           padding: 0,
           listStyle: "none",
+          justifyContent: "center",
         }}
       >
-        {group.brands.map((b) => (
+        {group.brands.slice(0, 5).map((b) => (
           <li key={b.label}>
-            <span
-              className="brand-pill"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                height: 36,
-                padding: "0 12px",
-                background: "#111118",
-                border: "0.5px solid #1E1E2E",
-                borderRadius: 8,
-                cursor: "default",
-              }}
-              onMouseEnter={undefined}
+            <div
+              className="brand-tile"
+              style={
+                {
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 6,
+                  width: 64,
+                  paddingTop: 4,
+                  ["--group-color" as string]: group.color,
+                } as React.CSSProperties
+              }
             >
-              <BrandIcon icon={b.icon} />
               <span
                 style={{
-                  fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: 11,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 44,
+                  height: 44,
+                  background: "#111118",
+                  border: "0.5px solid #1E1E2E",
+                  borderRadius: 10,
+                  transition: "border-color 150ms ease-out, transform 150ms ease-out",
+                }}
+                className="brand-tile-icon"
+              >
+                <BrandIcon icon={b.icon} />
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontSize: 11.5,
                   color: "#9898A8",
-                  letterSpacing: "0.02em",
+                  textAlign: "center",
+                  letterSpacing: "-0.005em",
                 }}
               >
                 {b.label}
               </span>
-            </span>
+            </div>
           </li>
         ))}
       </ul>
@@ -196,23 +218,23 @@ function BrandIcon({ icon }: { icon: SimpleIconShape | null }) {
     return (
       <svg
         className="brand-icon"
-        width="18"
-        height="18"
-        viewBox="0 0 18 18"
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
         fill="none"
         aria-hidden="true"
       >
-        <circle cx="9" cy="9" r="7.5" stroke="#9898A8" strokeWidth="1" />
+        <circle cx="11" cy="11" r="9" stroke="#9898A8" strokeWidth="1.1" />
       </svg>
     );
   }
   return (
     <svg
       className="brand-icon"
-      width="18"
-      height="18"
+      width="22"
+      height="22"
       viewBox="0 0 24 24"
-      fill="#FFFFFF"
+      fill={`#${icon.hex}`}
       aria-hidden="true"
     >
       <path d={icon.path} />

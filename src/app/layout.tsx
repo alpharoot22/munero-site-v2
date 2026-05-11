@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
-import { TopBanner } from "../components/TopBanner";
 import { Footer } from "../components/Footer";
 import { IntercomWidget } from "../components/IntercomWidget";
-import { RouteGuard } from "../components/RouteGuard";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -104,14 +102,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <RouteGuard hideOn={["/"]}>
-          <TopBanner />
-          <Nav />
-        </RouteGuard>
+        <Nav />
         <main className="flex-1">{children}</main>
-        <RouteGuard hideOn={["/"]}>
-          <Footer />
-        </RouteGuard>
+        <Footer />
         <IntercomWidget />
       </body>
     </html>

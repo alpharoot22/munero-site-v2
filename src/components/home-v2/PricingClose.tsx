@@ -2,10 +2,11 @@ interface Plan {
   name: string;
   price: string;
   cadence: string;
-  credits: string;
-  blurb: string;
+  useCase: string;
+  bullets: string[];
   href: string;
   color: string;
+  cta: string;
 }
 
 const PLANS: Plan[] = [
@@ -13,37 +14,57 @@ const PLANS: Plan[] = [
     name: "Starter Workspace",
     price: "$99",
     cadence: "one-time",
-    credits: "100 credits",
-    blurb: "Brief + workspace opens",
+    useCase: "For one campaign brief and market clarity.",
+    bullets: [
+      "Workspace opens immediately",
+      "First brief in 35 minutes",
+      "100 credits included",
+    ],
     href: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00",
     color: "#1D9E75",
+    cta: "Start for $99",
   },
   {
     name: "Intelligence Feed",
     price: "$49",
-    cadence: "per month",
-    credits: "150 credits / mo",
-    blurb: "Weekly signals + alerts",
+    cadence: "/mo",
+    useCase: "For weekly market signals and alerts.",
+    bullets: [
+      "Weekly signals + alerts",
+      "Pain point & trend tracking",
+      "Cancel anytime",
+    ],
     href: "https://buy.stripe.com/dRm5kE05RbI674p98V5ZC03",
     color: "#6366F1",
+    cta: "Start feed",
   },
   {
     name: "Creative Workspace",
     price: "$299",
     cadence: "one-time",
-    credits: "750 credits",
-    blurb: "Full creative production",
+    useCase: "For campaign assets and creative production.",
+    bullets: [
+      "Everything in Starter",
+      "750 creative credits",
+      "AI image, video & copy",
+    ],
     href: "https://buy.stripe.com/6oU3cw8Cn13s74pacZ5ZC02",
     color: "#8B5CF6",
+    cta: "Start creative",
   },
   {
     name: "Agency Workspace",
     price: "$499",
-    cadence: "per month",
-    credits: "2,500 credits / mo",
-    blurb: "Multi-client workspace",
+    cadence: "/mo",
+    useCase: "For agencies managing multiple clients.",
+    bullets: [
+      "Everything in Creative",
+      "2,500 credits / month",
+      "Multi-client workspace",
+    ],
     href: "https://buy.stripe.com/fZu9AUdWH5jI3Sd1Gt5ZC04",
     color: "#3B82F6",
+    cta: "Start agency plan",
   },
 ];
 
@@ -51,137 +72,168 @@ const STRIPE_STARTER = PLANS[0].href;
 
 export function PricingClose() {
   return (
-    <section
-      style={{
-        background: "#050508",
-        borderTop: "0.5px solid #1E1E2E",
-        minHeight: "100dvh",
-      }}
-    >
-      <div
+    <>
+      <section
         style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "64px 24px 32px",
+          background: "#050508",
+          borderTop: "0.5px solid #1E1E2E",
+          padding: "72px 0",
         }}
+        id="pricing"
       >
-        <h2
+        <div
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 500,
-            fontSize: 24,
-            color: "#E8E8F0",
-            letterSpacing: "-0.02em",
-            margin: 0,
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "0 24px",
           }}
         >
-          Four ways in.
-        </h2>
-        <p
-          style={{
-            marginTop: 6,
-            fontSize: 14,
-            color: "#9898A8",
-            lineHeight: 1.5,
-          }}
-        >
-          Every plan includes the full workspace.
-        </p>
+          <h2
+            style={{
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontWeight: 500,
+              fontSize: "clamp(24px, 3vw, 34px)",
+              color: "#E8E8F0",
+              letterSpacing: "-0.022em",
+              textAlign: "center",
+              margin: 0,
+            }}
+          >
+            Choose the workspace that fits you.
+          </h2>
 
-        <div className="plans-grid">
-          {PLANS.map((p) => (
-            <PlanCard key={p.name} plan={p} />
-          ))}
+          <div className="plans-grid">
+            {PLANS.map((p) => (
+              <PlanCard key={p.name} plan={p} />
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Closing block */}
-      <div
+        <style>{`
+          .plans-grid {
+            margin-top: 36px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+          }
+          @media (min-width: 640px) {
+            .plans-grid { grid-template-columns: repeat(2, 1fr); }
+          }
+          @media (min-width: 1024px) {
+            .plans-grid { grid-template-columns: repeat(4, 1fr); }
+          }
+          .plan-card { transition: border-color 150ms ease-out, transform 150ms ease-out; }
+          .plan-card:hover { border-color: var(--plan-color); transform: translateY(-2px); }
+          .plan-card .plan-cta { transition: background 150ms ease-out, color 150ms ease-out; }
+          .plan-card .plan-cta:hover { background: var(--plan-color) !important; color: #FFFFFF !important; }
+        `}</style>
+      </section>
+
+      {/* Final CTA strip */}
+      <section
         style={{
-          maxWidth: 720,
-          margin: "0 auto",
-          padding: "80px 24px 64px",
-          textAlign: "center",
+          background: "#0A0A12",
+          borderTop: "0.5px solid #1E1E2E",
+          padding: "32px 0",
         }}
       >
         <div
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 500,
-            color: "#1D9E75",
-            fontSize: "clamp(48px, 7vw, 72px)",
-            letterSpacing: "-0.04em",
-            lineHeight: 1,
-          }}
-        >
-          munero
-        </div>
-        <p
-          style={{
-            marginTop: 24,
-            fontSize: 16,
-            color: "#9898A8",
-            lineHeight: 1.55,
-            maxWidth: "44ch",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          The data compounds. Every brief makes the next one smarter.
-        </p>
-        <a
-          href={STRIPE_STARTER}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
+            maxWidth: 1280,
+            margin: "0 auto",
+            padding: "0 24px",
+            display: "flex",
+            flexWrap: "wrap",
             alignItems: "center",
-            justifyContent: "center",
-            marginTop: 32,
-            width: 220,
-            height: 52,
-            background: "#1D9E75",
-            color: "#FFFFFF",
-            fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 500,
-            fontSize: 16,
-            borderRadius: 8,
-            textDecoration: "none",
-            letterSpacing: "-0.01em",
+            gap: 24,
+            justifyContent: "space-between",
           }}
         >
-          Start for $99
-        </a>
-        <p
-          style={{
-            marginTop: 16,
-            fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: 11,
-            color: "#505068",
-            letterSpacing: "0.04em",
-          }}
-        >
-          hello@munero.ai  ·  No subscription required
-        </p>
-      </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <img
+              src="/favicon.png"
+              alt=""
+              width={42}
+              height={42}
+              style={{ borderRadius: 8, display: "block" }}
+              aria-hidden="true"
+            />
+            <div>
+              <div
+                style={{
+                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontSize: "clamp(20px, 2vw, 26px)",
+                  color: "#E8E8F0",
+                  fontWeight: 500,
+                  letterSpacing: "-0.022em",
+                  lineHeight: 1.2,
+                }}
+              >
+                Your market. Your workspace. Your edge.
+              </div>
+              <div
+                style={{
+                  marginTop: 4,
+                  fontSize: 13.5,
+                  color: "#9898A8",
+                  lineHeight: 1.4,
+                }}
+              >
+                First brief in 35 minutes. Built on real buyer behavior. Ready before you spend.
+              </div>
+            </div>
+          </div>
 
-      <style>{`
-        .plans-grid {
-          margin-top: 32px;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-        @media (min-width: 640px) {
-          .plans-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (min-width: 1024px) {
-          .plans-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-        .plan-card { transition: border-color 150ms ease-out; }
-        .plan-card:hover { border-color: var(--plan-color); }
-      `}</style>
-    </section>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <a
+              href={STRIPE_STARTER}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: 48,
+                padding: "0 22px",
+                background: "#1D9E75",
+                color: "#FFFFFF",
+                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontWeight: 500,
+                fontSize: 14.5,
+                borderRadius: 8,
+                textDecoration: "none",
+              }}
+            >
+              Start for $99
+            </a>
+            <a
+              href="/sample"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                justifyContent: "center",
+                height: 48,
+                padding: "0 22px",
+                background: "transparent",
+                color: "#E8E8F0",
+                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontWeight: 500,
+                fontSize: 14.5,
+                border: "0.5px solid #1E1E2E",
+                borderRadius: 8,
+                textDecoration: "none",
+              }}
+            >
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                <path d="M3 2 L10 6 L3 10 Z" />
+              </svg>
+              View sample brief
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -192,9 +244,9 @@ function PlanCard({ plan }: { plan: Plan }) {
       style={
         {
           position: "relative",
-          background: "#111118",
+          background: "#0A0A12",
           border: "0.5px solid #1E1E2E",
-          borderRadius: 12,
+          borderRadius: 14,
           padding: 24,
           paddingTop: 28,
           display: "flex",
@@ -204,7 +256,6 @@ function PlanCard({ plan }: { plan: Plan }) {
         } as React.CSSProperties
       }
     >
-      {/* Top accent line */}
       <span
         aria-hidden="true"
         style={{
@@ -219,11 +270,11 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       <div
         style={{
-          fontFamily: "var(--font-jetbrains), monospace",
-          fontSize: 13,
-          color: "#505068",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
+          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontSize: 14,
+          color: "#E8E8F0",
+          fontWeight: 500,
+          letterSpacing: "-0.005em",
         }}
       >
         {plan.name}
@@ -233,16 +284,16 @@ function PlanCard({ plan }: { plan: Plan }) {
         style={{
           display: "flex",
           alignItems: "baseline",
-          gap: 8,
+          gap: 6,
           marginTop: 14,
         }}
       >
         <span
           style={{
             fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 500,
-            fontSize: 42,
+            fontSize: 38,
             color: plan.color,
+            fontWeight: 500,
             letterSpacing: "-0.03em",
             lineHeight: 1,
           }}
@@ -252,62 +303,92 @@ function PlanCard({ plan }: { plan: Plan }) {
         <span
           style={{
             fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: 12,
-            color: "#505068",
-            letterSpacing: "0.04em",
+            fontSize: 11,
+            color: "#9898A8",
+            letterSpacing: "0.02em",
           }}
         >
           {plan.cadence}
         </span>
       </div>
 
-      <div
-        style={{
-          marginTop: 8,
-          fontFamily: "var(--font-jetbrains), monospace",
-          fontSize: 11,
-          color: plan.color,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-        }}
-      >
-        {plan.credits}
-      </div>
-
       <p
         style={{
-          marginTop: 14,
-          fontSize: 13,
+          marginTop: 12,
+          fontSize: 12.5,
           color: "#9898A8",
           lineHeight: 1.5,
+        }}
+      >
+        {plan.useCase}
+      </p>
+
+      <ul
+        style={{
+          marginTop: 16,
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+          listStyle: "none",
+          padding: 0,
           flex: 1,
         }}
       >
-        {plan.blurb}
-      </p>
+        {plan.bullets.map((b) => (
+          <li
+            key={b}
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 8,
+              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontSize: 12.5,
+              color: "#9898A8",
+              lineHeight: 1.45,
+            }}
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              aria-hidden="true"
+              style={{ marginTop: 3, flexShrink: 0 }}
+            >
+              <path d="M2 6 L5 9 L10 3" stroke={plan.color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            {b}
+          </li>
+        ))}
+      </ul>
 
       <a
         href={plan.href}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: 20,
-          width: "100%",
-          height: 44,
-          background: plan.color,
-          color: "#FFFFFF",
-          fontFamily: "var(--font-dm-sans), sans-serif",
-          fontWeight: 500,
-          fontSize: 14,
-          borderRadius: 6,
-          textDecoration: "none",
-          letterSpacing: "-0.005em",
-        }}
+        style={
+          {
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: 20,
+            width: "100%",
+            height: 44,
+            background: `${plan.color}1A`,
+            color: plan.color,
+            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontWeight: 500,
+            fontSize: 13.5,
+            border: `0.5px solid ${plan.color}55`,
+            borderRadius: 8,
+            textDecoration: "none",
+            letterSpacing: "-0.005em",
+            transition: "background 150ms ease-out",
+          } as React.CSSProperties
+        }
+        className="plan-cta"
       >
-        Choose plan
+        {plan.cta}
       </a>
 
     </article>
