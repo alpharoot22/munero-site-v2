@@ -10,7 +10,7 @@ const WORKSPACE_STATS = [
     display: "9",
     unit: "AI assistants",
     description:
-      "Intelligence Analyst, Competitor Analyst, Creative Director, Media Buyer, Landing Advisor, Compliance Reviewer, Weekly Update, Board Report. Plus a global navigator on every page.",
+      "Market Analyst, Competitor Analyst, Creative Director, Media Buyer, Landing Advisor, Compliance Reviewer, Weekly Intelligence Agent, Executive Summary Agent. Plus a global navigator on every page.",
   },
   {
     number: 16,
@@ -32,7 +32,7 @@ const SIDEBAR = [
   { label: "Dashboard" },
   { label: "My Brief" },
   { label: "Competitors" },
-  { label: "Creative Studio" },
+  { label: "Creative Workspace" },
   { label: "AI Assistants", active: true },
   { label: "Integrations" },
 ];

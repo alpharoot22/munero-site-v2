@@ -7,6 +7,7 @@ import { SampleProof } from "../components/home/SampleProof";
 import { TraditionalVsMunero } from "../components/home/TraditionalVsMunero";
 import { Workspace } from "../components/home/Workspace";
 import { Compare } from "../components/home/Compare";
+import { CreativeWorkspace } from "../components/home/CreativeWorkspace";
 import { Pricing } from "../components/home/Pricing";
 import { AgencyTease } from "../components/home/AgencyTease";
 import { FAQ } from "../components/home/FAQ";
@@ -24,6 +25,7 @@ export default function Home() {
       <TraditionalVsMunero />
       <Workspace />
       <Compare />
+      <CreativeWorkspace />
       <Pricing />
       <AgencyTease />
       <FAQ />

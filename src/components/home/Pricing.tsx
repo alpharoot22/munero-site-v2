@@ -25,6 +25,8 @@ interface Tier {
   bullets: string[];
   cta: string;
   href: string;
+  /** Optional credit allotment line rendered under the price. */
+  credits?: string;
   popular?: boolean;
   feed?: boolean;
   badge?: string;
@@ -35,12 +37,13 @@ interface Tier {
 const starterTier: Tier = {
   key: "starter",
   name: "Starter Workspace",
-  note: "Your workspace opens. First intelligence brief included.",
+  note: "Know what to run before you spend.",
   description:
     "For founders and marketers who want market clarity before spending on ads.",
   price: "$99",
   cadence: "one-time",
   recurring: false,
+  credits: "Includes 100 Creative Credits",
   checkoutAvailable: true,
   bullets: [
     "Workspace opens immediately",
@@ -66,6 +69,7 @@ const feedTier: Tier = {
   recurring: true,
   feed: true,
   badge: "BEST FOR RETENTION",
+  credits: "Includes 150 Creative Credits / mo",
   checkoutAvailable: true,
   bullets: [
     "Weekly vertical intelligence digest",
@@ -83,13 +87,14 @@ const feedTier: Tier = {
 const creativeTier: Tier = {
   key: "creative",
   name: "Creative Workspace",
-  note: "Intelligence plus production-ready assets.",
+  note: "Know what to run + get the assets to launch.",
   description:
     "For teams that want campaign-ready hooks, angles, copy, and creative assets built from the intelligence.",
   price: "$299",
   cadence: "one-time",
   recurring: false,
   popular: true,
+  credits: "Includes 750 Creative Credits",
   checkoutAvailable: true,
   bullets: [
     "Everything in Starter Workspace",
@@ -115,6 +120,7 @@ const agencyTier: Tier = {
   cadence: "per month",
   recurring: true,
   badge: "FOR TEAMS",
+  credits: "Includes 2,500 Creative Credits / mo",
   checkoutAvailable: true,
   bullets: [
     "Unlimited briefs across clients",
@@ -132,18 +138,13 @@ export function Pricing() {
   return (
     <Section bordered id="pricing">
       <Eyebrow>Pricing</Eyebrow>
-      <H2 className="max-w-[26ch]">
-        Start with a brief.
-        <br />
-        Keep the signals running. Scale when ready.
-      </H2>
+      <H2 className="max-w-[26ch]">Four ways to work with Munero.</H2>
       <p
         className="mt-4 text-[16.5px] leading-relaxed max-w-[60ch]"
         style={{ color: "var(--text-2)" }}
       >
-        Every tier opens or extends a Munero workspace. Buy a brief once.
-        Subscribe to keep the engine running. Upgrade when you want creative
-        assets or a multi-client command center.
+        Start with a brief. Keep signals running. Launch creative assets.
+        Scale across clients.
       </p>
 
       {/* 4-step flow strip */}
@@ -345,6 +346,7 @@ function SmallCard({ tier }: { tier: Tier }) {
       <p className="mt-3 text-[12.5px] leading-relaxed min-h-[3em]" style={{ color: "var(--text-2)" }}>
         {tier.description}
       </p>
+      <CreditLine credits={tier.credits} />
       <ul className="mt-4 space-y-2.5 flex-1">
         {tier.bullets.map((b) => (
           <li
@@ -442,6 +444,8 @@ function FeedCard({ tier }: { tier: Tier }) {
         {tier.description}
       </p>
 
+      <CreditLine credits={tier.credits} />
+
       <ul className="mt-4 space-y-2.5 flex-1">
         {tier.bullets.map((b) => (
           <li
@@ -537,6 +541,7 @@ function BigCard({ tier }: { tier: Tier }) {
         <p className="mt-3 text-[13px] leading-relaxed" style={{ color: "var(--text)" }}>
           {tier.description}
         </p>
+        <CreditLine credits={tier.credits} />
         <ul className="mt-5 space-y-3 flex-1">
           {tier.bullets.map((b) => (
             <li
@@ -600,6 +605,7 @@ function AgencyCard({ tier }: { tier: Tier }) {
           <p className="mt-2 text-[13px] leading-relaxed max-w-[36ch]" style={{ color: "var(--text-2)" }}>
             {tier.description}
           </p>
+          <CreditLine credits={tier.credits} />
         </div>
 
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
@@ -622,6 +628,24 @@ function AgencyCard({ tier }: { tier: Tier }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function CreditLine({ credits }: { credits?: string }) {
+  if (!credits) return null;
+  return (
+    <p
+      className="num mt-2.5"
+      style={{
+        fontSize: 10,
+        color: "var(--accent)",
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+        fontWeight: 600,
+      }}
+    >
+      {credits}
+    </p>
   );
 }
 

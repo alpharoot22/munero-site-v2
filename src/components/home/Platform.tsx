@@ -47,18 +47,18 @@ const blocks = [
     eyebrow: "AI assistants",
     title: "8 specialists and a global navigator.",
     body:
-      "Intelligence Analyst, Competitor Analyst, Creative Director, Media Buyer, Landing Advisor, Compliance Reviewer, Weekly Update, Board Report. Plus a persistent navigator with full workspace context across every page.",
+      "Market Analyst, Competitor Analyst, Creative Director, Media Buyer, Landing Advisor, Compliance Reviewer, Weekly Intelligence Agent, Executive Summary Agent. Plus a persistent navigator with full workspace context across every page.",
     visual: (
       <BoxVisual>
         {[
-          "Intelligence Analyst",
+          "Market Analyst",
           "Competitor Analyst",
           "Creative Director",
           "Media Buyer",
           "Landing Advisor",
           "Compliance Reviewer",
-          "Weekly Update",
-          "Board Report",
+          "Weekly Intelligence Agent",
+          "Executive Summary Agent",
         ].map((n) => (
           <div
             key={n}
@@ -66,7 +66,7 @@ const blocks = [
             style={{ color: "var(--text-2)" }}
           >
             <span className="num text-[10.5px]" style={{ color: "var(--text-3)" }}>
-              {String(["Intelligence Analyst","Competitor Analyst","Creative Director","Media Buyer","Landing Advisor","Compliance Reviewer","Weekly Update","Board Report"].indexOf(n) + 1).padStart(2,"0")}
+              {String(["Market Analyst","Competitor Analyst","Creative Director","Media Buyer","Landing Advisor","Compliance Reviewer","Weekly Intelligence Agent","Executive Summary Agent"].indexOf(n) + 1).padStart(2,"0")}
             </span>
             {n}
           </div>

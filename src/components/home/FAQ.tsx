@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "How does image and video generation work?",
-    a: "Every brief automatically generates images for your creative assets at no extra cost. Video generation uses credits: Full Creative includes 3 video credits, Agency includes 10 per month. Videos are generated via Higgsfield AI at production quality. Credits do not roll over month to month on Agency.",
+    a: "Starter Workspace includes hooks, scripts, and creative direction. Creative Workspace adds generated image assets and video credits. Images are generated automatically for selected creative assets using Munero's intelligence layer, not random prompts. Video generation uses credits through connected providers including Higgsfield. Monthly included credits reset each billing cycle and do not roll over. Purchased top-up credits expire after 12 months.",
   },
 ];
 

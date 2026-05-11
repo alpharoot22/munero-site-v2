@@ -1,14 +1,14 @@
 import { Section, Eyebrow, H2, Lede } from "../Section";
 
 const specialists = [
-  { name: "Intelligence Analyst",  spec: "Strategy + signal",     ex: "What should I test this week?" },
+  { name: "Market Analyst",        spec: "Strategy + signal",     ex: "What should I test this week?" },
   { name: "Competitor Analyst",    spec: "Watchlist + threats",   ex: "Who is copying our angles?" },
   { name: "Creative Director",     spec: "Hooks + variants",      ex: "Which hook is strongest?" },
   { name: "Media Buyer",           spec: "Allocation + pacing",   ex: "How should I split my $5K?" },
   { name: "Landing Page Advisor",  spec: "Page copy + structure", ex: "What should my hero say?" },
   { name: "Compliance Reviewer",   spec: "Policy + claims",       ex: "Does this ad pass Meta?" },
-  { name: "Weekly Update",         spec: "Digest generator",      ex: "Generate this week's update" },
-  { name: "Board Report",          spec: "Exec summary",          ex: "Build my board deck" },
+  { name: "Weekly Intelligence Agent", spec: "Digest generator",  ex: "Generate this week's update" },
+  { name: "Executive Summary Agent",   spec: "Exec summary",      ex: "Build my board deck" },
 ];
 
 export function Assistants() {
@@ -51,7 +51,7 @@ export function Assistants() {
             </span>
           </div>
 
-          {/* Mock chat — Intelligence Analyst conversation */}
+          {/* Mock chat — Market Analyst conversation */}
           <div
             className="hairline rounded-md p-4 space-y-3 flex-1"
             style={{ background: "var(--surface-2)" }}

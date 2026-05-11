@@ -23,7 +23,7 @@ const DELIVERS = [
   { name: "46 Creative Assets",  icon: "✦" },
   { name: "Campaign Plan",       icon: "▣" },
   { name: "Kill Rules",          icon: "⚡" },
-  { name: "Ads Manager Ready",   icon: "→" },
+  { name: "Ads Manager Ready Files", icon: "→" },
   { name: "9 AI Assistants",     icon: "◆" },
   { name: "Image Generation",    icon: "◎" },
   { name: "Video Credits",       icon: "▶" },
