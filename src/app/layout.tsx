@@ -66,6 +66,41 @@ export default function RootLayout({
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Munero",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              url: "https://www.munero.ai",
+              description:
+                "Munero is an AI Marketing Intelligence OS that turns market signals, competitor gaps, buyer intent, and campaign strategy into campaign-ready briefs and creative assets.",
+              offers: [
+                {
+                  "@type": "Offer",
+                  name: "Starter Workspace",
+                  price: "99",
+                  priceCurrency: "USD",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Creative Workspace",
+                  price: "299",
+                  priceCurrency: "USD",
+                },
+                {
+                  "@type": "Offer",
+                  name: "Agency Workspace",
+                  price: "499",
+                  priceCurrency: "USD",
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <TopBanner />
