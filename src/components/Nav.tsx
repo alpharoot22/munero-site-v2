@@ -134,7 +134,7 @@ export function Nav() {
               fontFamily: "var(--font-inter), sans-serif",
               fontSize: 14,
               fontWeight: 500,
-              borderRadius: 8,
+              borderRadius: 10,
               textDecoration: "none",
               letterSpacing: "-0.005em",
               transition: "background 150ms ease-out, transform 80ms ease-out",

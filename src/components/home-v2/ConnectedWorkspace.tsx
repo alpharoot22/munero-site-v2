@@ -84,7 +84,7 @@ function FlowBlock({
       style={{
         background: elevated ? "#0E0E18" : "#0A0A12",
         border: `0.5px solid ${elevated ? badgeColor + "55" : "#1E1E2E"}`,
-        borderRadius: 12,
+        borderRadius: 14,
         padding: "20px 22px",
         display: "flex",
         alignItems: "center",

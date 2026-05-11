@@ -60,7 +60,7 @@ export function FinalCTA() {
           width={56}
           height={56}
           style={{
-            borderRadius: 12,
+            borderRadius: 14,
             margin: "0 auto 28px",
             display: "block",
           }}
@@ -126,7 +126,7 @@ export function FinalCTA() {
               fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: 15.5,
-              borderRadius: 8,
+              borderRadius: 10,
               textDecoration: "none",
               letterSpacing: "-0.005em",
               boxShadow: "0 12px 32px -10px rgba(29,158,117,0.45)",
@@ -151,7 +151,7 @@ export function FinalCTA() {
               fontWeight: 500,
               fontSize: 15.5,
               border: "0.5px solid #1E1E2E",
-              borderRadius: 8,
+              borderRadius: 10,
               textDecoration: "none",
               letterSpacing: "-0.005em",
               transition: "border-color 150ms ease-out, background 150ms ease-out",

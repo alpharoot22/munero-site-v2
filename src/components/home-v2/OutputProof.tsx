@@ -60,7 +60,7 @@ export function OutputProof() {
           style={{
             background: "#0A0A12",
             border: "1px solid #1E1E2E",
-            borderRadius: 16,
+            borderRadius: 20,
             padding: 28,
             boxShadow:
               "0 24px 60px -24px rgba(0,0,0,0.55), 0 0 40px -12px rgba(29,158,117,0.06)",

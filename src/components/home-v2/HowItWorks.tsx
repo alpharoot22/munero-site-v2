@@ -16,13 +16,42 @@ export function HowItWorks() {
   return (
     <section
       style={{
+        position: "relative",
         background: "#050508",
         borderTop: "0.5px solid #1E1E2E",
-        padding: "72px 0",
+        padding: "88px 0 96px",
+        overflow: "hidden",
       }}
     >
       <div
+        aria-hidden="true"
         style={{
+          position: "absolute",
+          top: -120,
+          right: -200,
+          width: 700,
+          height: 700,
+          background:
+            "radial-gradient(circle at center, rgba(139, 92, 246, 0.06) 0%, transparent 60%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          bottom: -160,
+          left: -200,
+          width: 700,
+          height: 700,
+          background:
+            "radial-gradient(circle at center, rgba(29, 158, 117, 0.05) 0%, transparent 60%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "relative",
           maxWidth: 1280,
           margin: "0 auto",
           padding: "0 24px",
@@ -110,8 +139,9 @@ function LayerCard({ layer }: { layer: Layer }) {
         {
           background: "#0A0A12",
           border: `0.5px solid #1E1E2E`,
-          borderRadius: 16,
-          padding: 28,
+          borderRadius: 22,
+          padding: 32,
+          boxShadow: "0 16px 40px -20px rgba(0,0,0,0.4)",
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(20px)",
           transition:
@@ -873,34 +903,337 @@ function TrendIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+/* ---------- New Layer 1 preview: Signal sources scanning ---------- */
+
+function SignalSourcesPreview() {
+  const sources = [
+    { name: "Reddit threads",         count: "12 active",    pct: 92 },
+    { name: "Trustpilot reviews",     count: "184 quotes",   pct: 78 },
+    { name: "Meta Ad Library",        count: "380 ads",      pct: 86 },
+    { name: "Google Trends",          count: "24 mo data",   pct: 64 },
+    { name: "YouTube comments",       count: "2,300+",       pct: 55 },
+  ];
+
+  return (
+    <div
+      style={{
+        background: "#10101A",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 14,
+        padding: 20,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 14,
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <ScopeIcon size={16} />
+          <span
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 12.5,
+              color: "#E8E8F0",
+              fontWeight: 500,
+            }}
+          >
+            Live Signal Sources
+          </span>
+        </div>
+        <span
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            fontFamily: "var(--font-jetbrains), monospace",
+            fontSize: 10,
+            color: "#1D9E75",
+            letterSpacing: "0.08em",
+          }}
+        >
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: "50%",
+              background: "#1D9E75",
+              animation: "src-pulse 1.8s ease-in-out infinite",
+            }}
+            aria-hidden="true"
+          />
+          SCANNING
+        </span>
+      </div>
+
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          padding: 0,
+          margin: 0,
+          listStyle: "none",
+        }}
+      >
+        {sources.map((s, i) => (
+          <li
+            key={s.name}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              gap: 12,
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: 4,
+                  fontFamily: "var(--font-inter), sans-serif",
+                  fontSize: 11.5,
+                }}
+              >
+                <span style={{ color: "#E8E8F0" }}>{s.name}</span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-jetbrains), monospace",
+                    fontSize: 10,
+                    color: "#9898A8",
+                  }}
+                >
+                  {s.count}
+                </span>
+              </div>
+              <div
+                style={{
+                  height: 3,
+                  borderRadius: 2,
+                  background: "#1E1E2E",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    width: `${s.pct}%`,
+                    background: "#1D9E75",
+                    borderRadius: 2,
+                    animation: `src-fill 1200ms ${i * 120}ms cubic-bezier(0.16, 1, 0.3, 1) both`,
+                  }}
+                />
+              </div>
+            </div>
+            <span
+              aria-hidden="true"
+              style={{
+                width: 8,
+                height: 8,
+                borderRadius: "50%",
+                background: "#1D9E75",
+                boxShadow: "0 0 6px #1D9E75",
+                animation: `src-pulse 1.8s ${i * 240}ms ease-in-out infinite`,
+              }}
+            />
+          </li>
+        ))}
+      </ul>
+
+      <style>{`
+        @keyframes src-pulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50%      { opacity: 0.5; transform: scale(0.85); }
+        }
+        @keyframes src-fill {
+          from { width: 0%; }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+/* ---------- New Layer 3 preview: Execution Brief deliverables ---------- */
+
+function ExecutionBriefPreview() {
+  return (
+    <div
+      style={{
+        background: "#10101A",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 14,
+        padding: 20,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          marginBottom: 14,
+        }}
+      >
+        <TrendIcon size={16} />
+        <span
+          style={{
+            fontFamily: "var(--font-inter), sans-serif",
+            fontSize: 12.5,
+            color: "#E8E8F0",
+            fontWeight: 500,
+          }}
+        >
+          Execution Brief
+        </span>
+        <span
+          style={{
+            marginLeft: "auto",
+            fontFamily: "var(--font-jetbrains), monospace",
+            fontSize: 10,
+            color: "#3B82F6",
+            letterSpacing: "0.08em",
+            padding: "2px 8px",
+            borderRadius: 999,
+            background: "rgba(59, 130, 246, 0.1)",
+            border: "0.5px solid rgba(59, 130, 246, 0.4)",
+          }}
+        >
+          READY
+        </span>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 8,
+        }}
+      >
+        <BriefDeliverable label="Strategy"       value="3 angles"        color="#3B82F6" />
+        <BriefDeliverable label="Hooks"          value="24 ranked"       color="#3B82F6" />
+        <BriefDeliverable label="Offers"         value="5 variants"      color="#3B82F6" />
+        <BriefDeliverable label="Creatives"      value="46 assets"       color="#3B82F6" />
+        <BriefDeliverable label="Keywords"       value="20 priority"     color="#3B82F6" />
+        <BriefDeliverable label="Launch plan"    value="30-day"          color="#3B82F6" />
+      </div>
+
+      <div
+        style={{
+          marginTop: 10,
+          padding: "10px 12px",
+          background: "#0A0A12",
+          border: "0.5px solid #1E1E2E",
+          borderRadius: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M2 6 L5 9 L10 3" stroke="#3B82F6" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 11,
+              color: "#9898A8",
+            }}
+          >
+            Ready for ads manager
+          </span>
+        </div>
+        <span
+          style={{
+            fontFamily: "var(--font-jetbrains), monospace",
+            fontSize: 10,
+            color: "#505068",
+          }}
+        >
+          34 min 12 sec
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function BriefDeliverable({
+  label,
+  value,
+  color,
+}: {
+  label: string;
+  value: string;
+  color: string;
+}) {
+  return (
+    <div
+      style={{
+        background: "#0A0A12",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 10,
+        padding: "10px 12px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 8,
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 11.5,
+          color: "#9898A8",
+        }}
+      >
+        {label}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 11,
+          color,
+          letterSpacing: "0.02em",
+        }}
+      >
+        {value}
+      </span>
+    </div>
+  );
+}
+
 /* ---------- Layer definitions ---------- */
 
 const LAYER_1: Layer = {
   number: "01",
-  title: "Market Research",
-  line: "Find what the market wants.",
-  chips: ["Pain points", "Competitors", "Keywords", "Trends"],
+  title: "Market Signals",
+  line: "Scans pain points, search intent, competitors, trends, and customer language.",
+  chips: ["Pain points", "Search intent", "Competitors", "Trends", "Language"],
   color: "#1D9E75",
   iconBg: "rgba(29, 158, 117, 0.12)",
-  preview: <MarketBriefPreview />,
+  preview: <SignalSourcesPreview />,
 };
 
 const LAYER_2: Layer = {
   number: "02",
-  title: "Campaign + Creative",
-  line: "Turn research into campaign assets.",
-  chips: ["Brief", "Images", "Video", "Copy", "UGC"],
+  title: "Intelligence Engine",
+  line: "Connects the data, scores opportunities, and finds the strongest campaign direction.",
+  chips: ["Connect", "Score", "Rank", "Direction"],
   color: "#8B5CF6",
   iconBg: "rgba(139, 92, 246, 0.12)",
-  preview: <CreativePackPreview />,
+  preview: <MarketBriefPreview />,
 };
 
 const LAYER_3: Layer = {
   number: "03",
-  title: "Optimize + Learn",
-  line: "Track results. Get smarter.",
-  chips: ["ROAS", "Scorecard", "Playbooks", "Reports"],
+  title: "Execution Brief",
+  line: "Turns insight into strategy, hooks, offers, creatives, keywords, and launch plan.",
+  chips: ["Strategy", "Hooks", "Offers", "Creatives", "Keywords", "Launch"],
   color: "#3B82F6",
   iconBg: "rgba(59, 130, 246, 0.12)",
-  preview: <PerformancePreview />,
+  preview: <ExecutionBriefPreview />,
 };

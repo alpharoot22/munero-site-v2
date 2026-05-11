@@ -58,7 +58,7 @@ export function TrustStrip() {
             gridTemplateColumns: "repeat(2, 1fr)",
             gap: 0,
             border: "0.5px solid #1E1E2E",
-            borderRadius: 14,
+            borderRadius: 18,
             background: "#0A0A12",
             overflow: "hidden",
           }}

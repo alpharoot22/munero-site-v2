@@ -106,7 +106,7 @@ export function Hero() {
                   fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 500,
                   fontSize: 15,
-                  borderRadius: 8,
+                  borderRadius: 10,
                   textDecoration: "none",
                   letterSpacing: "-0.005em",
                   transition: "background 150ms ease-out, transform 80ms ease-out",
@@ -130,7 +130,7 @@ export function Hero() {
                   fontWeight: 500,
                   fontSize: 15,
                   border: "0.5px solid #1E1E2E",
-                  borderRadius: 8,
+                  borderRadius: 10,
                   textDecoration: "none",
                   letterSpacing: "-0.005em",
                   transition: "border-color 150ms ease-out",
@@ -223,7 +223,7 @@ function DashboardPreview() {
       style={{
         background: "#0A0A12",
         border: "0.5px solid #1E1E2E",
-        borderRadius: 16,
+        borderRadius: 20,
         padding: 16,
         boxShadow:
           "0 30px 60px -20px rgba(0,0,0,0.5), 0 0 40px -10px rgba(29,158,117,0.08)",

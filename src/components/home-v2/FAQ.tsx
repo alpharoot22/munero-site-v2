@@ -68,7 +68,7 @@ export function FAQ() {
             padding: 0,
             background: "#0A0A12",
             border: "0.5px solid #1E1E2E",
-            borderRadius: 14,
+            borderRadius: 18,
             overflow: "hidden",
           }}
         >
