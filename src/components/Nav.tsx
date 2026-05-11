@@ -4,11 +4,11 @@ import { MobileMenu } from "./MobileMenu";
 const STRIPE_STARTER = "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00";
 
 const NAV_LINKS = [
-  { href: "/features",     label: "Product",   hasDropdown: true },
-  { href: "/how-it-works", label: "Solutions", hasDropdown: true },
-  { href: "/guides",       label: "Resources", hasDropdown: true },
+  { href: "/features",     label: "Product" },
+  { href: "/how-it-works", label: "How it works" },
   { href: "/pricing",      label: "Pricing" },
-  { href: "/blog",         label: "About" },
+  { href: "/sample",       label: "Sample brief" },
+  { href: "/blog",         label: "Blog" },
 ];
 
 export function Nav() {
@@ -83,24 +83,6 @@ export function Nav() {
               className="nav-link"
             >
               {l.label}
-              {l.hasDropdown ? (
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  aria-hidden="true"
-                  style={{ marginTop: 1, opacity: 0.6 }}
-                >
-                  <path
-                    d="M2.5 4 L5 6.5 L7.5 4"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ) : null}
             </Link>
           ))}
         </nav>
