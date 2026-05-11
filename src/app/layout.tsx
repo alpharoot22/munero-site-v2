@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { IntercomWidget } from "../components/IntercomWidget";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -60,7 +60,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${jetbrains.variable} h-full antialiased overflow-x-hidden`}>
+    <html lang="en" className={`${inter.variable} ${jetbrains.variable} h-full antialiased overflow-x-hidden`}>
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />

@@ -87,7 +87,7 @@ export function Integrations() {
         <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto" }}>
           <h2
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: "clamp(24px, 3vw, 34px)",
               color: "#E8E8F0",
@@ -196,7 +196,7 @@ function Group({ group }: { group: Group }) {
               </span>
               <span
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 11.5,
                   color: "#9898A8",
                   textAlign: "center",

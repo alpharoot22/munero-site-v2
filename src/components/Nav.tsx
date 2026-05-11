@@ -48,7 +48,7 @@ export function Nav() {
           />
           <span
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 600,
               fontSize: 20,
               color: "#1D9E75",
@@ -72,7 +72,7 @@ export function Nav() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: 4,
-                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontSize: 14,
                 fontWeight: 400,
                 color: "#9898A8",
@@ -109,7 +109,7 @@ export function Nav() {
           <Link
             href="/register"
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 14,
               color: "#E8E8F0",
               textDecoration: "none",
@@ -131,7 +131,7 @@ export function Nav() {
               padding: "0 18px",
               background: "#1D9E75",
               color: "#FFFFFF",
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 14,
               fontWeight: 500,
               borderRadius: 8,

@@ -124,7 +124,7 @@ function FlowBlock({
           <div
             key={line}
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 13,
               color: "#E8E8F0",
               fontWeight: 400,

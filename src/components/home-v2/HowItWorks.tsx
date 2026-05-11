@@ -31,7 +31,7 @@ export function HowItWorks() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <h2
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: "clamp(28px, 3.4vw, 40px)",
               color: "#E8E8F0",
@@ -62,7 +62,7 @@ export function HowItWorks() {
           style={{
             marginTop: 32,
             textAlign: "center",
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 14,
             color: "#9898A8",
           }}
@@ -156,7 +156,7 @@ function LayerCard({ layer }: { layer: Layer }) {
 
           <h3
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: 26,
               color: "#E8E8F0",
@@ -192,7 +192,7 @@ function LayerCard({ layer }: { layer: Layer }) {
               <li
                 key={c}
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 12.5,
                   color: "#E8E8F0",
                   background: "#111118",
@@ -254,7 +254,7 @@ function MarketBriefPreview() {
         <img src="/favicon.png" alt="" width={18} height={18} style={{ borderRadius: 4 }} aria-hidden="true" />
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 12.5,
             color: "#E8E8F0",
             fontWeight: 500,
@@ -310,7 +310,7 @@ function MarketBriefPreview() {
               alignItems: "center",
               gap: 8,
               padding: "5px 0",
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 11.5,
               color: "#9898A8",
             }}
@@ -377,7 +377,7 @@ function CreativePackPreview() {
         </span>
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 12.5,
             color: "#E8E8F0",
             fontWeight: 500,
@@ -410,7 +410,7 @@ function CreativePackPreview() {
         >
           <p
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 11.5,
               color: "#E8E8F0",
               fontWeight: 500,
@@ -458,7 +458,7 @@ function CreativePackPreview() {
         <PreviewCard title="UGC Script" tag="30s Script">
           <p
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 10.5,
               color: "#9898A8",
               lineHeight: 1.45,
@@ -477,7 +477,7 @@ function CreativePackPreview() {
         <PreviewCard title="Ad Copy" tag="Meta Ad">
           <p
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 10.5,
               color: "#9898A8",
               lineHeight: 1.45,
@@ -520,7 +520,7 @@ function PreviewCard({
     >
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 10.5,
           color: "#E8E8F0",
           fontWeight: 500,
@@ -582,7 +582,7 @@ function PerformancePreview() {
         </span>
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 12.5,
             color: "#E8E8F0",
             fontWeight: 500,
@@ -623,7 +623,7 @@ function PerformancePreview() {
         >
           <span
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 11.5,
               color: "#E8E8F0",
               fontWeight: 500,
@@ -674,7 +674,7 @@ function PerfStat({
     >
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 10,
           color: "#9898A8",
           marginBottom: 4,
@@ -685,7 +685,7 @@ function PerfStat({
       <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 16,
             color: "#E8E8F0",
             fontWeight: 500,
@@ -706,7 +706,7 @@ function PerfStat({
       </div>
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 9.5,
           color: "#505068",
           marginTop: 3,
@@ -741,7 +741,7 @@ function WinningRow({ name, label, value }: { name: string; label: string; value
       />
       <span
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 11.5,
           color: "#E8E8F0",
           fontWeight: 500,
@@ -796,7 +796,7 @@ function MiniStat({
     >
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 10,
           color: "#9898A8",
           marginBottom: 4,
@@ -807,7 +807,7 @@ function MiniStat({
       <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 18,
             color: "#E8E8F0",
             fontWeight: 500,

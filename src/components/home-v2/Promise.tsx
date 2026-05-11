@@ -44,7 +44,7 @@ export function Hero() {
                 background: "rgba(29, 158, 117, 0.08)",
                 border: "0.5px solid rgba(29, 158, 117, 0.35)",
                 borderRadius: 999,
-                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontSize: 12,
                 color: "#1D9E75",
                 fontWeight: 500,
@@ -57,7 +57,7 @@ export function Hero() {
             <h1
               style={{
                 marginTop: 24,
-                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 500,
                 color: "#E8E8F0",
                 fontSize: "clamp(40px, 5.4vw, 68px)",
@@ -65,9 +65,9 @@ export function Hero() {
                 lineHeight: 1.04,
               }}
             >
-              Know what to say
+              Launch new campaigns
               <br />
-              <span style={{ color: "#1D9E75" }}>before you spend</span>
+              <span style={{ color: "#1D9E75" }}>with confidence</span>
               <span style={{ color: "#E8E8F0" }}>.</span>
             </h1>
 
@@ -80,8 +80,7 @@ export function Hero() {
                 maxWidth: "46ch",
               }}
             >
-              Turn market signals into campaign briefs, creatives, and next
-              actions, all inside one workspace.
+              Stop guessing your GTM.
             </p>
 
             <div
@@ -104,7 +103,7 @@ export function Hero() {
                   padding: "0 24px",
                   background: "#1D9E75",
                   color: "#FFFFFF",
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 500,
                   fontSize: 15,
                   borderRadius: 8,
@@ -127,7 +126,7 @@ export function Hero() {
                   padding: "0 22px",
                   background: "#111118",
                   color: "#E8E8F0",
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontWeight: 500,
                   fontSize: 15,
                   border: "0.5px solid #1E1E2E",
@@ -193,7 +192,7 @@ function ProofBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
         display: "inline-flex",
         alignItems: "center",
         gap: 8,
-        fontFamily: "var(--font-dm-sans), sans-serif",
+        fontFamily: "var(--font-inter), sans-serif",
         fontSize: 13,
         color: "#9898A8",
       }}
@@ -253,7 +252,7 @@ function DashboardPreview() {
           />
           <span
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 14,
               color: "#E8E8F0",
               fontWeight: 500,
@@ -324,7 +323,7 @@ function DashboardPreview() {
                   padding: "8px 10px",
                   background: item.active ? "rgba(29, 158, 117, 0.12)" : "transparent",
                   borderRadius: 6,
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 12.5,
                   color: item.active ? "#E8E8F0" : "#9898A8",
                   fontWeight: item.active ? 500 : 400,
@@ -381,7 +380,7 @@ function DashboardPreview() {
             >
               <div
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 11.5,
                   color: "#E8E8F0",
                   fontWeight: 500,
@@ -401,7 +400,7 @@ function DashboardPreview() {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      fontFamily: "var(--font-dm-sans), sans-serif",
+                      fontFamily: "var(--font-inter), sans-serif",
                       fontSize: 10.5,
                       marginBottom: 4,
                     }}
@@ -456,7 +455,7 @@ function DashboardPreview() {
               >
                 <span
                   style={{
-                    fontFamily: "var(--font-dm-sans), sans-serif",
+                    fontFamily: "var(--font-inter), sans-serif",
                     fontSize: 11.5,
                     color: "#E8E8F0",
                     fontWeight: 500,
@@ -476,7 +475,7 @@ function DashboardPreview() {
               </div>
               <div
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 18,
                   color: "#E8E8F0",
                   fontWeight: 500,
@@ -550,7 +549,7 @@ function DashboardPreview() {
               />
               <span
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: 11,
                   color: "#9898A8",
                 }}
@@ -616,7 +615,7 @@ function StatBlock({
     >
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 11,
           color: "#9898A8",
           marginBottom: 6,
@@ -627,7 +626,7 @@ function StatBlock({
       <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 24,
             color: "#E8E8F0",
             fontWeight: 500,
@@ -660,7 +659,7 @@ function StatBlock({
       ) : hint ? (
         <div
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 10.5,
             color: "#505068",
             marginTop: 4,

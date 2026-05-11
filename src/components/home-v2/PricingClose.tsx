@@ -90,7 +90,7 @@ export function PricingClose() {
         >
           <h2
             style={{
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontWeight: 500,
               fontSize: "clamp(24px, 3vw, 34px)",
               color: "#E8E8F0",
@@ -161,7 +161,7 @@ export function PricingClose() {
             <div>
               <div
                 style={{
-                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  fontFamily: "var(--font-inter), sans-serif",
                   fontSize: "clamp(20px, 2vw, 26px)",
                   color: "#E8E8F0",
                   fontWeight: 500,
@@ -197,7 +197,7 @@ export function PricingClose() {
                 padding: "0 22px",
                 background: "#1D9E75",
                 color: "#FFFFFF",
-                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 500,
                 fontSize: 14.5,
                 borderRadius: 8,
@@ -217,7 +217,7 @@ export function PricingClose() {
                 padding: "0 22px",
                 background: "transparent",
                 color: "#E8E8F0",
-                fontFamily: "var(--font-dm-sans), sans-serif",
+                fontFamily: "var(--font-inter), sans-serif",
                 fontWeight: 500,
                 fontSize: 14.5,
                 border: "0.5px solid #1E1E2E",
@@ -270,7 +270,7 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       <div
         style={{
-          fontFamily: "var(--font-dm-sans), sans-serif",
+          fontFamily: "var(--font-inter), sans-serif",
           fontSize: 14,
           color: "#E8E8F0",
           fontWeight: 500,
@@ -290,7 +290,7 @@ function PlanCard({ plan }: { plan: Plan }) {
       >
         <span
           style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontSize: 38,
             color: plan.color,
             fontWeight: 500,
@@ -341,7 +341,7 @@ function PlanCard({ plan }: { plan: Plan }) {
               display: "flex",
               alignItems: "flex-start",
               gap: 8,
-              fontFamily: "var(--font-dm-sans), sans-serif",
+              fontFamily: "var(--font-inter), sans-serif",
               fontSize: 12.5,
               color: "#9898A8",
               lineHeight: 1.45,
@@ -376,7 +376,7 @@ function PlanCard({ plan }: { plan: Plan }) {
             height: 44,
             background: `${plan.color}1A`,
             color: plan.color,
-            fontFamily: "var(--font-dm-sans), sans-serif",
+            fontFamily: "var(--font-inter), sans-serif",
             fontWeight: 500,
             fontSize: 13.5,
             border: `0.5px solid ${plan.color}55`,
