@@ -67,12 +67,23 @@ export function HowItWorks() {
               margin: 0,
             }}
           >
-            From insight to impact in{" "}
-            <span style={{ color: "#1D9E75" }}>3 simple steps</span>
+            From market signal to{" "}
+            <span style={{ color: "#1D9E75" }}>campaign performance</span>
             <span style={{ color: "#E8E8F0" }}>.</span>
           </h2>
-          <p style={{ marginTop: 10, fontSize: 14.5, color: "#9898A8" }}>
-            Research the market. Build better campaigns. Improve what works.
+          <p
+            style={{
+              marginTop: 12,
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 15,
+              color: "#9898A8",
+              lineHeight: 1.55,
+              maxWidth: "56ch",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Munero connects research, creative, and optimization in one workspace.
           </p>
         </div>
 
@@ -110,14 +121,24 @@ function StepArrow() {
   return (
     <span
       className="step-arrow"
-      style={{ alignItems: "center", justifyContent: "center", color: "#505068" }}
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        width: 36,
+        height: 36,
+        borderRadius: "50%",
+        background: "rgba(29,158,117,0.08)",
+        border: "0.5px solid rgba(29,158,117,0.45)",
+        color: "#1D9E75",
+        boxShadow: "0 0 16px -2px rgba(29,158,117,0.35)",
+      }}
       aria-hidden="true"
     >
-      <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
+      <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
         <path
-          d="M1 7 H19 M14 2 L19 7 L14 12"
+          d="M1 6 H12 M8 2 L12 6 L8 10"
           stroke="currentColor"
-          strokeWidth="1.4"
+          strokeWidth="1.6"
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
@@ -226,17 +247,19 @@ function StepCard({ step }: { step: Step }) {
             {c}
           </span>
         ))}
-        <span
-          style={{
-            fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: 10.5,
-            color: "#505068",
-            alignSelf: "center",
-            marginLeft: 2,
-          }}
-        >
-          +{step.more} more
-        </span>
+        {step.more > 0 ? (
+          <span
+            style={{
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 10.5,
+              color: "#505068",
+              alignSelf: "center",
+              marginLeft: 2,
+            }}
+          >
+            +{step.more} more
+          </span>
+        ) : null}
       </div>
 
       <div style={{ marginTop: "auto" }}>{step.preview}</div>
@@ -358,10 +381,10 @@ function MarketDemandPreview() {
         </div>
       </div>
 
-      {/* 3-up KPI strip */}
+      {/* 3-up KPI strip — leads with Competitor Gaps */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
-        <KpiCell label="Demand"        value="82"   delta="/100" deltaColor="#505068" />
-        <KpiCell label="Pain intensity" value="73"   delta="+9"   deltaColor="#1D9E75" />
+        <KpiCell label="Comp gaps"     value="6"   delta="open"    deltaColor="#1D9E75" />
+        <KpiCell label="Pain intensity" value="73"  delta="+9"     deltaColor="#1D9E75" />
         <KpiCell label="Buyer signals"  value="184" delta="quotes" deltaColor="#505068" />
       </div>
 
@@ -823,7 +846,7 @@ function RoasPreview() {
         <KpiCell label="CTR" value="2.1%" delta="+4%" deltaColor="#1D9E75" />
       </div>
 
-      {/* Winning Creatives leaderboard */}
+      {/* Next Actions — the learning loop in action */}
       <div
         style={{
           background: "#0A0A12",
@@ -842,13 +865,26 @@ function RoasPreview() {
         >
           <span
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
               fontFamily: "var(--font-inter), sans-serif",
               fontSize: 10.5,
               color: "#E8E8F0",
               fontWeight: 500,
             }}
           >
-            Winning Creatives
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "#3B82F6",
+                boxShadow: "0 0 6px #3B82F6",
+              }}
+              aria-hidden="true"
+            />
+            Next Actions
           </span>
           <span
             style={{
@@ -858,36 +894,89 @@ function RoasPreview() {
               letterSpacing: "0.06em",
             }}
           >
-            TOP 3
+            AGENT
           </span>
         </div>
 
-        <WinnerRow
-          rank="01"
-          name="Image 03"
-          tag="Static"
-          roas="5.21x"
-          delta="+24%"
-          gradient="linear-gradient(135deg, #3B82F6 0%, #6366F1 100%)"
+        <NextActionRow
+          verb="Shift"
+          object="$1,200"
+          target="to Image 03"
+          tone="scale"
         />
-        <WinnerRow
-          rank="02"
-          name="Video 02"
-          tag="UGC 30s"
-          roas="4.45x"
-          delta="+12%"
-          gradient="linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%)"
+        <NextActionRow
+          verb="Pause"
+          object="Video 04"
+          target="frequency 4.6"
+          tone="kill"
         />
-        <WinnerRow
-          rank="03"
-          name="Image 07"
-          tag="Carousel"
-          roas="3.18x"
-          delta="+6%"
-          gradient="linear-gradient(135deg, #1D9E75 0%, #3B82F6 100%)"
+        <NextActionRow
+          verb="Test"
+          object="2 new hooks"
+          target="exhaustion angle"
+          tone="explore"
           last
         />
       </div>
+    </div>
+  );
+}
+
+function NextActionRow({
+  verb,
+  object,
+  target,
+  tone,
+  last,
+}: {
+  verb: string;
+  object: string;
+  target: string;
+  tone: "scale" | "kill" | "explore";
+  last?: boolean;
+}) {
+  const toneColor =
+    tone === "scale" ? "#1D9E75" : tone === "kill" ? "#F97316" : "#3B82F6";
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "auto 1fr",
+        alignItems: "center",
+        gap: 8,
+        padding: "6px 0",
+        borderBottom: last ? "none" : "0.5px solid #1E1E2E",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 8.5,
+          color: toneColor,
+          background: `${toneColor}15`,
+          border: `0.5px solid ${toneColor}40`,
+          padding: "2px 6px",
+          borderRadius: 4,
+          letterSpacing: "0.08em",
+          fontWeight: 600,
+        }}
+      >
+        {verb.toUpperCase()}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 11,
+          color: "#E8E8F0",
+          letterSpacing: "-0.005em",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        <span style={{ color: "#E8E8F0", fontWeight: 500 }}>{object}</span>
+        <span style={{ color: "#9898A8" }}> {target}</span>
+      </span>
     </div>
   );
 }
@@ -1050,29 +1139,29 @@ const STEPS: Step[] = [
   {
     number: "1",
     title: "Market Research",
-    line: "Understand demand, trends, and what your audience actually cares about.",
-    chips: ["Demand", "Pain Points", "Competitors"],
-    more: 3,
+    line: "Find what buyers want, what competitors miss, and which angles are worth testing.",
+    chips: ["Pain Points", "Competitors", "Keywords", "Trends"],
+    more: 0,
     color: "#1D9E75",
     iconBg: "rgba(29,158,117,0.12)",
     preview: <MarketDemandPreview />,
   },
   {
     number: "2",
-    title: "Campaign + Creative",
-    line: "Turn insights into launch-ready campaigns and scroll-stopping creative.",
-    chips: ["Strategy", "Angles", "Ad Copy"],
-    more: 3,
+    title: "Campaign Builder + Creative",
+    line: "Turn research into launch-ready assets.",
+    chips: ["Strategy", "Angles", "Ad Copy", "UGC", "Images"],
+    more: 0,
     color: "#8B5CF6",
     iconBg: "rgba(139,92,246,0.14)",
     preview: <CreativePackPreview />,
   },
   {
     number: "3",
-    title: "Optimize + Learn",
-    line: "Track performance, learn what works, and double down on winners.",
-    chips: ["ROAS", "Creative Score", "Insights"],
-    more: 2,
+    title: "Optimize + Learning Loop",
+    line: "Track what works and improve the next campaign.",
+    chips: ["ROAS", "Scorecard", "Budget", "Reports"],
+    more: 0,
     color: "#3B82F6",
     iconBg: "rgba(59,130,246,0.14)",
     preview: <RoasPreview />,
