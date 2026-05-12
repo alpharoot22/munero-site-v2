@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Hero } from "../../components/home-v2/Promise";
+import { ProductHero } from "../../components/product/ProductHero";
 import { HowItWorks } from "../../components/home-v2/HowItWorks";
-import { WhatYouGet } from "../../components/home-v2/WhatYouGet";
-import { OutputProof } from "../../components/home-v2/OutputProof";
+import { IntelligenceSquads } from "../../components/product/IntelligenceSquads";
+import { AIAssistants } from "../../components/product/AIAssistants";
+import { BriefAnatomy } from "../../components/product/BriefAnatomy";
 import { Integrations } from "../../components/home-v2/Integrations";
-import { PricingClose } from "../../components/home-v2/PricingClose";
 import { FAQ } from "../../components/home-v2/FAQ";
 import { FinalCTA } from "../../components/home-v2/FinalCTA";
 
 export const metadata: Metadata = {
   title: "Product",
   description:
-    "Munero turns market signals into campaign briefs, creative assets, and next actions. Three layers, one workspace.",
+    "How Munero works: 16 intelligence squads, 9 AI assistants, and a structured brief in 35 minutes. The full product breakdown.",
 };
 
 export default function FeaturesPage() {
   return (
     <>
-      <Hero />
+      <ProductHero />
       <HowItWorks />
-      <WhatYouGet />
-      <OutputProof />
+      <IntelligenceSquads />
+      <AIAssistants />
+      <BriefAnatomy />
       <Integrations />
-      <PricingClose />
       <FAQ />
       <FinalCTA />
     </>
