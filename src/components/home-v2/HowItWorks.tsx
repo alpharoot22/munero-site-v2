@@ -252,101 +252,487 @@ function StepCard({ step }: { step: Step }) {
 
 function MarketDemandPreview() {
   return (
-    <div style={{ background: "#10101A", border: "0.5px solid #1E1E2E", borderRadius: 14, padding: 16 }}>
-      <div style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 11, color: "#9898A8", marginBottom: 12, fontWeight: 500 }}>
-        Market Demand
-      </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-        <div style={{ position: "relative", width: 64, height: 64 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="26" stroke="#1E1E2E" strokeWidth="6" fill="none" />
-            <circle
-              cx="32"
-              cy="32"
-              r="26"
-              stroke="#1D9E75"
-              strokeWidth="6"
-              fill="none"
-              strokeLinecap="round"
-              strokeDasharray={`${(62 / 100) * 163} 163`}
-              transform="rotate(-90 32 32)"
-            />
-          </svg>
-          <div
+    <div
+      style={{
+        background: "#10101A",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 14,
+        padding: 16,
+        display: "flex",
+        flexDirection: "column",
+        gap: 10,
+      }}
+    >
+      {/* Hero: Market Demand donut */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, rgba(29,158,117,0.10) 0%, rgba(29,158,117,0) 70%)",
+          border: "0.5px solid #1E1E2E",
+          borderRadius: 12,
+          padding: "12px 14px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "baseline",
+            justifyContent: "space-between",
+            marginBottom: 10,
+          }}
+        >
+          <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 11, color: "#9898A8", fontWeight: 500 }}>
+            Market Demand
+          </span>
+          <span
             style={{
-              position: "absolute",
-              inset: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: 11,
+              fontSize: 10,
               color: "#1D9E75",
-              fontWeight: 600,
+              background: "rgba(29,158,117,0.12)",
+              border: "0.5px solid rgba(29,158,117,0.35)",
+              padding: "1px 7px",
+              borderRadius: 999,
+              letterSpacing: "0.04em",
             }}
           >
-            62%
-          </div>
+            +32%
+          </span>
         </div>
-        <div>
-          <div style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 16, color: "#E8E8F0", fontWeight: 500 }}>
-            High
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ position: "relative", width: 64, height: 64, flexShrink: 0 }}>
+            <svg width="64" height="64" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" stroke="#1E1E2E" strokeWidth="6" fill="none" />
+              <circle
+                cx="32"
+                cy="32"
+                r="26"
+                stroke="#1D9E75"
+                strokeWidth="6"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray={`${(62 / 100) * 163} 163`}
+                transform="rotate(-90 32 32)"
+              />
+            </svg>
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "var(--font-jetbrains), monospace",
+                fontSize: 11,
+                color: "#1D9E75",
+                fontWeight: 600,
+              }}
+            >
+              62%
+            </div>
           </div>
-          <div style={{ fontFamily: "var(--font-jetbrains), monospace", fontSize: 10, color: "#505068", marginTop: 2 }}>
-            opportunity
+          <div>
+            <div
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: 22,
+                color: "#E8E8F0",
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+                lineHeight: 1,
+              }}
+            >
+              High
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-jetbrains), monospace",
+                fontSize: 10,
+                color: "#505068",
+                marginTop: 4,
+                letterSpacing: "0.02em",
+              }}
+            >
+              opportunity
+            </div>
           </div>
         </div>
       </div>
+
+      {/* 3-up KPI strip */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+        <KpiCell label="Demand"        value="82"   delta="/100" deltaColor="#505068" />
+        <KpiCell label="Pain intensity" value="73"   delta="+9"   deltaColor="#1D9E75" />
+        <KpiCell label="Buyer signals"  value="184" delta="quotes" deltaColor="#505068" />
+      </div>
+
+      {/* Top findings */}
+      <div style={{ background: "#0A0A12", border: "0.5px solid #1E1E2E", borderRadius: 10, padding: 10 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 8,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 10.5,
+              color: "#E8E8F0",
+              fontWeight: 500,
+            }}
+          >
+            Top Findings
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 9,
+              color: "#1D9E75",
+              letterSpacing: "0.06em",
+            }}
+          >
+            TOP 3
+          </span>
+        </div>
+
+        <FindingRow rank="01" quote="I've tried everything for adult acne" source="Reddit"     freq="84" />
+        <FindingRow rank="02" quote="Clean ingredients, real results"        source="Trustpilot" freq="72" />
+        <FindingRow rank="03" quote="Looking for better absorption"           source="YouTube"    freq="58" last />
+      </div>
+    </div>
+  );
+}
+
+function FindingRow({
+  rank,
+  quote,
+  source,
+  freq,
+  last,
+}: {
+  rank: string;
+  quote: string;
+  source: string;
+  freq: string;
+  last?: boolean;
+}) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "18px 1fr auto auto",
+        alignItems: "center",
+        gap: 8,
+        padding: "5px 0",
+        borderBottom: last ? "none" : "0.5px solid #1E1E2E",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 9,
+          color: "#505068",
+          letterSpacing: "0.06em",
+        }}
+      >
+        {rank}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 10.5,
+          color: "#E8E8F0",
+          fontStyle: "italic",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        &ldquo;{quote}&rdquo;
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 8.5,
+          color: "#9898A8",
+          letterSpacing: "0.04em",
+        }}
+      >
+        {source}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 10,
+          color: "#1D9E75",
+          fontWeight: 500,
+        }}
+      >
+        {freq}
+      </span>
     </div>
   );
 }
 
 function CreativePackPreview() {
   return (
-    <div style={{ background: "#10101A", border: "0.5px solid #1E1E2E", borderRadius: 14, padding: 16 }}>
-      <div style={{ display: "flex", gap: 8 }}>
+    <div
+      style={{
+        background: "#10101A",
+        border: "0.5px solid #1E1E2E",
+        borderRadius: 14,
+        padding: 16,
+        display: "flex",
+        flexDirection: "column",
+        gap: 10,
+      }}
+    >
+      {/* Hero: featured creative + 3 thumbnails */}
+      <div
+        style={{
+          background: "linear-gradient(135deg, rgba(139,92,246,0.10) 0%, rgba(139,92,246,0) 70%)",
+          border: "0.5px solid #1E1E2E",
+          borderRadius: 12,
+          padding: 12,
+        }}
+      >
         <div
           style={{
-            flex: "1.2",
-            aspectRatio: "1 / 1.1",
-            borderRadius: 10,
-            background: "linear-gradient(135deg, #4338CA 0%, #8B5CF6 100%)",
-            position: "relative",
-            overflow: "hidden",
             display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "center",
-            padding: 8,
+            alignItems: "baseline",
+            justifyContent: "space-between",
+            marginBottom: 8,
           }}
         >
-          <div
-            aria-hidden="true"
+          <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 11, color: "#9898A8", fontWeight: 500 }}>
+            Creative Pack
+          </span>
+          <span
             style={{
-              position: "absolute",
-              bottom: "20%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "44%",
-              height: "55%",
-              background: "rgba(255,255,255,0.18)",
-              borderRadius: "30% 30% 8px 8px",
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 10,
+              color: "#8B5CF6",
+              background: "rgba(139,92,246,0.12)",
+              border: "0.5px solid rgba(139,92,246,0.35)",
+              padding: "1px 7px",
+              borderRadius: 999,
+              letterSpacing: "0.04em",
             }}
-          />
+          >
+            46 assets
+          </span>
         </div>
-        <div style={{ flex: "1", display: "flex", flexDirection: "column", gap: 6 }}>
-          {[1, 2, 3].map((i) => (
+        <div style={{ display: "flex", gap: 8 }}>
+          <div
+            style={{
+              flex: "1.2",
+              aspectRatio: "1 / 1",
+              borderRadius: 10,
+              background: "linear-gradient(135deg, #4338CA 0%, #8B5CF6 100%)",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
             <div
-              key={i}
+              aria-hidden="true"
               style={{
-                flex: 1,
-                background: `linear-gradient(135deg, ${["#1D9E75", "#8B5CF6", "#3B82F6"][i - 1]}33 0%, ${["#1D9E75", "#8B5CF6", "#3B82F6"][i - 1]}11 100%)`,
-                borderRadius: 8,
-                border: "0.5px solid #1E1E2E",
+                position: "absolute",
+                bottom: "18%",
+                left: "50%",
+                transform: "translateX(-50%)",
+                width: "44%",
+                height: "58%",
+                background: "rgba(255,255,255,0.20)",
+                borderRadius: "30% 30% 8px 8px",
               }}
             />
-          ))}
+            <span
+              style={{
+                position: "absolute",
+                top: 8,
+                left: 8,
+                fontFamily: "var(--font-jetbrains), monospace",
+                fontSize: 8.5,
+                color: "#FFFFFF",
+                background: "rgba(0,0,0,0.35)",
+                padding: "2px 6px",
+                borderRadius: 4,
+                letterSpacing: "0.06em",
+              }}
+            >
+              HERO
+            </span>
+          </div>
+          <div style={{ flex: "1", display: "flex", flexDirection: "column", gap: 6 }}>
+            {[
+              { hue: "#1D9E75", label: "Static" },
+              { hue: "#8B5CF6", label: "UGC" },
+              { hue: "#3B82F6", label: "Video" },
+            ].map((t) => (
+              <div
+                key={t.label}
+                style={{
+                  flex: 1,
+                  background: `linear-gradient(135deg, ${t.hue}33 0%, ${t.hue}11 100%)`,
+                  borderRadius: 8,
+                  border: "0.5px solid #1E1E2E",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  padding: 6,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-jetbrains), monospace",
+                    fontSize: 8.5,
+                    color: "#FFFFFF",
+                    background: "rgba(0,0,0,0.35)",
+                    padding: "1px 5px",
+                    borderRadius: 4,
+                    letterSpacing: "0.06em",
+                  }}
+                >
+                  {t.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* 3-up KPI strip */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+        <KpiCell label="Hooks"   value="24"  delta="ranked"  deltaColor="#505068" />
+        <KpiCell label="UGC"     value="6"   delta="scripts" deltaColor="#505068" />
+        <KpiCell label="Variants" value="12" delta="per ad"  deltaColor="#505068" />
+      </div>
+
+      {/* Top picks list */}
+      <div style={{ background: "#0A0A12", border: "0.5px solid #1E1E2E", borderRadius: 10, padding: 10 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 8,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-inter), sans-serif",
+              fontSize: 10.5,
+              color: "#E8E8F0",
+              fontWeight: 500,
+            }}
+          >
+            Top Picks
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-jetbrains), monospace",
+              fontSize: 9,
+              color: "#8B5CF6",
+              letterSpacing: "0.06em",
+            }}
+          >
+            TOP 3
+          </span>
+        </div>
+
+        <PickRow
+          rank="01"
+          quote="The drink that does what coffee promised."
+          channel="Meta"
+          score="92"
+        />
+        <PickRow
+          rank="02"
+          quote="I've tried everything. This actually works."
+          channel="TikTok"
+          score="87"
+        />
+        <PickRow
+          rank="03"
+          quote="Clean energy. No crash."
+          channel="Google"
+          score="81"
+          last
+        />
+      </div>
+    </div>
+  );
+}
+
+function PickRow({
+  rank,
+  quote,
+  channel,
+  score,
+  last,
+}: {
+  rank: string;
+  quote: string;
+  channel: string;
+  score: string;
+  last?: boolean;
+}) {
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "18px 1fr auto auto",
+        alignItems: "center",
+        gap: 8,
+        padding: "5px 0",
+        borderBottom: last ? "none" : "0.5px solid #1E1E2E",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 9,
+          color: "#505068",
+          letterSpacing: "0.06em",
+        }}
+      >
+        {rank}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-inter), sans-serif",
+          fontSize: 10.5,
+          color: "#E8E8F0",
+          fontStyle: "italic",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        &ldquo;{quote}&rdquo;
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 8.5,
+          color: "#9898A8",
+          letterSpacing: "0.04em",
+        }}
+      >
+        {channel}
+      </span>
+      <span
+        style={{
+          fontFamily: "var(--font-jetbrains), monospace",
+          fontSize: 10,
+          color: "#8B5CF6",
+          fontWeight: 500,
+        }}
+      >
+        {score}
+      </span>
     </div>
   );
 }
