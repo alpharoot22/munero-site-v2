@@ -180,7 +180,7 @@ const ACNE_TEARDOWN_CONTENT = `
 <li>The transformation-led variants were paused by week 3</li>
 </ul>
 
-<p>The brand spent the same $60,000. The pre-launch intelligence cost them $299. The difference at month two was roughly $24,000 in additional gross revenue from the same spend.</p>
+<p>The brand spent the same $60,000. The pre-launch intelligence was a single Munero brief. The difference at month two was roughly $24,000 in additional gross revenue from the same spend.</p>
 
 <h2>What this tells you about pre-campaign intelligence</h2>
 

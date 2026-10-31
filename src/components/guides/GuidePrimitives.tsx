@@ -1,8 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-const STRIPE_BRIEF =
-  "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00?tier=brief";
 
 export type GuideMeta = {
   slug: string;
@@ -53,7 +51,7 @@ export const GUIDES: GuideMeta[] = [
   {
     slug: "email-marketing",
     platform: "Email Marketing",
-    platformColor: "#1D9E75",
+    platformColor: "#0e1b2c",
     title: "How to Build Your First Email Campaign",
     description:
       "List building, segmentation, subject lines, send timing, and the metrics that actually matter.",
@@ -268,8 +266,8 @@ export function MuneroCTA({ platformLine }: { platformLine: string }) {
         padding: 32,
         borderRadius: 12,
         background:
-          "linear-gradient(180deg, rgba(29,158,117,0.08) 0%, rgba(29,158,117,0.02) 100%)",
-        border: "0.5px solid rgba(29,158,117,0.3)",
+          "linear-gradient(180deg, rgba(14,27,44,0.08) 0%, rgba(14,27,44,0.02) 100%)",
+        border: "0.5px solid rgba(14,27,44,0.3)",
       }}
     >
       <div
@@ -331,7 +329,7 @@ export function MuneroCTA({ platformLine }: { platformLine: string }) {
           color: "var(--text-3)",
         }}
       >
-        Built on real customer behavior. In 35 minutes. For $99.
+        Munero is in private preview. New client access is closed.
       </p>
       <div
         style={{
@@ -341,11 +339,11 @@ export function MuneroCTA({ platformLine }: { platformLine: string }) {
           flexWrap: "wrap",
         }}
       >
-        <a href={STRIPE_BRIEF} className="btn-primary">
-          Open your workspace · $99
+        <a href="/#contact" className="btn-primary">
+          Investor inquiries
         </a>
-        <Link href="/sample" className="btn-secondary">
-          See a sample brief first
+        <Link href="/" className="btn-secondary">
+          See how Munero works
         </Link>
       </div>
     </section>

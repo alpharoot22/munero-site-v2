@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
-import { IntercomWidget } from "../components/IntercomWidget";
 
-const inter = Inter({
+// Instrument Sans is exposed through the existing --font-inter variable so every page picks it up.
+const inter = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -83,7 +83,6 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
-        <IntercomWidget />
       </body>
     </html>
   );

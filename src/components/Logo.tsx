@@ -1,31 +1,23 @@
+/** Authentic Munero octopus mark (geometry from public/bimi-logo.svg) in the navy/cream system. */
+export function OctopusMark({ size = 30, color = "currentColor", eye = "var(--bg)" }: { size?: number; color?: string; eye?: string }) {
+  return (
+    <svg width={size} height={size * 1.1} viewBox="20 18 56 66" aria-hidden="true" style={{ flex: "none" }}>
+      <g fill="none" stroke={color} strokeWidth="3.4" strokeLinecap="round">
+        <path d="M28 50 Q22 64 26 78" /><path d="M33 51 Q28 65 32 79" /><path d="M40 53 Q37 67 40 81" /><path d="M45 53 Q44 68 45 82" />
+        <path d="M51 53 Q52 68 51 82" /><path d="M56 53 Q59 67 56 81" /><path d="M63 51 Q68 65 64 79" /><path d="M68 50 Q74 64 70 78" />
+      </g>
+      <circle cx="48" cy="36" r="16" fill={color} />
+      <circle cx="42.5" cy="34.5" r="2.8" fill={eye} />
+      <circle cx="53.5" cy="34.5" r="2.8" fill={eye} />
+    </svg>
+  );
+}
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2 ${className}`}>
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 60 60"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-        className="shrink-0"
-      >
-        {/* Head */}
-        <circle cx="30" cy="22" r="10" fill="#1D9E75" />
-        {/* Eyes — punched out using the page bg so they read on any surface */}
-        <circle cx="26.5" cy="21" r="1.8" fill="var(--bg)" />
-        <circle cx="33.5" cy="21" r="1.8" fill="var(--bg)" />
-        {/* 8 tentacles */}
-        <path d="M18,31 Q14,40 16,48" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M21,32 Q18,41 20,49" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M25,33 Q23,42 25,50" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M28,33 Q27,43 28,51" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M32,33 Q33,43 32,51" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M35,33 Q37,42 35,50" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M39,32 Q42,41 40,49" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M42,31 Q46,40 44,48" stroke="#1D9E75" strokeWidth="2" fill="none" strokeLinecap="round" />
-      </svg>
-      <span className="wordmark">munero</span>
+    <span className={`mn-logo ${className}`}>
+      <OctopusMark />
+      <span>munero</span>
     </span>
   );
 }

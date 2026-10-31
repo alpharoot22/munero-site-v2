@@ -14,8 +14,8 @@ export function NewsletterForm() {
       style={{
         display: "flex",
         alignItems: "center",
-        background: "#111118",
-        border: "0.5px solid #1E1E2E",
+        background: "#fffdf8",
+        border: "0.5px solid #e2d8c6",
         borderRadius: 10,
         padding: "4px 4px 4px 14px",
       }}
@@ -35,7 +35,7 @@ export function NewsletterForm() {
           outline: "none",
           fontFamily: "var(--font-inter), sans-serif",
           fontSize: 13,
-          color: "#E8E8F0",
+          color: "#0e1b2c",
           padding: "8px 0",
           minWidth: 0,
         }}
@@ -49,8 +49,8 @@ export function NewsletterForm() {
           justifyContent: "center",
           width: 34,
           height: 34,
-          background: "#1D9E75",
-          color: "#FFFFFF",
+          background: "#0e1b2c",
+          color: "#f7f2e8",
           border: "none",
           borderRadius: 8,
           cursor: "pointer",
@@ -70,7 +70,7 @@ export function NewsletterForm() {
       </button>
 
       <style>{`
-        .news-btn:hover { background: #25B889 !important; }
+        .news-btn:hover { background: #13233a !important; }
       `}</style>
     </form>
   );
