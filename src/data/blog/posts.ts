@@ -89,7 +89,7 @@ const SYNTHETIC_AUDIENCE_CONTENT = `
 
 <p>Campaigns fail at the message layer more often than at the media layer. Targeting can be fixed with optimization. A wrong message is just waste.</p>
 
-<blockquote>Synthetic audiences give you a read on the message before the spend. Not a guarantee — a pressure test. The kind that used to cost $30,000 and six weeks, and now costs $99 and 35 minutes.</blockquote>
+<blockquote>Synthetic audiences give you a read on the message before the spend. Not a guarantee — a pressure test. The kind that used to cost $30,000 and six weeks, and now takes about 35 minutes.</blockquote>
 
 <p>That gap is why the category exists.</p>
 
@@ -180,7 +180,7 @@ const ACNE_TEARDOWN_CONTENT = `
 <li>The transformation-led variants were paused by week 3</li>
 </ul>
 
-<p>The brand spent the same $60,000. The pre-launch intelligence cost them $299. The difference at month two was roughly $24,000 in additional gross revenue from the same spend.</p>
+<p>The brand spent the same $60,000. The pre-launch intelligence was a single Munero brief. The difference at month two was roughly $24,000 in additional gross revenue from the same spend.</p>
 
 <h2>What this tells you about pre-campaign intelligence</h2>
 

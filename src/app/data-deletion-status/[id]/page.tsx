@@ -40,12 +40,12 @@ async function fetchStatus(
 }
 
 const COLOR = {
-  bg: "#050508",
-  surface: "#111118",
-  border: "#1E1E2E",
-  text: "#E8E8F0",
-  text2: "#9898A8",
-  accent: "#1D9E75",
+  bg: "#f7f2e8",
+  surface: "#fffdf8",
+  border: "#e2d8c6",
+  text: "#0e1b2c",
+  text2: "#55606e",
+  accent: "#0e1b2c",
 };
 
 export default async function DataDeletionStatus({

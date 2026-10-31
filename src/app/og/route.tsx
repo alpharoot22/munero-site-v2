@@ -9,7 +9,7 @@ export async function GET() {
         style={{
           width: "1200px",
           height: "630px",
-          background: "#050508",
+          background: "#0b1522",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -29,8 +29,8 @@ export async function GET() {
           <div
             style={{
               fontSize: "72px",
-              fontWeight: 700,
-              color: "#1D9E75",
+              fontWeight: 600,
+              color: "#f7f2e8",
               letterSpacing: "-0.04em",
             }}
           >
@@ -39,7 +39,7 @@ export async function GET() {
           <div
             style={{
               fontSize: "28px",
-              color: "#E8E8F0",
+              color: "#f3ede2",
               fontWeight: 600,
               letterSpacing: "-0.02em",
               textAlign: "center",
@@ -47,16 +47,16 @@ export async function GET() {
               lineHeight: 1.3,
             }}
           >
-            Know your market. Run better campaigns. Never guess again.
+            The intelligence behind your next growth opportunity.
           </div>
           <div
             style={{
               fontSize: "18px",
-              color: "#9898A8",
+              color: "#a9b3c0",
               textAlign: "center",
             }}
           >
-            16 intelligence squads · First brief in 35 minutes · Starting at $99
+            AI marketing intelligence · Private preview
           </div>
         </div>
         <div
@@ -65,7 +65,7 @@ export async function GET() {
             bottom: "40px",
             right: "48px",
             fontSize: "16px",
-            color: "#505068",
+            color: "#5b7089",
             fontFamily: "monospace",
           }}
         >

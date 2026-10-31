@@ -3,39 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPost, type CtaTier } from "@/data/blog/posts";
 
+// Private preview: every tier points to the investor contact; no self-serve checkout.
+const PREVIEW_CTA = {
+  href: "/#contact",
+  eyebrow: "Private preview",
+  headline: "Munero is in private preview.",
+  sub: "New client access is closed. Investors and strategic partners can reach us directly.",
+  button: "Investor inquiries",
+};
 const CTA_BY_TIER: Record<
   CtaTier,
   { href: string; eyebrow: string; headline: string; sub: string; button: string }
-> = {
-  starter: {
-    href: "https://buy.stripe.com/9B65kEf0L6nMcoJetf5ZC00",
-    eyebrow: "Run your own brief",
-    headline: "Know what message will work before you spend a dollar.",
-    sub: "16 intelligence squads. 35 minutes. Starting at $99.",
-    button: "Open workspace · $99",
-  },
-  feed: {
-    href: "https://buy.stripe.com/cNi4gA3i37rQdsN4SF5ZC01",
-    eyebrow: "Keep the signals running",
-    headline: "Know when your market moves, automatically.",
-    sub: "Weekly intelligence digest. Competitor change alerts. $49 / mo.",
-    button: "Start Intelligence Feed · $49/mo",
-  },
-  creative: {
-    href: "https://buy.stripe.com/dRm5kE05RbI674p98V5ZC03",
-    eyebrow: "Run your own brief + assets",
-    headline: "From intelligence brief to creative assets.",
-    sub: "Hooks, scripts, images, video credits, ads manager files. $299 one-time.",
-    button: "Open Creative Workspace · $299",
-  },
-  agency: {
-    href: "https://buy.stripe.com/6oU3cw8Cn13s74pacZ5ZC02",
-    eyebrow: "Scale across clients",
-    headline: "One workspace. Every client. Unlimited briefs.",
-    sub: "Multi-client command center, white-label, team seats. $499 / mo.",
-    button: "Start Agency Workspace · $499/mo",
-  },
-};
+> = { starter: PREVIEW_CTA, feed: PREVIEW_CTA, creative: PREVIEW_CTA, agency: PREVIEW_CTA };
 
 type Params = Promise<{ slug: string }>;
 

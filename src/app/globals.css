@@ -2,20 +2,21 @@
 @import "../styles/brand.css";
 
 :root {
-  --bg: #050508;
-  --surface: #08080E;
-  --surface-2: #0D0D18;
-  --border: #151525;
-  --border-2: #1E1E35;
-  --accent: #1D9E75;
-  --accent-light: #00E5A0;
-  --accent-glow: rgba(29, 158, 117, 0.15);
-  --text: #E8E8F0;
-  --text-2: #8888A0;
-  --text-3: #505068;
-  --score-high: #00E5A0;
-  --score-mid: #FFB547;
-  --score-low: #FF5757;
+  /* Munero navy / cream system (orange is reserved for detected opportunities only) */
+  --bg: #f7f2e8;
+  --surface: #fffdf8;
+  --surface-2: #efe7d8;
+  --border: #e2d8c6;
+  --border-2: #cfc3ad;
+  --accent: #0e1b2c;
+  --accent-light: #b08838;
+  --accent-glow: rgba(14, 27, 44, 0.08);
+  --text: #0e1b2c;
+  --text-2: #55606e;
+  --text-3: #6b6558;
+  --score-high: #2c6e52;
+  --score-mid: #7d5f1f;
+  --score-low: #9b2c2c;
 }
 
 @theme inline {
@@ -40,7 +41,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--bg);
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -60,8 +61,8 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(29, 158, 117, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 90%, rgba(0, 229, 160, 0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(14, 27, 44, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 90%, rgba(176, 136, 56, 0.03) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -97,7 +98,7 @@ main, header, footer { position: relative; z-index: 1; }
   border-radius: 2px;
 }
 ::selection {
-  background: rgba(29, 158, 117, 0.3);
+  background: rgba(14, 27, 44, 0.3);
   color: var(--text);
 }
 
@@ -114,7 +115,7 @@ main, header, footer { position: relative; z-index: 1; }
 /* Buttons — 6px radius, 44px height */
 .btn-primary {
   background: var(--accent);
-  color: #051410;
+  color: #f7f2e8;
   font-weight: 600;
   height: 44px;
   padding: 0 18px;
@@ -128,7 +129,7 @@ main, header, footer { position: relative; z-index: 1; }
 }
 .btn-primary:hover {
   background: var(--accent-light);
-  box-shadow: 0 0 24px -4px rgba(29, 158, 117, 0.4);
+  box-shadow: 0 0 24px -4px rgba(14, 27, 44, 0.4);
 }
 .btn-primary:active { transform: scale(0.97); }
 
@@ -295,12 +296,12 @@ details[open] > summary .chev { transform: rotate(45deg); }
 /* Source pill pulse — ring + border lift on a 12s loop, staggered per pill */
 @keyframes pill-pulse {
   0%, 85%, 100% {
-    box-shadow: 0 0 0 0 rgba(29, 158, 117, 0);
+    box-shadow: 0 0 0 0 rgba(14, 27, 44, 0);
     border-color: var(--border);
     color: var(--text-2);
   }
   90% {
-    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
+    box-shadow: 0 0 0 3px rgba(14, 27, 44, 0.15);
     border-color: var(--accent);
     color: var(--text);
   }
@@ -425,7 +426,7 @@ details[open] > summary .chev { transform: rotate(45deg); }
   background: linear-gradient(
     180deg,
     var(--bg) 0%,
-    rgba(29, 158, 117, 0.03) 50%,
+    rgba(14, 27, 44, 0.03) 50%,
     var(--bg) 100%
   );
 }
@@ -498,8 +499,8 @@ details[open] > summary .chev { transform: rotate(45deg); }
 .guide-content a:hover { text-decoration: underline; }
 
 .guide-callout {
-  background: rgba(29, 158, 117, 0.06);
-  border: 0.5px solid rgba(29, 158, 117, 0.2);
+  background: rgba(14, 27, 44, 0.06);
+  border: 0.5px solid rgba(14, 27, 44, 0.2);
   border-radius: 8px;
   padding: 20px 24px;
   margin: 32px 0;
@@ -596,3 +597,24 @@ a[class*="btn-"]:active {
 .blog-prose a:hover {
   text-decoration: underline;
 }
+
+
+/* ===== Munero shell: pill nav + footer (shared by legal, blog, guides) ===== */
+.mn-navwrap{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;padding:12px max(16px,env(safe-area-inset-left,0px)) 0 max(16px,env(safe-area-inset-right,0px))}
+.mn-nav{max-width:1180px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 10px 0 22px;background:var(--surface);border:1px solid var(--border);border-radius:999px;box-shadow:0 1px 2px rgba(14,27,44,.06),0 4px 12px rgba(14,27,44,.05)}
+.mn-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.mn-logo span{font-weight:600;font-size:23px;letter-spacing:-.04em;line-height:1}
+.mn-links{display:flex;gap:40px;font-size:15px;font-weight:500}
+.mn-links a{color:var(--text-2);text-decoration:none;transition:color .16s}
+.mn-links a:hover{color:var(--text)}
+.mn-cta{display:inline-flex;align-items:center;height:38px;padding:0 18px;border-radius:999px;background:var(--accent);color:#f7f2e8;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.mn-cta:hover{box-shadow:0 2px 4px rgba(14,27,44,.06),0 16px 40px rgba(14,27,44,.10)}
+@media (max-width:860px){.mn-links{display:none}}
+.mn-foot{background:#0b1522;color:#a9b3c0;margin-top:96px}
+.mn-foot__in{max-width:1280px;margin:0 auto;padding:48px max(16px,env(safe-area-inset-left,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-right,0px));display:grid;gap:32px}
+.mn-foot__top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start}
+.mn-foot .mn-logo{color:#f3ede2}
+.mn-foot p{font-size:14px;max-width:44ch;margin-top:12px}
+.mn-foot nav{display:flex;gap:24px;flex-wrap:wrap;font-size:14px}
+.mn-foot nav a{color:#a9b3c0;text-decoration:none}.mn-foot nav a:hover{color:#f3ede2}
+.mn-foot__bot{border-top:1px solid #24384f;padding-top:20px;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
