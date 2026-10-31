@@ -89,7 +89,7 @@ const SYNTHETIC_AUDIENCE_CONTENT = `
 
 <p>Campaigns fail at the message layer more often than at the media layer. Targeting can be fixed with optimization. A wrong message is just waste.</p>
 
-<blockquote>Synthetic audiences give you a read on the message before the spend. Not a guarantee — a pressure test. The kind that used to cost $30,000 and six weeks, and now costs $99 and 35 minutes.</blockquote>
+<blockquote>Synthetic audiences give you a read on the message before the spend. Not a guarantee — a pressure test. The kind that used to cost $30,000 and six weeks, and now takes about 35 minutes.</blockquote>
 
 <p>That gap is why the category exists.</p>
 
